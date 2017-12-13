@@ -18,7 +18,7 @@ var resourceBox;
 var userData;
 function setup()
 {
-	createCanvas(windowWidth,windowHeight);
+	createCanvas(windowWidth,windowHeight,SVG);
 	inputBroadcast=new BROADCAST();
 	screenControl=new SCREEN_CONTROL(width,height);
 	resourceBox=new RESOURCE_BOX();
