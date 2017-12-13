@@ -33,7 +33,7 @@ INGAME.prototype.setup=function()
 	this.field.makeField();
 	screenControl.set(this.field.w,this.field.h);
 }
-INGAME.prototype.execute=function();
+INGAME.prototype.execute=function()
 {
 	this.field.draw();
 }
