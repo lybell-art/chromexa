@@ -104,9 +104,9 @@ CELL.prototype.mouseClick=function()
 	switch(this.kind)
 	{
 		case 3:
-		case 4:code=2; break;
-		case 1:code=1; break;
-		default:code=0;
+		case 4:code=_FILLER; break;
+		case 1:code=_MOVEABLE; break;
+		default:code=_NOMOVE;
 	}
 	return {index:this.index, signal:code};
 }
