@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.13
- * @version 0.1
+ * @version 0.11
  *
  */
 function FIELD()
@@ -45,11 +45,11 @@ FIELD.prototype.makeField=function()
 	this.h=45*cos(PI/6)*(2*this.row+1);
 	for(var i=0;i<this.row;i++)
 	{
-		cells[i]=[];
+		this.cells[i]=[];
 		for(var j=0;j<this.column;j++)
 		{
-	//		cells[i][j]=new CELL(i,j,mapData_kind[i][j],mapData_who[i][j]);
-			cells[i][j]=new CELL(i,j,1,0);
+	//		this.cells[i][j]=new CELL(i,j,mapData_kind[i][j],mapData_who[i][j]);
+			this.cells[i][j]=new CELL(i,j,1,0);
 		}
 	}
 }
@@ -64,7 +64,7 @@ FIELD.prototype.draw=function()
 	{
 		for(var j=0;j<this.column;j++)
 		{
-			cells[i][j].draw();
+			this.cells[i][j].draw();
 		}
 	}
 }
@@ -83,9 +83,9 @@ FIELD.prototype.clickCheck=function()
 	{
 		for(var j=0;j<this.column;j++)
 		{
-			if(cells[i][j].isMouseOn())
+			if(this.cells[i][j].isMouseOn())
 			{
-				return cells[i][j].mouseClick();
+				return this.cells[i][j].mouseClick();
 			}
 		}
 	}
