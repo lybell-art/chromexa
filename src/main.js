@@ -21,6 +21,7 @@ function setup()
 	createCanvas(windowWidth,windowHeight);
 	inputBroadcast=new BROADCAST();
 	screenControl=new SCREEN_CONTROL(width,height);
+	resourceBox=new RESOURCE_BOX();
 	//class definition
 //	loading=new LOADING();
 //	intro=new INTRO();
@@ -31,6 +32,7 @@ function setup()
 //	popup=new POPUP();
 	//load data
 //	loading.dataLoad();
+	resourceBox.loadImage();
 	ingame.setup();
 	sceneNo=11;
 }
