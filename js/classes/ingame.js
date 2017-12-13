@@ -35,5 +35,6 @@ INGAME.prototype.setup=function()
 }
 INGAME.prototype.execute=function()
 {
+	screenControl.setScreen();
 	this.field.draw();
 }
