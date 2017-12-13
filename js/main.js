@@ -19,54 +19,55 @@ function setup()
 {
 	createCanvas(windowWidth,windowHeight);
 	//class definition
-	loading=new LOADING();
-	intro=new INTRO();
-	selection=new SELENTION();
-	manageChara=new MANAGE_CHARA();
-	sandBox=new SANDBOX();
+//	loading=new LOADING();
+//	intro=new INTRO();
+//	selection=new SELENTION();
+//	manageChara=new MANAGE_CHARA();
+//	sandBox=new SANDBOX();
 	ingame=new INGAME();
-	popup=new POPUP();
+//	popup=new POPUP();
 	broadcast=new BROADCAST();
 	screenControl=new SCREEN_CONTROL(45*(1.5*maxWid-0.5),45*cos(PI/6)*(2*maxHei+1));
 	//load data
-	loading.dataLoad();
+//	loading.dataLoad();
 }
 function draw()
 {
 	broadcast.renew();
-	if(popupNo==0) sceneExecute();
-	else popupExecute();
+	ingame.execute();
+//	if(popupNo==0) sceneExecute();
+//	else popupExecute();
 }
 function sceneExecute()
 {
 	switch(sceneNo)
 	{
-		case -1:loading.execute(); break;
-		case 0:intro.execute(); break;
-		case 1:selection.mainSelect(); break;
-		case 2:selection.stageSelect_single(); break;
-		case 3:selection.modeSelect_multi(); break;
-		case 4:selection.stageSelect_multi(); break;
-		case 10:ingame.setup(); break;
-		case 11:ingame.playerTurn(); break;
-		case 12:ingame.playerTurn_motion(); break;
-		case 13:ingame.enemyTurn(); break;
-		case 14:ingame.enemyTurn_motion(); break;
-		case 15:ingame.result(); break;
-		case 20:manageChara.setup(); break;
-		case 21:manageChara.myChara(); break;
-		case 30:sandbox.setup(); break;
-		case 31:sandbox.execute(); break;
+//		case -1:loading.execute(); break;
+//		case 0:intro.execute(); break;
+//		case 1:selection.mainSelect(); break;
+//		case 2:selection.stageSelect_single(); break;
+//		case 3:selection.modeSelect_multi(); break;
+//		case 4:selection.stageSelect_multi(); break;
+//		case 10:ingame.setup(); break;
+//		case 11:ingame.playerTurn(); break;
+//		case 12:ingame.playerTurn_motion(); break;
+//		case 13:ingame.enemyTurn(); break;
+//		case 14:ingame.enemyTurn_motion(); break;
+//		case 15:ingame.result(); break;
+//		case 20:manageChara.setup(); break;
+//		case 21:manageChara.myChara(); break;
+//		case 30:sandbox.setup(); break;
+//		case 31:sandbox.execute(); break;
 	}
 }
 function popupExecute()
 {
 	switch(popupNo)
 	{
-		case 1:popup.pause(); break;
-		case 2:popup.preferance(); break;
-		case 3:popup.networking(); break;
-		case 99:popup.error(); break;
+//		case 1:popup.pause(); break;
+//		case 2:popup.preferance(); break;
+//		case 3:popup.networking(); break;
+//		case 99:popup.error(); break;
 	}
 }
 function mousePressed()
