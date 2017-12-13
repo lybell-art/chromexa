@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.13
- * @version 0.3
+ * @version 0.31
  *
  */
 function CELL(i,j,kind,who)
@@ -98,7 +98,7 @@ CELL.prototype.isMouseOn=function()
 			signal:버튼 종류(0:움직일 수 없는 셀, 1:움직일 수 있는 셀, 2:필러)
  *
  */
-CELL.prototype.mouseClick=function
+CELL.prototype.mouseClick=function()
 {
 	var code;
 	switch(this.kind)
