@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.13
- * @version 0.01
+ * @version 0.02
  *
  */
 function INGAME()
@@ -37,4 +37,9 @@ INGAME.prototype.execute=function()
 {
 	screenControl.setScreen();
 	this.field.draw();
+	if(inputBroadcast.mousePress)
+	{
+		var x=this.field.clickCheck();
+		console.log(x);
+	}
 }
