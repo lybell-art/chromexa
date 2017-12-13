@@ -37,7 +37,7 @@ INGAME.prototype.execute=function()
 {
 	screenControl.setScreen();
 	this.field.draw();
-	if(inputBroadcast.mousePress)
+	if(inputBroadcast.isMousePress)
 	{
 		var x=this.field.clickCheck();
 		console.log(x);
