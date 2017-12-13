@@ -19,6 +19,8 @@ var userData;
 function setup()
 {
 	createCanvas(windowWidth,windowHeight);
+	inputBroadcast=new BROADCAST();
+	screenControl=new SCREEN_CONTROL(width,height);
 	//class definition
 //	loading=new LOADING();
 //	intro=new INTRO();
@@ -27,10 +29,9 @@ function setup()
 //	sandBox=new SANDBOX();
 	ingame=new INGAME();
 //	popup=new POPUP();
-	inputBroadcast=new BROADCAST();
-	screenControl=new SCREEN_CONTROL(width,height);
 	//load data
 //	loading.dataLoad();
+	ingame.setup();
 }
 function draw()
 {
