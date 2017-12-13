@@ -74,14 +74,14 @@ function popupExecute()
 }
 function mousePressed()
 {
-	broadcast.isMousePress=true;
-	broadcast.dmouseX=mouseX;
-	broadcast.dmouseY=mouseY;
+	inputBroadcast.isMousePress=true;
+	inputBroadcast.dmouseX=mouseX;
+	inputBroadcast.dmouseY=mouseY;
 }
 function mouseDragged()
 {
-	var deltaX=mouseX-broadcast.dmouseX;
-	var deltaY=mouseY-broadcast.dmouseY;
+	var deltaX=mouseX-inputBroadcast.dmouseX;
+	var deltaY=mouseY-inputBroadcast.dmouseY;
 	if(sceneNo%10==1 || sceneNo==31) screenControl.move(deltaX,deltaY);
 }
 function mouseWheel(event)
