@@ -32,6 +32,7 @@ function setup()
 	//load data
 //	loading.dataLoad();
 	ingame.setup();
+	sceneNo=11;
 }
 function draw()
 {
