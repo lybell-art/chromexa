@@ -64,7 +64,7 @@ CELL.prototype.draw=function()
 	}
 	endShape(CLOSE);
 	*/
-	image(svg,this.x,this.y,this.r*2,this.r*2);
+	image(resourceBox.cellImage,this.x,this.y,this.r*2,this.r*2);
 	fill(0);
 	text(this.kind,this.x,this.y);
 }
