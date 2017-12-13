@@ -75,6 +75,7 @@ FIELD.prototype.draw=function()
  * @return {object}	메인 함수에 전달할 값들
  			index:자신의 인덱스 no.
 			signal:버튼 종류(0:움직일 수 없는 셀, 1:움직일 수 있는 셀, 2:필러)
+			없을 시 null 반환
  *
  */
 FIELD.prototype.clickCheck=function()
@@ -89,4 +90,5 @@ FIELD.prototype.clickCheck=function()
 			}
 		}
 	}
+	return null;
 }
