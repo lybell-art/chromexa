@@ -40,5 +40,4 @@ BROADCAST.prototype.renew=function()
 		this.dmouseX=mouseX;
 		this.dmouseY=mouseY;
 	}
-	console.log('b',this.dmouseX,this.dmouseY);
 }
