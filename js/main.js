@@ -8,10 +8,11 @@ var ingame;
 //popup class;
 var popup;
 //control varient
-var sceneNo=-1;      //scene number
-var popupNo=0;       //pop-up scene number
-var screenControl;  //controling screen class
-var broadcast;      //user-input varient class
+var sceneNo=-1;		//scene number
+var popupNo=0;		//pop-up scene number
+var screenControl;	//class that control screen
+var inputBroadcast;	//user-input varient class
+var stream;		//inter-scene stream class
 //data class
 var resourceBox;
 var userData;
@@ -26,14 +27,14 @@ function setup()
 //	sandBox=new SANDBOX();
 	ingame=new INGAME();
 //	popup=new POPUP();
-	broadcast=new BROADCAST();
-	screenControl=new SCREEN_CONTROL(45*(1.5*maxWid-0.5),45*cos(PI/6)*(2*maxHei+1));
+	inputBroadcast=new BROADCAST();
+	screenControl=new SCREEN_CONTROL(width,height);
 	//load data
 //	loading.dataLoad();
 }
 function draw()
 {
-	broadcast.renew();
+	inputBroadcast.renew();
 	ingame.execute();
 //	if(popupNo==0) sceneExecute();
 //	else popupExecute();
