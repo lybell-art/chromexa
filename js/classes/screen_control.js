@@ -73,7 +73,6 @@ SCREEN_CONTROL.prototype.limit=function()
 	else this.ox=wLimit/2;
 	if(hLimit<0) this.oy=constrain(this.oy,hLimit,0);
 	else this.oy=hLimit/2;
-	console.log(this.ox,this.oy);
 }
 /**
  *
