@@ -53,7 +53,7 @@ CELL.prototype.draw=function()
 		default:fill(220);
 	}
 	var pos=createVector(this.x,this.y);
-	var edge=createVector(this.r,0);
+/*	var edge=createVector(this.r,0);
 	var p=createVector();
 	beginShape();
 	for(var i=0;i<6;i++)
@@ -63,6 +63,8 @@ CELL.prototype.draw=function()
 		edge.rotate(PI/3);
 	}
 	endShape(CLOSE);
+	*/
+	image(svg,this.x,this.y,this.r*2,this.r*2);
 	fill(0);
 	text(this.kind,this.x,this.y);
 }
