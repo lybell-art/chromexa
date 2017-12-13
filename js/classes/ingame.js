@@ -35,11 +35,13 @@ INGAME.prototype.setup=function()
 }
 INGAME.prototype.execute=function()
 {
+	var clickSignal=null;
+	background(255);
 	screenControl.setScreen();
 	this.field.draw();
 	if(inputBroadcast.isMousePress)
 	{
-		var x=this.field.clickCheck();
-		console.log(x);
+		clickSignal=this.field.clickCheck();
+		console.log(clickSignal);
 	}
 }
