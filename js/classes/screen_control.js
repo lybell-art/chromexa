@@ -5,7 +5,7 @@
  * 
  * @author steliviere
  * @date 2017.12.07
- * @version 1.0
+ * @version 1.1
  *
  */
 function SCREEN_CONTROL(w,h)
@@ -19,6 +19,14 @@ function SCREEN_CONTROL(w,h)
 	 * @var {float} zoom	확대 배율
 	 *
 	 */
+	this.w=w;
+	this.h=h;
+	this.ox=(width-w)/2;
+	this.oy=(height-h)/2;
+	this.zoom=1;
+}
+SCREEN_CONTROL.prototype.set=function(w,h)
+{
 	this.w=w;
 	this.h=h;
 	this.ox=(width-w)/2;
