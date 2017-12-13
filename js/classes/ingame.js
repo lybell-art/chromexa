@@ -16,7 +16,7 @@ function INGAME()
 	this.p1=null;
 	this.p2=null;
 }
-INGAME.prototype.setup()
+INGAME.prototype.setup=function()
 {
 	/*
 	this.world=stream.StoG1;
@@ -33,7 +33,7 @@ INGAME.prototype.setup()
 	this.field.makeField();
 	screenControl.set(this.field.w,this.field.h);
 }
-INGAME.prototype.execute();
+INGAME.prototype.execute=function();
 {
 	this.field.draw();
 }
