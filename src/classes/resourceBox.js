@@ -9,7 +9,6 @@ RESOURCE_BOX.prototype.loadMap=function()
 }
 RESOURCE_BOX.prototype.loadImage=function()
 {
-	this.cellImage=loadSVG('resource/cell.svg');
 }
 
 function MAP_DATA()
