@@ -4,6 +4,12 @@ function roundedHexagon(x,y,r)
 	roundedHexagonRaw(x,y,r);
 	endShape(CLOSE);
 }
+function roundedHexagonContour(x,y,r)
+{
+	beginContour();
+	roundedHexagonRaw(x,y,r);
+	endContour();
+}
 function roundedHexagonRaw(x,y,r)
 {
 	var edge=createVector(0,r*cos(PI/6));
