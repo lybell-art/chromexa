@@ -90,5 +90,5 @@ function mouseDragged()
 function mouseWheel(event)
 {
 	var newZoom=screenControl.zoom+0.001*event.delta;
-	if(sceneNo%10==1 || sceneNo==31) screenControl.scale(newZoom,500,500);
+	if(sceneNo%10==1 || sceneNo==31) screenControl.scale(newZoom,mouseX,mouseY);
 }
