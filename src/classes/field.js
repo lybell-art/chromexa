@@ -11,15 +11,15 @@ function FIELD()
 {
   /**
    *
-   * @var {int} rows		필드의 행(가로줄)의 수
-   * @var {int} columns		필드의 열(세로줄)의 수
+   * @var {int} Rows		필드의 행(가로줄)의 수
+   * @var {int} Columns		필드의 열(세로줄)의 수
    * @var {float} w		필드의 가로 길이
    * @var {float} h		필드의 세로 길이
    * @var {object|CELL} cells	셀 오브젝트
    *
    */
-	this.rows=0;
-	this.columns=0;
+	this.Rows=0;
+	this.Columns=0;
 	this.w=0;
 	this.h=0;
 	this.cells=[];
@@ -36,17 +36,17 @@ FIELD.prototype.makeField=function()
 	/* 미구현
 	var mapData_kind=mapData.kind;
 	var mapData_who=mapData.who;
-	this.rows=mapData.row;
-	this.columns=mapData.column;
+	this.Rows=mapData.row;
+	this.Columns=mapData.column;
 	*/
-	this.rows=10;
-	this.columns=10;
-	this.w=45*(1.5*this.column-0.5);
-	this.h=45*cos(PI/6)*(2*this.row+1);
-	for(var i=0;i<this.rows;i++)
+	this.Rows=10;
+	this.Columns=10;
+	this.w=45*(1.5*this.Columns-0.5);
+	this.h=45*cos(PI/6)*(2*this.Rows+1);
+	for(var i=0;i<this.Rows;i++)
 	{
 		this.cells[i]=[];
-		for(var j=0;j<this.columns;j++)
+		for(var j=0;j<this.Columns;j++)
 		{
 	//		this.cells[i][j]=new CELL(i,j,mapData_kind[i][j],mapData_who[i][j]);
 			this.cells[i][j]=new CELL(i,j,1,0);
@@ -60,9 +60,9 @@ FIELD.prototype.makeField=function()
  */
 FIELD.prototype.draw=function()
 {
-	for(var i=0;i<this.rows;i++)
+	for(var i=0;i<this.Rows;i++)
 	{
-		for(var j=0;j<this.columns;j++)
+		for(var j=0;j<this.Columns;j++)
 		{
 			this.cells[i][j].draw();
 		}
@@ -80,9 +80,9 @@ FIELD.prototype.draw=function()
  */
 FIELD.prototype.clickCheck=function()
 {
-	for(var i=0;i<this.rows;i++)
+	for(var i=0;i<this.Rows;i++)
 	{
-		for(var j=0;j<this.columns;j++)
+		for(var j=0;j<this.Columns;j++)
 		{
 			if(this.cells[i][j].isMouseOn())
 			{
