@@ -3,8 +3,8 @@
  * 필드 클래스
  * 
  * @author steliviere
- * @date 2017.12.13
- * @version 0.11
+ * @date 2017.12.15
+ * @version 0.15
  *
  */
 function FIELD()
@@ -40,8 +40,8 @@ FIELD.prototype.makeField=function()
 	this.Columns=mapData.column;
 	*/
 	this.Rows=10;
-	this.Columns=10;
-	this.w=45*(1.5*this.Columns-0.5);
+	this.Columns=15;
+	this.w=45*(1.5*this.Columns+0.5);
 	this.h=45*cos(PI/6)*(2*this.Rows+1);
 	for(var i=0;i<this.Rows;i++)
 	{
