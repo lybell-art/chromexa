@@ -1,5 +1,6 @@
 function roundedHexagon(x,y,r)
 {
+	console.log(x,y,r);
 	var edge=createVector(0,r*cos(PI/6));
 	var cpoint=createVector(-r/2,0);
 	var apoint=createVector(-r*7/20,0);
