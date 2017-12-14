@@ -26,8 +26,6 @@ function COORD(i,j)
 function hexCell_trans(start, dir, dist)
 {
 	var res=new COORD(start.row, start.col);
-	console.log(start, dir, dist, res);
-	console.log(_HEX_UP);
 	switch(dir)
 	{
 		case _HEX_UP:res.row-=dist; break;
@@ -37,7 +35,6 @@ function hexCell_trans(start, dir, dist)
 		case _HEX_LEFTDOWN:res.row+=int((dist+(start.col+1)%2)/2); res.col-=dist; break;
 		case _HEX_LEFTUP:res.row-=int((dist+start.col%2)/2); res.col-=dist; break;
 	}
-	console.log(res);
 	return res;
 }
 
