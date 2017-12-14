@@ -14,7 +14,6 @@ function COORD(i,j)
 
 function hexCell_trans(start, dir, dist)
 {
-	if(start===null) return;
 	var res=new COORD(start.row, start.col);
 	switch(dir)
 	{
@@ -30,7 +29,6 @@ function hexCell_trans(start, dir, dist)
 
 function hexCell_dist(start, end)
 {
-	if(start===null||end===null) return;
 	var xdist=end.col-start.col;
 	var bound1=-int((xdist+start.col%2)/2);
 	var bound2=int((xdist+(start.col+1)%2)/2);
