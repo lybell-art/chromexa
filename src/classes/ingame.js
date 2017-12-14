@@ -72,9 +72,9 @@ INGAME.prototype.layer2=function()
 	fill(0);
 	beginShape();
 	vertex(0,0);
-	vertex(field.width,0);
-	vertex(field.width,field.height);
-	vertex(0,field.height);
+	vertex(field.w,0);
+	vertex(field.w,field.h);
+	vertex(0,field.h);
 	beginContour();
 	for(var i=0;i<field.Rows;i++)
 	{
