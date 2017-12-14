@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.14
- * @version 0.03_debug
+ * @version 0.05
  *
  */
 function INGAME()
@@ -15,7 +15,8 @@ function INGAME()
 	this.field=null;
 	this.p1=null;
 	this.p2=null;
-	this.imsi=null;
+	this.chaSel=false;
+	this.currentP=-1;
 }
 INGAME.prototype.setup=function()
 {
@@ -32,11 +33,13 @@ INGAME.prototype.setup=function()
 	*/
 	this.field=new FIELD();
 	this.field.makeField();
+	this.chaSel=false;
 	screenControl.set(this.field.w,this.field.h);
 }
 INGAME.prototype.execute=function()
 {
 	var clickSignal=null;
+	var cSel;
 	background(255);
 	screenControl.setScreen();
 //	console.log(screenControl);
@@ -45,19 +48,31 @@ INGAME.prototype.execute=function()
 	{
 		clickSignal=this.field.clickCheck();
 		console.log(clickSignal);
+		/*
 		if(clickSignal!==null)
 		{
-			this.field.cells[clickSignal.index.row][clickSignal.index.col].who=1;
-			if(this.imsi==null) this.imsi=clickSignal.index;
+			cSel=this.charaSelect(clickSignal.index);
+			if(cSel!=-1) clickSignal.signal=_CHARA;
+			if(!this.chaSel)
+			{
+				this.currentP=cSel;
+				if(clickSignal.signal==_CHARA) this.chaSel=true;
+				else if(clickSignal.signal==_FILLER) this.filler();
+			}
 			else
 			{
-				var RES=hexCell_dist(this.imsi,clickSignal.index);
-				console.log(RES);
-				this.imsi=null;
+				if(!hexCell_isLine(this.p1[this.currentP].pos,clickSignal.index)) clickSignal.signal=_NO_MOVE;
+				switch(clickSignal.signal)
+				{
+					case _CHARA:
+					case _MOVEABLE:this.p1[this.currentP].move(clickSignal.index); break;
+					case _FILLAR:this.filler();
+				}
+				this.chaSel=false;
 			}
 		}
+		*/
 	}
-	this.layer2();
 }
 INGAME.prototype.motion=function()
 {
