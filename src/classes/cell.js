@@ -11,9 +11,7 @@ function CELL(i,j,kind,who)
 {
 	/**
 	 *
-	 * @var {object} index	각 셀의 인덱스 no.
-	 			i:열(row) 인덱스
-				j:행(column) 인덱스
+	 * @var {COORD} index	각 셀의 인덱스 no.
  	 * @var {float} x	셀 중심의 x좌표
 	 * @var {float} y	셀 중심의 y좌표
 	 * @var {float} r	셀의 반지름
@@ -31,9 +29,9 @@ function CELL(i,j,kind,who)
 				-1:칠할 수 없음
 	 *
 	 */
-	this.index={i:i,j:j};
-	this.x=45*(1.5*this.index.j+1);
-	this.y=45*cos(PI/6)*(2*this.index.i+2-this.index.j%2);
+	this.index=new COORD(i,j);
+	this.x=45*(1.5*this.index.col+1);
+	this.y=45*cos(PI/6)*(2*this.index.row+2-this.index.col%2);
 	this.kind=kind;
 	this.who=who;
 	this.r=30;
@@ -53,7 +51,7 @@ CELL.prototype.draw=function()
 		default:fill(220);
 	}
 	var pos=createVector(this.x,this.y);
-/*	var edge=createVector(this.r,0);
+	var edge=createVector(this.r,0);
 	var p=createVector();
 	beginShape();
 	for(var i=0;i<6;i++)
@@ -63,10 +61,6 @@ CELL.prototype.draw=function()
 		edge.rotate(PI/3);
 	}
 	endShape(CLOSE);
-	*/
-	image(resourceBox.cellImage,this.x,this.y,this.r*2,this.r*2);
-	fill(0);
-	text(this.kind,this.x,this.y);
 }
 /**
  *
