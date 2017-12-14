@@ -61,7 +61,6 @@ CELL.prototype.draw=function()
 		edge.rotate(PI/3);
 	}
 	endShape(CLOSE);
-	console.log(this.x,this.y,this.index);
 }
 /**
  *
