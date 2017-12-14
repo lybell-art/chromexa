@@ -12,6 +12,17 @@ function COORD(i,j)
 	this.col=j;
 }
 
+/**
+ *
+ * 육각형 배열에서 방향에 따라 거리만큼 이동시킨 값을 반환한다.
+ *
+ * @param {COORD} start	기준점의 인덱스 no.
+ * @param {int} dir	움직일 방향
+ * @param {int} dist	움직일 거리
+ *
+ * @return {COORD}	이동 후의 인덱스 no.
+ *
+ */
 function hexCell_trans(start, dir, dist)
 {
 	var res=new COORD(start.row, start.col);
@@ -30,6 +41,16 @@ function hexCell_trans(start, dir, dist)
 	return res;
 }
 
+/**
+ *
+ * 서로 다른 셀간의 최소 거리를 구한다.
+ *
+ * @param {COORD} start	구할 셀 1
+ * @param {COORD} end	구할 셀 2
+ *
+ * @return {int}	셀 간의 거리
+ *
+ */
 function hexCell_dist(start, end)
 {
 	var xdist=end.col-start.col;
