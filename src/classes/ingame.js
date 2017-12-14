@@ -46,7 +46,7 @@ INGAME.prototype.execute=function()
 		console.log(clickSignal);
 		if(clickSignal!==null)
 		{
-			for(var ii=0;ii<6;ii++)
+			for(var ii=4;ii<5;ii++)
 			{
 				for(var jj=0;jj<4;jj++)
 				{
