@@ -43,10 +43,13 @@ INGAME.prototype.execute=function()
 	if(inputBroadcast.isMousePress)
 	{
 		clickSignal=this.field.clickCheck();
-		for(var ii=0;ii<6;ii++)
+		if(clickSignal!==null)
 		{
-			var p=hexCell_trans(clickSignal,ii,3);
-			this.field.cells[p.row][p.col].who=1;
+			for(var ii=0;ii<6;ii++)
+			{
+				var p=hexCell_trans(clickSignal,ii,3);
+				this.field.cells[p.row][p.col].who=1;
+			}
 		}
 		console.log(clickSignal);
 	}
