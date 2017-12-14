@@ -15,6 +15,7 @@ function INGAME()
 	this.field=null;
 	this.p1=null;
 	this.p2=null;
+	this.imsi=null;
 }
 INGAME.prototype.setup=function()
 {
@@ -46,13 +47,13 @@ INGAME.prototype.execute=function()
 		console.log(clickSignal);
 		if(clickSignal!==null)
 		{
-			for(var ii=0;ii<6;ii++)
+			this.field.cells[clickSignal.index.row][clickSignal.index.col].who=1;
+			if(this.imsi==null) this.imsi=clickSignal.index;
+			else
 			{
-				for(var jj=0;jj<4;jj++)
-				{
-					var p=hexCell_trans(clickSignal.index,ii,jj);
-					this.field.cells[p.row][p.col].who=1;
-				}
+				var RES=hexCell_dist(this.imsi,clickSignal.index);
+				console.log(RES);
+				this.imsi=null;
 			}
 		}
 	}
