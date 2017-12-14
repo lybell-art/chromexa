@@ -79,7 +79,10 @@ INGAME.prototype.layer2=function()
 	{
 		for(var j=0;j<field.Columns;j++)
 		{
-			if(detectCell(cells[i][j].kind)!=0)
+			beginContour();
+				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
+				endContour();
+/*			if(detectCell(cells[i][j].kind)!=0)
 			{
 				beginContour();
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
@@ -93,7 +96,7 @@ INGAME.prototype.layer2=function()
 				beginContour();
 				roundedHexagonContour(cells[i][j].x,cells[i][j].y,cells[i][j].r+1.25);
 				endContour();
-			}
+			}*/
 		}
 	}
 	endShape();
