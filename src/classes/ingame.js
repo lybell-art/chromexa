@@ -80,6 +80,7 @@ INGAME.prototype.layer2=function()
 	{
 		for(var j=0;i<field.Columns;j++)
 		{
+			console.log(cells, this.field.cells);
 			if(detectCell(cells[i][j].kind)!=0)
 			{
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
