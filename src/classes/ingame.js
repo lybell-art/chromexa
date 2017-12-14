@@ -68,7 +68,7 @@ INGAME.prototype.layer2=function()
 	//Why does not p5.js support clipping masks?
 	var field=this.field;
 	var cells=this.field.cells;
-	fill("#ffff00",30);
+	fill(255,255,0,30);
 	stroke(_BLACK);
 	beginShape();
 	vertex(0,0);
