@@ -51,8 +51,8 @@ function hexCell_trans(start, dir, dist)
 function hexCell_dist(start, end)
 {
 	var xdist=abs(end.col-start.col);
-	var bound1=-int((xdist+start.col%2)/2);
-	var bound2=int((xdist+(start.col+1)%2)/2);
+	var bound1=start.row-int((xdist+start.col%2)/2);
+	var bound2=start.row+int((xdist+(start.col+1)%2)/2);
 	console.log(xdist,bound1,bound2,end.row);
 	if(xdist==0) return abs(end.row-start.row);
 	else if(bound1-end.row>0) return xdist+bound1-end.row;
