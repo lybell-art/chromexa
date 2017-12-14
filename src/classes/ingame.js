@@ -68,8 +68,8 @@ INGAME.prototype.layer2=function()
 	//Why does not p5.js support clipping masks?
 	var field=this.field;
 	var cells=this.field.cells;
-	noStroke();
-	fill(_BLACK);
+	noFill();
+	stroke(_BLACK);
 	beginShape();
 	vertex(0,0);
 	vertex(field.w,0);
@@ -80,8 +80,8 @@ INGAME.prototype.layer2=function()
 		for(var j=0;j<field.Columns;j++)
 		{
 			beginContour();
-				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
-				endContour();
+			roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
+			endContour();
 /*			if(detectCell(cells[i][j].kind)!=0)
 			{
 				beginContour();
