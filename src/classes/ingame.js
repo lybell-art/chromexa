@@ -79,17 +79,21 @@ INGAME.prototype.layer2=function()
 	{
 		for(var j=0;j<field.Columns;j++)
 		{
-			roundedHexagonContour(cells[i][j].x,cells[i][j].y,cells[i][j].r);
-			/*
 			if(detectCell(cells[i][j].kind)!=0)
 			{
-				roundedHexagonContour(cells[i][j].x,cells[i][j].y,cells[i][j].r);
+				beginContour();
+				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
+				endContour();
 			}
 			else
 			{
+				beginContour();
 				roundedHexagonContour(cells[i][j].x,cells[i][j].y,cells[i][j].r-1.25);
+				endContour();
+				beginContour();
 				roundedHexagonContour(cells[i][j].x,cells[i][j].y,cells[i][j].r+1.25);
-			}*/
+				endContour();
+			}
 		}
 	}
 	endShape();
