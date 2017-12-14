@@ -1,3 +1,10 @@
+//color constant
+const _RED="#f96e64";
+const _BLUE="#2196f3";
+const _WHITE="#ecf0f1";
+const _DARK_WHITE="#8dc3c7";
+const _BLACK="#262626";
+
 //ingame signal constant
 const _BACK=-1;
 const _SETTING=-2;
