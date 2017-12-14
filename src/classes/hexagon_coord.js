@@ -26,6 +26,7 @@ function hexCell_trans(start, dir, dist)
 		case _HEX_LEFTDOWN:res.row+=int((dist+start.col%2)/2); res.col-=dist; break;
 		case _HEX_LEFTUP:res.row-=int((dist+(start.col+1)%2)/2); res.col-=dist; break;
 	}
+	console.log(res);
 	return res;
 }
 
