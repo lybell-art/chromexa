@@ -57,4 +57,40 @@ INGAME.prototype.execute=function()
 			}
 		}
 	}
+	this.layer2();
+}
+INGAME.prototype.motion=function()
+{
+}
+INGAME.prototype.layer2=function()
+{
+	//f**king p5.js!
+	//Why does not p5.js support clipping masks?
+	var field=this.field;
+	var cells=this.field.cells;
+	noStroke();
+	fill(0);
+	beginShape();
+	vertex(0,0);
+	vertex(field.width,0);
+	vertex(field.width,field.height);
+	vertex(0,field.height);
+	beginContour();
+	for(var i=0;i<field.Rows;i++)
+	{
+		for(var j=0;i<field.Columns;i++)
+		{
+			if(detectCell(cells[i][j].kind)!=0)
+			{
+				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
+			}
+			else
+			{
+				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r-1.25);
+				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r+1.25);
+			}
+		}
+	}
+	endContour();
+	endShape();
 }
