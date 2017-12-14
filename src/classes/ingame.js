@@ -78,7 +78,7 @@ INGAME.prototype.layer2=function()
 	beginContour();
 	for(var i=0;i<field.Rows;i++)
 	{
-		for(var j=0;i<field.Columns;i++)
+		for(var j=0;i<field.Columns;j++)
 		{
 			if(detectCell(cells[i][j].kind)!=0)
 			{
