@@ -48,8 +48,11 @@ INGAME.prototype.execute=function()
 		{
 			for(var ii=0;ii<6;ii++)
 			{
-				var p=hexCell_trans(clickSignal.index,ii,3);
-				this.field.cells[p.row][p.col].who=1;
+				for(var jj=0;jj<3;jj++)
+				{
+					var p=hexCell_trans(clickSignal.index,ii,jj);
+					this.field.cells[p.row][p.col].who=1;
+				}
 			}
 		}
 	}
