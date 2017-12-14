@@ -3,8 +3,8 @@
  * 인게임 클래스
  * 
  * @author steliviere
- * @date 2017.12.13
- * @version 0.02
+ * @date 2017.12.14
+ * @version 0.03_debug
  *
  */
 function INGAME()
@@ -46,7 +46,7 @@ INGAME.prototype.execute=function()
 		console.log(clickSignal);
 		if(clickSignal!==null)
 		{
-			for(var ii=4;ii<5;ii++)
+			for(var ii=0;ii<6;ii++)
 			{
 				for(var jj=0;jj<4;jj++)
 				{
