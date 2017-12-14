@@ -44,23 +44,22 @@ function CELL(i,j,kind,who)
  */
 CELL.prototype.draw=function()
 {
+	var col;
 	switch(this.who)
 	{
-		case 1:fill("#0000ff"); break;
-		case 2:fill("#ff0000"); break;
-		default:fill(220);
+		case 1:col=_BLUE; break;
+		case 2:col=_RED; break;
+		case 0:col=_WHITE; break;
+		default:col=_DARK_WHITE;
 	}
-	var pos=createVector(this.x,this.y);
-	var edge=createVector(this.r,0);
-	var p=createVector();
-	beginShape();
-	for(var i=0;i<6;i++)
+	switch(this.kind)
 	{
-		p=p5.Vector.add(edge,pos);
-		vertex(p.x,p.y);
-		edge.rotate(PI/3);
+		case 1:
+		case 3:
+		case 4:fill(col); noStroke(); break;
+		default:fill(255); stroke(col);
 	}
-	endShape(CLOSE);
+	if(this.kind!=0) roundedHexagon(this.x,this.y,this.r);
 }
 /**
  *
