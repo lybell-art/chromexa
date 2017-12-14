@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.13
- * @version 0.31
+ * @version 0.35
  *
  */
 function CELL(i,j,kind,who)
@@ -45,6 +45,7 @@ function CELL(i,j,kind,who)
 CELL.prototype.draw=function()
 {
 	var col;
+	var isMoveable;
 	switch(this.who)
 	{
 		case 1:col=_BLUE; break;
@@ -52,12 +53,16 @@ CELL.prototype.draw=function()
 		case 0:col=_WHITE; break;
 		default:col=_DARK_WHITE;
 	}
-	switch(this.kind)
+	isMoveable=detectCell(this.kind)!=0;
+	if(isMoveable)
 	{
-		case 1:
-		case 3:
-		case 4:fill(col); noStroke(); break;
-		default:fill(255); stroke(col);
+		fill(col);
+		noStroke();
+	}
+	else
+	{
+		fill(255);
+		stroke(col);
 	}
 	if(this.kind!=0) roundedHexagon(this.x,this.y,this.r);
 }
@@ -96,12 +101,6 @@ CELL.prototype.isMouseOn=function()
 CELL.prototype.mouseClick=function()
 {
 	var code;
-	switch(this.kind)
-	{
-		case 3:
-		case 4:code=_FILLER; break;
-		case 1:code=_MOVEABLE; break;
-		default:code=_NOMOVE;
-	}
+	code=detectCell(this.kind);
 	return {index:this.index, signal:code};
 }
