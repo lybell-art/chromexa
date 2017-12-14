@@ -75,12 +75,14 @@ INGAME.prototype.layer2=function()
 	vertex(field.w,0);
 	vertex(field.w,field.h);
 	vertex(0,field.h);
-	beginContour();
+	
 	for(var i=0;i<field.Rows;i++)
 	{
 		for(var j=0;j<field.Columns;j++)
 		{
+			beginContour();
 			roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
+			endContour();
 /*			if(detectCell(cells[i][j].kind)!=0)
 			{
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
@@ -92,6 +94,6 @@ INGAME.prototype.layer2=function()
 			}*/
 		}
 	}
-	endContour();
+	
 	endShape();
 }
