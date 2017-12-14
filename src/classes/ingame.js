@@ -32,6 +32,7 @@ INGAME.prototype.setup=function()
 	this.field=new FIELD();
 	this.field.makeField();
 	screenControl.set(this.field.w,this.field.h);
+	console.log(this.field.w,this.field.h);
 }
 INGAME.prototype.execute=function()
 {
