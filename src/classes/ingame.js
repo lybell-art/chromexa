@@ -48,7 +48,7 @@ INGAME.prototype.execute=function()
 		{
 			for(var ii=0;ii<6;ii++)
 			{
-				var p=hexCell_trans(clickSignal,ii,3);
+				var p=hexCell_trans(clickSignal.index,ii,3);
 				this.field.cells[p.row][p.col].who=1;
 			}
 		}
