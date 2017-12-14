@@ -43,6 +43,7 @@ INGAME.prototype.execute=function()
 	if(inputBroadcast.isMousePress)
 	{
 		clickSignal=this.field.clickCheck();
+		console.log(clickSignal);
 		if(clickSignal!==null)
 		{
 			for(var ii=0;ii<6;ii++)
@@ -51,6 +52,5 @@ INGAME.prototype.execute=function()
 				this.field.cells[p.row][p.col].who=1;
 			}
 		}
-		console.log(clickSignal);
 	}
 }
