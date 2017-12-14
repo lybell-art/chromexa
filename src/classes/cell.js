@@ -54,7 +54,6 @@ CELL.prototype.draw=function()
 		default:col=_DARK_WHITE;
 	}
 	isMoveable=detectCell(this.kind)!=0;
-	console.log(isMoveable, col);
 	if(isMoveable)
 	{
 		fill(col);
