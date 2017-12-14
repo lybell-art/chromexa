@@ -25,3 +25,14 @@ function roundedHexagon(x,y,r)
 	bezierVertex(x+v1.x,y+v1.y,x+v2.x,y+v2.y,x+v2.x,y+v2.y);
 	endShape(CLOSE);
 }
+
+function detectCell(kind)
+{
+	switch(kind)
+	{
+		case 3:
+		case 4:return _FILLER;
+		case 1:return _MOVEABLE;
+		default:return _NOMOVE;
+	}
+}
