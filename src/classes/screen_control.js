@@ -64,7 +64,7 @@ SCREEN_CONTROL.prototype.scale=function(newZoom,pinX,pinY)
 	this.ox=pinX-(pinX-this.ox)*ratio;
 	this.oy=pinY-(pinY-this.oy)*ratio;
 	this.limit();
-	console.log(this.ox, this.oy, pinX, pinY, ratio, newZoom);
+	console.log(pinX, pinY, mouseX, mouseY);
 }
 /**
  *
