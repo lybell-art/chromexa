@@ -54,6 +54,7 @@ CELL.prototype.draw=function()
 		default:col=_DARK_WHITE;
 	}
 	isMoveable=detectCell(this.kind)!=0;
+	console.log(isMoveable, col);
 	if(isMoveable)
 	{
 		fill(col);
@@ -64,7 +65,6 @@ CELL.prototype.draw=function()
 		fill(255);
 		stroke(col);
 	}
-	console.log(this.x, this.y, this.kind);
 	if(this.kind!=0) roundedHexagon(this.x,this.y,this.r);
 }
 /**
