@@ -80,8 +80,8 @@ INGAME.prototype.layer2=function()
 	{
 		for(var j=0;j<field.Columns;j++)
 		{
-			console.log(cells[i][j].kind);
-			if(detectCell(cells[i][j].kind)!=0)
+			roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
+/*			if(detectCell(cells[i][j].kind)!=0)
 			{
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
 			}
@@ -89,7 +89,7 @@ INGAME.prototype.layer2=function()
 			{
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r-1.25);
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r+1.25);
-			}
+			}*/
 		}
 	}
 	endContour();
