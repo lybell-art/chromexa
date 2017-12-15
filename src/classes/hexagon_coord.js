@@ -22,6 +22,10 @@ function COORD(i,j)
 	this.row=i;
 	this.col=j;
 }
+function COORD.prototype.isSame(other)
+{
+	return (this.row==other.row&&this.col==other.col);
+}
 
 /**
  *
