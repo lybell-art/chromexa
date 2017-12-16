@@ -94,11 +94,11 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 		for(var j=0;j<11;j++)
 		{
 			console.log(cRow(i)/*+cCol(j)%2*/);
-			if(cRow(i)/*+cCol(j)%2*/<0||cRow(i)/*+cCol(j)%2*/>=map.Rows||cCol(j)<0||cCol(j)>=map.Columns) continue;
-			if(this.attackMap[i][j]&&cells[cRow(i)/*+cCol(j)%2*/][cCol(j)].who!=-1)
+			if(cRow(i,j)/*+cCol(j)%2*/<0||cRow(i,j)/*+cCol(j)%2*/>=map.Rows||cCol(j)<0||cCol(j)>=map.Columns) continue;
+			if(this.attackMap[i][j]&&cells[cRow(i,j)/*+cCol(j)%2*/][cCol(j)].who!=-1)
 			{
-				cells[cRow(i)/*+cCol(j)%2*/][cCol(j)].who=this.who;
-				this.attack_other(cRow(i)/*+cCol(j)%2*/,cCol(j),otherPlayers,otherEnemys);
+				cells[cRow(i,j)/*+cCol(j)%2*/][cCol(j)].who=this.who;
+				this.attack_other(cRow(i,j)/*+cCol(j)%2*/,cCol(j),otherPlayers,otherEnemys);
 			}
 		}
 	}
