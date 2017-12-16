@@ -258,8 +258,8 @@ INGAME.prototype.motion=function()
 	var isPros;
 	for(i=0;i<func.length;i++)
 	{
-		if(func[i][0]=="move") isEnd=who.moveMotion(func[i][1]);
-		else if(func[i][0]=="attack") isEnd=who.attackMotion();
+		if(func[i][0]=="move") isPros=who.moveMotion(func[i][1]);
+		else if(func[i][0]=="attack") isPros=who.attackMotion();
 	}
 	if(thresh==undefined)
 	{
