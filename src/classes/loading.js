@@ -7,6 +7,7 @@ LOADING.prototype.loadData=function()
 {
 	var i,j;
 	var table, url;
+	var callback;
 	for(i=1;i<2;i++)
 	{
 		resourceBox.map[i]=[];
@@ -14,9 +15,8 @@ LOADING.prototype.loadData=function()
 		{
 			resourceBox.map[i][j]=new MAP_DATA();
 			url="resource/"+i+"-"+j+".csv";
-			table=loadTable(url, "csv", "header", function(i,j){
-				console.log(table, i,j);
-				this.inputMap(table,resourceBox.map[i][j])});
+			callback=this.inputMapClosure(i,j);
+			table=loadTable(url, "csv", "header", callback);
 			this.max++;
 		}
 	}
@@ -28,6 +28,13 @@ LOADING.prototype.execute=function()
 	noStroke();
 	rect(0,0,map(this.count,0,this.max,0,width),50);
 	if(this.count==this.max) sceneNo=10;
+}
+LOADING.prototype.inputMapClosure=function(i,j)
+{
+	return function(table)
+	{
+		this.inputMap(t,resourceBox.map[i][j]);
+	};
 }
 LOADING.prototype.inputMap=function(table, box)
 {
