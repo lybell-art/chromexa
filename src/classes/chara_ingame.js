@@ -37,6 +37,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		enemy=where.p1;
 		myBuho=-1;
 	}
+	console.log(where, target, dir, dist, cur, isRotated, trace, map, ally, enemy, myBuho);
 	// 계산
 	var i;
 	while(!isRotated&&i<dist)
