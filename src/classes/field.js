@@ -31,14 +31,12 @@ function FIELD()
  * @param {object|MAP_DATA} mapData	resourceBox 클래스에 저장된 맵의 데이터
  *
  */
-FIELD.prototype.makeField=function()
+FIELD.prototype.makeField=function(mapData)
 {
-	/* 미구현
 	var mapData_kind=mapData.kind;
 	var mapData_who=mapData.who;
 	this.Rows=mapData.row;
 	this.Columns=mapData.column;
-	*/
 	this.Rows=10;
 	this.Columns=15;
 	this.w=45*(1.5*this.Columns+0.5);
