@@ -111,12 +111,12 @@ CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys
 	for(other of otherPlayers)
 	{
 		if(other.isLive==false||other.arrNo==this.arrNo) continue;
-		if(cur.same(other.coord)) other.heal();
+		if(cur.isSame(other.coord)) other.heal();
 	}
 	for(other of otherEnemys)
 	{
 		if(other.isLive==false) continue;
-		if(cur.same(other.coord)) other.hit();
+		if(cur.isSame(other.coord)) other.hit();
 	}
 }
 CHARACTER_INGAME.prototype.hit=function(){}
