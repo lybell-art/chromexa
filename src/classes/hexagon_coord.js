@@ -105,12 +105,12 @@ function hexCell_isLine(o,target)
 		if(dy<0) return _HEX_DOWN;
 		else if(dy>0) return _HEX_UP;
 	}
-	else if(bound1-end.row==0)
+	else if(bound1-target.row==0)
 	{
 		if(dx>0) return _HEX_RIGHTUP;
 		else if(dx<0) return _HEX_LEFTUP;
 	}
-	else if(end.row-bound2==0)
+	else if(target.row-bound2==0)
 	{
 		if(dx>0) return _HEX_RIGHTDOWN;
 		else if(dx<0) return _HEX_LEFTDOWN;
