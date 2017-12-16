@@ -90,9 +90,9 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 {
 	var O=createVector(this.coord.x(),this.coord.y());
 	var T=createVector(target.x(),target.y());
+	this.frame++;
 	this.x=lerp(O.x,T.x,this.frame/15);
 	this.y=lerp(O.y,T.y,this.frame/15);
-	this.frame++;
 	if(this.frame>=15)
 	{
 		this.frame=-1;
