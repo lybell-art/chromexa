@@ -9,6 +9,7 @@ function CHARACTER_INGAME()
 	this.sprite=function(x,y){};
 	this.attackMap=[];
 	this.attackRadius=0;
+	this.frame=-1;
 }
 CHARACTER_INGAME.prototype.draw=function()
 {
@@ -88,6 +89,17 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 }
 CHARACTER_INGAME.prototype.moveMotion=function(target)
 {
+	var O=createVector(this.coord.x(),this.coord.y());
+	var T=createVector(target.x(),target.y());
+	this.x=lerp(O.x,T.x,this.frame/15);
+	this.y=lerp(O.y,T.y,this.frame/15);
+	this.frame++;
+	if(this.frame>=15)
+	{
+		this.frame=-1;
+		return false;
+	}
+	else return true;
 }
 CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
@@ -138,11 +150,15 @@ CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys
 }
 CHARACTER_INGAME.prototype.attackMotion=function()
 {
-	for(var i=0;i<15;i++)
+	var r=this.frame*this.frame*10;
+	ellipse(this.x,this.y,r,r);
+	this.frame++;
+	if(this.frame>=15)
 	{
-		ellipse(this.x,this.y,i*i*10,i*i*10);
-		delay(100);
+		this.frame=-1;
+		return false;
 	}
+	else return true;
 }
 CHARACTER_INGAME.prototype.hit=function(){}
 CHARACTER_INGAME.prototype.heal=function(){}
