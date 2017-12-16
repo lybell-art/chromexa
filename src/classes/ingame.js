@@ -132,15 +132,18 @@ INGAME.prototype.input=function()
 		cSel=this.charaSelect(clickSignal.index);	//캐릭터를 클릭했는지를 파악함
 		if(cSel!=-1) clickSignal.signal=_CHARA;
 		console.log(clickSignal, this.pLocation, this.currentP);
+		if(this.whosTurn==1) thisChara=this.p1[this.currentP];
+		else thisChara=this.p2[this.currentP];
 		if(this.currentP==-1)	//캐릭터 선택이 안 된 상태일 때
 		{
-			if(clickSignal.signal==_CHARA) this.currentP=cSel;
+			if(clickSignal.signal==_CHARA)
+			{
+				if(!thisChara.isStunned) this.currentP=cSel;
+			}
 //			else if(clickSignal.signal==_FILLER) this.filler();
 		}
 		else			//캐릭터 선택이 된 상태일 때
 		{
-			if(this.whosTurn==1) thisChara=this.p1[this.currentP];
-			else thisChara=this.p2[this.currentP];
 			if(hexCell_isLine(thisChara.coord,clickSignal.index)==-1)
 			{
 				clickSignal.signal=_NOMOVE;
