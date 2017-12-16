@@ -84,11 +84,11 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 }
 CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
-	console.log(map, otherPlayers, otherEnemys);
 	var cells=map.cells;
 	var myCoord=this.coord.copy();
 	const cRow=function(i){return myCoord.row-5+i};
 	const cCol=function(i){return myCoord.col-5+i};
+	console.log(map.cells);
 	for(var i=0;i<11;i++)
 	{
 		for(var j=0;j<11;j++)
