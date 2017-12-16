@@ -14,7 +14,7 @@ LOADING.prototype.loadData=function()
 		{
 			resourceBox.map[i][j]=new MAP_DATA();
 			url="resource/"+i+"-"+j+".csv";
-			table=loadTable(url, "csv", "header", this.inputMap(table,resourceBox.map[i][j]));
+			table=loadTable(url, "csv", "header", function(){this.inputMap(table,resourceBox.map[i][j])});
 			this.max++;
 		}
 	}
