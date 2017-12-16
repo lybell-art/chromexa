@@ -79,7 +79,6 @@ INGAME.prototype.playerCreate=function()
 	{
 		res.push(new PLAYER(i,i,0,i));
 		this.pLocation[i][i]=i+1;
-		console.log(i+1, this.pLocation[i][i]);
 	}
 	return res;
 }
@@ -101,7 +100,7 @@ INGAME.prototype.enemyCreate=function(data)
 			if(data.enemy[i][j]!=null)
 			{
 				res.push(new ENEMY(i,j,data.enemy[i][j],count));
-				this.pLocation[i][i]=-(count+1);
+				this.pLocation[i][j]=-(count+1);
 				count++;
 			}
 		}
