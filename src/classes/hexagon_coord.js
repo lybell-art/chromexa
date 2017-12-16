@@ -107,8 +107,8 @@ function hexCell_isLine(o,target)
 	var bound2=o.row+int((xdist+(o.col+1)%2)/2);
 	if(xdist==0)
 	{
-		if(dy<0) return _HEX_DOWN;
-		else if(dy>0) return _HEX_UP;
+		if(dy>0) return _HEX_DOWN;
+		else if(dy<0) return _HEX_UP;
 	}
 	else if(bound1-target.row==0)
 	{
