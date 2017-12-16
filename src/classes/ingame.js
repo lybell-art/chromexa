@@ -255,7 +255,7 @@ INGAME.prototype.motion=function()
 	var motino;
 	var thresh=this.motionQueue[0].thresh;
 	var i;
-	var isEnd;
+	var isPros;
 	for(i=0;i<func.length;i++)
 	{
 		if(func[i][0]=="move") isEnd=who.moveMotion(func[i][1]);
@@ -270,8 +270,8 @@ INGAME.prototype.motion=function()
 		this.layer2();
 		this.layer3(thresh);
 	}
-	console.log(isEnd);
-	if(isEnd)
+	console.log(isPros);
+	if(!isPros)
 	{
 		if(this.motionQueue.length==0) sceneNo--;
 		else this.motionQueue.shift();
