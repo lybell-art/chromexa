@@ -34,7 +34,6 @@ INGAME.prototype.setup=function()
 	this.p1=this.playerCreate();
 	if(this.world==_MULTIPLAY) this.p2=this.playerCreate();
 	else this.p2=this.enemyCreate(mapData);
-	console.log(this.p1, this.p2);
 	this.chaSel=false;
 	this.motionQueue=[];
 	this.whosTurn=1;
@@ -53,12 +52,10 @@ INGAME.prototype.enemyCreate=function(data)
 {
 	var res=[];
 	var count=0;
-	console.log(data);
 	for(var i=0;i<data.row;i++)
 	{
 		for(var j=0;j<data.column;j++)
 		{
-			console.log(data.enemy[i][j]);
 			if(data.enemy[i][j]!=null)
 			{
 				res.push(new ENEMY(i,j,data.enemy[i][j],count));
