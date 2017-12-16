@@ -171,12 +171,12 @@ INGAME.prototype.inputInterface()
 		if(clickSignal.signal==_BACK)	//뒤로가기 버튼 클릭 시
 		{
 			sceneNo=1;
-			return;
+			return false;
 		}
 		else if(clickSignal.signal==_SETTING)	//설정 버튼 클릭 시
 		{
 			popupNo=1;
-			return;
+			return false;
 		}
 	}
 }
