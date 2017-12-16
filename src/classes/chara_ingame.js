@@ -121,6 +121,11 @@ CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys
 }
 CHARACTER_INGAME.prototype.hit=function(){}
 CHARACTER_INGAME.prototype.heal=function(){}
+CHARACTER_INGAME.prototype.death=function()
+{
+	this.isLive=false;
+	ingame.pLocation[this.coord.row][this.coord.col]=0;
+}
 
 function PLAYER(row, col, boxNo, arrNo)
 {
