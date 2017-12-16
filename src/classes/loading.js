@@ -15,7 +15,7 @@ LOADING.prototype.loadData=function()
 		{
 			resourceBox.map[i][j]=new MAP_DATA();
 			url="resource/"+i+"-"+j+".csv";
-			callback=this.inputMapClosure(i,j);
+			callback=this.inputMapClosure(this,i,j);
 			table=loadTable(url, "csv", "header", callback);
 			this.max++;
 		}
@@ -29,11 +29,11 @@ LOADING.prototype.execute=function()
 	rect(0,0,map(this.count,0,this.max,0,width),50);
 	if(this.count==this.max) sceneNo=10;
 }
-LOADING.prototype.inputMapClosure=function(i,j)
+LOADING.prototype.inputMapClosure=function(a,i,j)
 {
 	return function(table)
 	{
-		LOADING.prototype.inputMap(table,resourceBox.map[i][j]);
+		a.inputMap(table,resourceBox.map[i][j]);
 	};
 }
 LOADING.prototype.inputMap=function(table, box)
