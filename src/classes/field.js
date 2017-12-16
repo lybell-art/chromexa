@@ -46,8 +46,8 @@ FIELD.prototype.makeField=function(mapData)
 		this.cells[i]=[];
 		for(var j=0;j<this.Columns;j++)
 		{
-	//		this.cells[i][j]=new CELL(i,j,mapData_kind[i][j],mapData_who[i][j]);
-			this.cells[i][j]=new CELL(i,j,1,0);
+			this.cells[i][j]=new CELL(i,j,mapData_kind[i][j],mapData_who[i][j]);
+	//		this.cells[i][j]=new CELL(i,j,1,0);
 		}
 	}
 }
