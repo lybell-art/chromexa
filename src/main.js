@@ -34,8 +34,6 @@ function setup()
 	//load data
 	loading.loadData();
 	myCharacter=[new MY_CHARA(2,0)];
-	ingame.setup();
-	sceneNo=11;
 }
 function draw()
 {
@@ -48,7 +46,7 @@ function sceneExecute()
 {
 	switch(sceneNo)
 	{
-//		case -1:loading.execute(); break;
+		case -1:loading.execute(); break;
 //		case 0:intro.execute(); break;
 //		case 1:selection.mainSelect(); break;
 //		case 2:selection.stageSelect_single(); break;
