@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.14
- * @version 0.05
+ * @version 0.06
  *
  */
 function INGAME()
@@ -17,6 +17,7 @@ function INGAME()
 	this.p2=null;
 	this.chaSel=false;
 	this.currentP=-1;
+	this.motionQueue=[];
 }
 INGAME.prototype.setup=function()
 {
@@ -26,56 +27,110 @@ INGAME.prototype.setup=function()
 	var mapData=resourceBox.map[this.world][this.stage].copy();
 	this.field=new FIELD();
 	this.field.makeField(mapData);
-	screenControl.set(this.field.w,this.field.h);
-	this.p1=new PLAYER();
-	if(this.world==_MULTIPLAY) this.p2=new PLAYER();
-	else this.p2=new ENEMY();
 	*/
 	this.field=new FIELD();
 	this.field.makeField();
-	this.chaSel=false;
 	screenControl.set(this.field.w,this.field.h);
+	this.p1=this.playerCreate();
+	if(this.world==_MULTIPLAY) this.p2=this.playerCreate();
+	else this.p2=this.enemyCreate();
+	this.chaSel=false;
+	this.motionQueue=[];
+}
+INGAME.prototype.playerCreate()
+{
+	var res=[];
+	for(var i=0;i<5;i++)
+	{
+		res.push(new PLAYER(i,i,0));
+	}
+	return res;
+}
+INGAME.prototype.playerCreate()
+{
+	var res=[];
+	for(var i=0;i<1;i++)
+	{
+		res.push(new ENEMY(7,7,1001));
+	}
+	return res;
+}
+INGAME.prototype.input=function()
+{
+	var clickSignal;
+	var cSel;
+	clickSignal=this.field.clickCheck();
+	console.log(clickSignal);
+	if(clickSignal!==null)
+	{
+		if(clickSignal.signal==_BACK)
+		{
+			sceneNo=1;
+			return;
+		}
+		else if(clickSignal.signal==_SETTING)
+		{
+			popupNo=1;
+			return;
+		}
+		cSel=this.charaSelect(clickSignal.index);
+		if(cSel!=-1) clickSignal.signal=_CHARA;
+		if(!this.chaSel)
+		{
+			this.currentP=cSel;
+			if(clickSignal.signal==_CHARA) this.chaSel=true;
+//			else if(clickSignal.signal==_FILLER) this.filler();
+		}
+		else
+		{
+/*			if(!hexCell_isLine(this.p1[this.currentP].pos,clickSignal.index)) clickSignal.signal=_NO_MOVE;
+			switch(clickSignal.signal)
+			{
+				case _CHARA:
+				case _MOVEABLE:this.p1[this.currentP].move(clickSignal.index); break;
+				case _FILLAR:this.filler();
+			}*/
+			this.currentP=-1;
+			this.chaSel=false;
+		}
+	}
+}
+INGAME.prototype.draw=function()
+{
+	var chara;
+	background(255);
+	screenControl.setScreen();
+	this.field.draw();
+	for(chara in this.p1)
+	{
+		chara.draw();
+	}
+	for(chara in this.p2)
+	{
+		chara.draw();
+	}
+	this.interface.draw();
 }
 INGAME.prototype.execute=function()
 {
-	var clickSignal=null;
-	var cSel;
-	background(255);
-	screenControl.setScreen();
-//	console.log(screenControl);
-	this.field.draw();
-	if(inputBroadcast.isMousePress)
-	{
-		clickSignal=this.field.clickCheck();
-		console.log(clickSignal);
-		/*
-		if(clickSignal!==null)
-		{
-			cSel=this.charaSelect(clickSignal.index);
-			if(cSel!=-1) clickSignal.signal=_CHARA;
-			if(!this.chaSel)
-			{
-				this.currentP=cSel;
-				if(clickSignal.signal==_CHARA) this.chaSel=true;
-				else if(clickSignal.signal==_FILLER) this.filler();
-			}
-			else
-			{
-				if(!hexCell_isLine(this.p1[this.currentP].pos,clickSignal.index)) clickSignal.signal=_NO_MOVE;
-				switch(clickSignal.signal)
-				{
-					case _CHARA:
-					case _MOVEABLE:this.p1[this.currentP].move(clickSignal.index); break;
-					case _FILLAR:this.filler();
-				}
-				this.chaSel=false;
-			}
-		}
-		*/
-	}
+	if(inputBroadcast.isMousePress) this.input();
+	this.draw();
 }
 INGAME.prototype.motion=function()
 {
+/*	pseudo-code
+	if(attack)
+	{
+		this.player.attackMotion();
+		this.layer2();
+		this.layer3();
+	}
+	else
+	{
+		this.field.draw();
+		this.player.moveMotion();
+	}
+	this.interfaceDraw();*/
 }
 INGAME.prototype.layer2=function()
 {
@@ -94,9 +149,6 @@ INGAME.prototype.layer2=function()
 	{
 		for(var j=0;j<field.Columns;j++)
 		{
-//			beginContour();
-//			roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
-//			endContour();
 			if(detectCell(cells[i][j].kind)!=0)
 			{
 				beginContour();
