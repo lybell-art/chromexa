@@ -124,9 +124,9 @@ INGAME.prototype.charaSelect=function(coord)
 	var charas;
 	if(this.whosTurn==1) charas=this.p1;
 	else charas=this.p2;
-	for(var i in chara)
+	for(var i in charas)
 	{
-		if(coord.isSame(chara.coord)) return i;
+		if(coord.isSame(charas[i].coord)) return i;
 	}
 	return -1;
 }
