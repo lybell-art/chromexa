@@ -16,6 +16,7 @@ var stream;		//inter-scene stream class
 //data class
 var resourceBox;
 var userData;
+var myCharacter;
 function setup()
 {
 	createCanvas(windowWidth,windowHeight);
@@ -33,6 +34,7 @@ function setup()
 	//load data
 //	loading.dataLoad();
 	resourceBox.loadImage();
+	myCharacter=[new MY_CHARA(2,0)];
 	ingame.setup();
 	sceneNo=11;
 }
