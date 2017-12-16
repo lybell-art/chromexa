@@ -22,4 +22,4 @@ const _HEX_LEFTDOWN=4;
 const _HEX_LEFTUP=5;
 
 //single_multy constant
-const _MULTYPLAY=0;
+const _MULTIPLAY=0;
