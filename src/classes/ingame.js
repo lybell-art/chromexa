@@ -18,6 +18,7 @@ function INGAME()
 	this.whosTurn=1;
 	this.chaSel=false;
 	this.currentP=-1;
+	this.moveCost=3;
 	this.motionQueue=[];
 }
 INGAME.prototype.setup=function()
@@ -85,8 +86,9 @@ INGAME.prototype.input=function()
 		}
 		else
 		{
-/*			if(!hexCell_isLine(this.p1[this.currentP].pos,clickSignal.index)) clickSignal.signal=_NO_MOVE;
-			switch(clickSignal.signal)
+			if(hexCell_isLine(this.p1[this.currentP].pos,clickSignal.index)==-1) clickSignal.signal=_NO_MOVE;
+			else if(hexCell_dist(this.p1[this.currentP].pos,clickSignal.index)>moveCost) clickSignal.signal=_NO_MOVE;
+/*			switch(clickSignal.signal)
 			{
 				case _CHARA:
 				case _MOVEABLE:this.p1[this.currentP].move(clickSignal.index); break;
