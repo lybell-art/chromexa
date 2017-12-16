@@ -1,14 +1,14 @@
 function CHARACTER_INGAME()
 {
-	var indexNo=0;
-	var arrNo=0;
-	var isLive=true;
-	var coord=null;
-	var x=0, y=0;
-	var who=0;
-	var sprite=function(x,y){};
-	var attackMap=[];
-	var attackRadius=0;
+	this.indexNo=0;
+	this.arrNo=0;
+	this.isLive=true;
+	this.coord=null;
+	this.x=0, y=0;
+	this.who=0;
+	this.sprite=function(x,y){};
+	this.attackMap=[];
+	this.attackRadius=0;
 }
 CHARACTER_INGAME.prototype.draw=function()
 {
