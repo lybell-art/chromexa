@@ -15,6 +15,7 @@ function INGAME()
 	this.field=null;
 	this.p1=null;
 	this.p2=null;
+	this.whosTurn=1;
 	this.chaSel=false;
 	this.currentP=-1;
 	this.motionQueue=[];
@@ -36,6 +37,7 @@ INGAME.prototype.setup=function()
 	else this.p2=this.enemyCreate();
 	this.chaSel=false;
 	this.motionQueue=[];
+	this.whosTurn=1;
 }
 INGAME.prototype.playerCreate=function()
 {
@@ -93,6 +95,7 @@ INGAME.prototype.input=function()
 			this.currentP=-1;
 			this.chaSel=false;
 		}
+		console.log(clickSignal, this.chaSel, this.currentP);
 	}
 }
 INGAME.prototype.draw=function()
@@ -101,7 +104,6 @@ INGAME.prototype.draw=function()
 	background(255);
 	screenControl.setScreen();
 	this.field.draw();
-	console.log(this.p1[0]);
 	for(chara of this.p1)
 	{
 		chara.draw();
@@ -116,6 +118,17 @@ INGAME.prototype.execute=function()
 {
 	if(inputBroadcast.isMousePress) this.input();
 	this.draw();
+}
+INGAME.prototype.charaSelect=function(coord)
+{
+	var charas;
+	if(this.whosTurn==1) charas=this.p1;
+	else charas=this.p2;
+	for(var i in chara)
+	{
+		if(coord.isSame(chara.coord)) return i;
+	}
+	return -1;
 }
 INGAME.prototype.motion=function()
 {
