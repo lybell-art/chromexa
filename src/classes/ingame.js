@@ -258,7 +258,7 @@ INGAME.prototype.motion=function()
 	for(i=0;i<func.length;i++)
 	{
 		console.log(func[i]);
-		motino=func[i];
+		motino=func[i]();
 		console.log(motino);
 		isEnd=who.motino();
 	}
