@@ -214,6 +214,7 @@ INGAME.prototype.playerTurn=function()
 	 */
 	if(inputBroadcast.isMousePress) this.input();
 	this.draw();
+	if(this.motionQueue.length>0) sceneNo++;
 }
 INGAME.prototype.enemyTurn=function()
 {
