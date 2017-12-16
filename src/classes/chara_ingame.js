@@ -88,9 +88,10 @@ PLAYER.prototype.heal=function()
 	if(this.CP<this.maxCP) this.CP++;
 }
 
-function ENEMY(row, col, indexNo)
+function ENEMY(row, col, indexNo,arrNo)
 {
 	CHARACTER_INGAME.call(this);
+	this.arrNo=arrNo;
 	this.indexNo=indexNo;
 	this.coord=new COORD(row,col);
 	this.x=45*(1.5*col+1);
