@@ -1,5 +1,5 @@
 const charaProto=
-[
+{
 /*	{
 		indexNo:"template",
 		CPbase:3,
