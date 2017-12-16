@@ -70,17 +70,18 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		this.coord=trace[i].index.copy();
 		this.x=this.coord.x();
 		this.y=this.coord.y();
-/*		where.motionQueue.push({
+		where.motionQueue.push({
 			who:this,
 			motion:[function(){return this.moveMotion(trace[i])}]
-		});*/
+		});
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
-			this.attack(where.field,ally,enemy);
-/*			where.motionQueue.push({
+			var tMap=this.attack(where.field,ally,enemy);
+			where.motionQueue.push({
 				who:this,
-				motion:[function(){return this.attackMotion(trace[i])}]
-			});*/
+				motion:[function(){return this.attackMotion()}],
+				thresh:tMap
+			});
 		}
 	}
 	where.pLocation[this.coord.row][this.coord.col]=(this.arrNo+1)*myBuho;
@@ -93,22 +94,33 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
 	var cells=map.cells;
 	var myCoord=this.coord.copy();
-	const cCol=function(i){return myCoord.col-5+i};
-	const cRow=function(i,j){return myCoord.row-5+i+((myCoord.col+1)%2)*(cCol(j)%2)};
-	for(var i=0;i<11;i++)
+	var i,j;
+	var threshMap=[];
+	for(i=0;i<map.Rows;i++)
 	{
-		for(var j=0;j<11;j++)
+		threshMap[i]=[];
+		for(j=0;j<map.Columns;j++)
+		{
+			threshMap[i][j]=false;
+		}
+	}
+	const cCol=function(p){return myCoord.col-5+p};
+	const cRow=function(p,q){return myCoord.row-5+p+((myCoord.col+1)%2)*(cCol(q)%2)};
+	for(i=0;i<11;i++)
+	{
+		for(j=0;j<11;j++)
 		{
 			if(cRow(i,j)<0||cRow(i,j)>=map.Rows||cCol(j)<0||cCol(j)>=map.Columns) continue;
 			if(this.attackMap[i][j]&&cells[cRow(i,j)][cCol(j)].who!=-1)
 			{
+				threshMap[cRow(i,j)][cCol(j)]=true;
 				cells[cRow(i,j)][cCol(j)].who=this.who;
 				this.attack_other(cRow(i,j),cCol(j),otherPlayers,otherEnemys);
 			}
 		}
 	}
 //	sceneNo++;
-	return {x:this.x, y:this.y};
+	return threshMap;
 }
 CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys)
 {
@@ -123,6 +135,14 @@ CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys
 	{
 		if(other.isLive==false) continue;
 		if(cur.isSame(other.coord)) other.hit();
+	}
+}
+CHARACTER_INGAME.prototype.attackMotion=function()
+{
+	for(var i=0;i<15;i++)
+	{
+		ellipse(this.x,this.y,i*i*10,i*i*10);
+		delay(100);
 	}
 }
 CHARACTER_INGAME.prototype.hit=function(){}
