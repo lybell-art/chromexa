@@ -33,7 +33,7 @@ LOADING.prototype.inputMapClosure=function(i,j)
 {
 	return function(table)
 	{
-		this.inputMap(table,resourceBox.map[i][j]);
+		LOADING.prototype.inputMap(table,resourceBox.map[i][j]);
 	};
 }
 LOADING.prototype.inputMap=function(table, box)
