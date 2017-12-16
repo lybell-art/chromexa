@@ -24,7 +24,7 @@ function setup()
 	screenControl=new SCREEN_CONTROL(width,height);
 	resourceBox=new RESOURCE_BOX();
 	//class definition
-//	loading=new LOADING();
+	loading=new LOADING();
 //	intro=new INTRO();
 //	selection=new SELENTION();
 //	manageChara=new MANAGE_CHARA();
@@ -32,8 +32,7 @@ function setup()
 	ingame=new INGAME();
 //	popup=new POPUP();
 	//load data
-//	loading.dataLoad();
-	resourceBox.loadImage();
+	loading.dataLoad();
 	myCharacter=[new MY_CHARA(2,0)];
 	ingame.setup();
 	sceneNo=11;
@@ -41,7 +40,7 @@ function setup()
 function draw()
 {
 	inputBroadcast.renew();
-	ingame.execute();
+	sceneExecute();
 //	if(popupNo==0) sceneExecute();
 //	else popupExecute();
 }
@@ -55,7 +54,8 @@ function sceneExecute()
 //		case 2:selection.stageSelect_single(); break;
 //		case 3:selection.modeSelect_multi(); break;
 //		case 4:selection.stageSelect_multi(); break;
-//		case 10:ingame.setup(); break;
+		case 10:ingame.setup(); break;
+		case 11:ingame.execute(); break;
 //		case 11:ingame.playerTurn(); break;
 //		case 12:ingame.playerTurn_motion(); break;
 //		case 13:ingame.enemyTurn(); break;
