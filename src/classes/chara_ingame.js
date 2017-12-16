@@ -64,7 +64,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	}
 	// 큐에 모션을 넣는다
 	dist=i;
-	where.pLocation[this.coord.row][this.coord.col]=0;
+	
 	for(i=0;i<dist;i++)
 	{
 //		this.coord=trace[i].index.copy();
@@ -95,7 +95,9 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 	this.y=lerp(O.y,T.y,this.frame/15);
 	if(this.frame>=15)
 	{
+		ingame.pLocation[this.coord.row][this.coord.col]=0;
 		this.coord=target.copy();
+		ingame.pLocation[this.coord.row][this.coord.col]=(this.arrNo+1)*(3-this.who*2);
 		this.frame=-1;
 		return false;
 	}
