@@ -81,22 +81,24 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 CHARACTER_INGAME.prototype.moveMotion=function(target)
 {
 }
-CHARACTER_INGAME.prototype.attack=function(cells, otherPlayers, otherEnemys)
+CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
+	var cells=map.cells;
 	const cRow=function(i){return this.coord.row-5+i};
 	const cCol=function(i){return this.coord.col-5+i};
 	for(var i=0;i<11;i++)
 	{
 		for(var j=0;j<11;j++)
 		{
-			if(this.attackMap[i][j]&&cells[cRow(i)][cCol(j)].who!=-1)
+			if(cRow(i)+j%2<0||cRow(i)+j%2>map.row||cCol(i)<0||cCol(i)>map.col) continue;
+			if(this.attackMap[i][j]&&cells[cRow(i)+j%2][cCol(j)].who!=-1)
 			{
 				cells[cRow(i)][cCol(j)].who=this.who;
 				this.attack_other(cRow(i),cCol(j),otherPlayers,otherEnemys);
 			}
 		}
 	}
-	sceneNo++;
+//	sceneNo++;
 	return {x:this.x, y:this.y};
 }
 CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys)
