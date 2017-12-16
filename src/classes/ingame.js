@@ -95,6 +95,7 @@ INGAME.prototype.input=function()
 			this.currentP=-1;
 			this.chaSel=false;
 		}
+		console.log(typeof(this.currentP));
 		console.log(clickSignal, this.chaSel, this.currentP);
 	}
 }
