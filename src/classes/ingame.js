@@ -249,6 +249,7 @@ INGAME.prototype.charaSelect=function(coord)
 //--------------------------------------------------------motion method---------------------------------------------------------------//
 INGAME.prototype.motion=function()
 {
+	console.log(this.motionQueue);
 	var who=this.motionQueue[0].who;
 	var func=this.motionQueue[0].motion;
 	var motino;
@@ -269,6 +270,7 @@ INGAME.prototype.motion=function()
 		this.layer2();
 		this.layer3(thresh);
 	}
+	console.log(isEnd);
 	if(isEnd)
 	{
 		if(this.motionQueue.length==0) sceneNo--;
