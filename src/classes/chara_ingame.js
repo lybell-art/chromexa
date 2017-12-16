@@ -38,7 +38,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		myBuho=-1;
 	}
 	// 계산
-	var i;
+	var i=0;
 	while(!isRotated&&i<dist)
 	{
 		cur=hexCell_trans(cur,dir,1);
