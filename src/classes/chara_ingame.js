@@ -84,7 +84,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			});
 		}
 	}
-	where.pLocation[this.coord.row][this.coord.col]=(this.arrNo+1)*myBuho;
+	where.pLocation[trace[dist-1].index.row][trace[dist-1].index.col]=(this.arrNo+1)*myBuho;
 }
 CHARACTER_INGAME.prototype.moveMotion=function(target)
 {
