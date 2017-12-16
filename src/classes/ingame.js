@@ -42,7 +42,7 @@ INGAME.prototype.setup=function()
 //	this.stage=stream.StoG2;
 	//map load
 	this.world=1;
-	this.stage=4;
+	this.stage=0;
 	var mapData=resourceBox.map[this.world][this.stage].copy();
 	this.field=new FIELD();
 	this.field.makeField(mapData);
