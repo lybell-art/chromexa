@@ -53,6 +53,7 @@ INGAME.prototype.enemyCreate=function(data)
 {
 	var res=[];
 	var count=0;
+	console.log(data);
 	for(var i=0;i<data.row;i++)
 	{
 		for(var j=0;j<data.col;j++)
