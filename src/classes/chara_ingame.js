@@ -145,6 +145,7 @@ function PLAYER(row, col, boxNo, arrNo)
 	this.x=this.coord.x();
 	this.y=this.coord.y();
 	this.who=1;
+	this.isStunned=false;
 	this.sprite=charaProto[this.indexNo].sprite;
 	this.attackMap=charaProto[this.indexNo].attackMap.slice();
 	this.attackRadius=charaProto[this.indexNo].attackRadius;
@@ -153,6 +154,7 @@ PLAYER.prototype=new CHARACTER_INGAME();
 PLAYER.prototype.constructor=PLAYER;
 PLAYER.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
+	if(this.isStunned) return false;
 	if(this.CP>0)
 	{
 		CHARACTER_INGAME.prototype.attack.call(this, map, otherPlayers, otherEnemys);
@@ -162,11 +164,16 @@ PLAYER.prototype.attack=function(map, otherPlayers, otherEnemys)
 PLAYER.prototype.hit=function()
 {
 	if(this.CP==0) this.death();
-	else this.CP--;
+	else
+	{
+		this.CP--;
+		this.isStunned=true;
+	}
 }
 PLAYER.prototype.heal=function()
 {
 	if(this.CP<this.maxCP) this.CP++;
+	this.isStunned=false;
 }
 
 function ENEMY(row, col, indexNo,arrNo)
