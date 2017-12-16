@@ -68,6 +68,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		});*/
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
+			console.log(where.field);
 			this.attack(where.field,ally,enemy);
 /*			where.motionQueue.push({
 				who:this,
