@@ -37,14 +37,14 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		enemy=where.p1;
 		myBuho=-1;
 	}
-	console.log(where, target, dir, dist, cur, isRotated, trace, map, ally, enemy, myBuho);
 	// 계산
 	var i;
 	while(!isRotated&&i<dist)
 	{
 		cur=hexCell_trans(cur,dir,1);
 		trace.push(map[cur.row][cur.col]);
-		if([0,5].indexOf(trace[i].kind)!=-1) return;
+		console.log(cur, trace[i])
+		if([0,5].indexOf(trace[i].kind)!=-1) return false;
 /*		<incomplete>
 		if([6,7,8,9,10,11].indexOf(trace[i].kind)!=-1)
 		{
