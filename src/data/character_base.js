@@ -45,6 +45,8 @@ const charaProto=
 		attackRadius:2,
 		sprite:function(x,y)
 		{
+			noStroke();
+			fill(255);
 			ellipse(x,y,50,50);
 		},
 		evolve:[2],
@@ -71,6 +73,8 @@ const charaProto=
 		attackRadius:3,
 		sprite:function(x,y)
 		{
+			noStroke();
+			fill(255);
 			ellipse(x,y,50,50);
 		},
 		evolve:[2],
@@ -96,6 +100,8 @@ const charaProto=
 		],
 		sprite:function(x,y)
 		{
+			noStroke();
+			fill(255);
 			ellipse(x,y,50,50);
 		},
 		attackRadius:4,
@@ -122,6 +128,8 @@ const charaProto=
 		attackRadius:3,
 		sprite:function(x,y)
 		{
+			noStroke();
+			fill(0);
 			ellipse(x,y,50,50);
 		}
 	}
