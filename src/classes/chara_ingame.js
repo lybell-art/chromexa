@@ -61,8 +61,8 @@ function PLAYER(row, col, boxNo, arrNo)
 	this.maxCP=this.myChara.maxCP;
 	this.CP=this.myChara.maxCP;
 	this.coord=new COORD(row,col);
-	this.x=45*(1.5*col+1);
-	this.y=45*cos(PI/6)*(2*row+2-col%2);
+	this.x=this.coord.x();
+	this.y=this.coord.y();
 	this.who=1;
 	this.sprite=charaProto[this.indexNo].sprite;
 	this.attackMap=charaProto[this.indexNo].attackMap.slice();
@@ -94,8 +94,8 @@ function ENEMY(row, col, indexNo,arrNo)
 	this.arrNo=arrNo;
 	this.indexNo=indexNo;
 	this.coord=new COORD(row,col);
-	this.x=45*(1.5*col+1);
-	this.y=45*cos(PI/6)*(2*row+2-col%2);
+	this.x=this.coord.x();
+	this.y=this.coord.y();
 	this.who=2;
 	this.sprite=charaProto[indexNo].sprite;
 	this.attackMap=charaProto[indexNo].attackMap.slice();
