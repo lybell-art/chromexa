@@ -95,6 +95,7 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 	this.y=lerp(O.y,T.y,this.frame/15);
 	if(this.frame>=15)
 	{
+		this.coord=target.copy();
 		this.frame=-1;
 		return false;
 	}
