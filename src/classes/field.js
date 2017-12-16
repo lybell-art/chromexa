@@ -35,7 +35,7 @@ FIELD.prototype.makeField=function(mapData)
 {
 	var mapData_kind=mapData.kind;
 	var mapData_who=mapData.who;
-	console.log(mapData, mapData_kind);
+	console.log(mapData_kind[0][0], " ", typeof(mapData_kind[0][0]));
 	this.Rows=mapData.row;
 	this.Columns=mapData.column;
 	this.Rows=10;
