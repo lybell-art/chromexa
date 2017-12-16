@@ -259,7 +259,6 @@ INGAME.prototype.motion=function()
 	{
 		console.log(func[i]);
 		motino=func[i]();
-		console.log(motino);
 		isEnd=who.motino();
 	}
 	if(thresh==undefined)
