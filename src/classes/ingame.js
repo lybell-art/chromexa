@@ -255,10 +255,11 @@ INGAME.prototype.motion=function()
 	var thresh=this.motionQueue[0].thresh;
 	var i;
 	var isEnd;
-	console.log(who, func, func[0]);
 	for(i=0;i<func.length;i++)
 	{
+		console.log(func[i]);
 		motino=func[i];
+		console.log(motino);
 		isEnd=who.motino();
 	}
 	if(thresh==undefined)
