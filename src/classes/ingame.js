@@ -273,8 +273,8 @@ INGAME.prototype.motion=function()
 	console.log(isPros);
 	if(!isPros)
 	{
+		this.motionQueue.shift();
 		if(this.motionQueue.length==0) sceneNo--;
-		else this.motionQueue.shift();
 	}
 }
 INGAME.prototype.layer2=function()
