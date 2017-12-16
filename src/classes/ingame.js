@@ -26,16 +26,14 @@ INGAME.prototype.setup=function()
 //	this.world=stream.StoG1;
 //	this.stage=stream.StoG2;
 	this.world=1;
-	this.stage=2;
+	this.stage=4;
 	var mapData=resourceBox.map[this.world][this.stage].copy();
-	console.log(mapData, resourceBox.map[this.world][this.stage]);
 	this.field=new FIELD();
 	this.field.makeField(mapData);
-//	this.field.makeField();
 	screenControl.set(this.field.w,this.field.h);
 	this.p1=this.playerCreate();
 	if(this.world==_MULTIPLAY) this.p2=this.playerCreate();
-	else this.p2=this.enemyCreate();
+	else this.p2=this.enemyCreate(mapData);
 	this.chaSel=false;
 	this.motionQueue=[];
 	this.whosTurn=1;
@@ -50,12 +48,20 @@ INGAME.prototype.playerCreate=function()
 	}
 	return res;
 }
-INGAME.prototype.enemyCreate=function()
+INGAME.prototype.enemyCreate=function(data)
 {
 	var res=[];
-	for(var i=0;i<1;i++)
+	var count=0;
+	for(var i=0;i<data.row;i++)
 	{
-		res.push(new ENEMY(7,7,1001,i));
+		for(var j=0;i<data.col;i++)
+		{
+			if(data.enemy[i][j]!=null)
+			{
+				res.push(new ENEMY(i,j,data.enemy[i][j],count));
+				count++;
+			}
+		}
 	}
 	return res;
 }
