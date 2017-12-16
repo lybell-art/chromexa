@@ -250,22 +250,29 @@ INGAME.prototype.charaSelect=function(coord)
 //--------------------------------------------------------motion method---------------------------------------------------------------//
 INGAME.prototype.motion=function()
 {
-	/**
-	 * 캐릭터의 모션을 화면에 출력한다.
-	 */
-/*	pseudo-code
-	if(attack)
+	var who=this.motionQueue[0].who;
+	var func=this.motionQueue[0].motion;
+	var thresh=this.motionQueue[0].thresh;
+	var i;
+	var isEnd;
+	for(i=0;i<func.length;i++)
 	{
-		this.player.attackMotion();
-		this.layer2();
-		this.layer3();
+		isEnd=who.func[i]();
+	}
+	if(thresh==undefined)
+	{
+		this.draw();
 	}
 	else
 	{
-		this.field.draw();
-		this.player.moveMotion();
+		this.layer2();
+		this.layer3(thresh);
 	}
-	this.interfaceDraw();*/
+	if(isEnd)
+	{
+		if(this.motionQueue.length==0) sceneNo--;
+		else this.motionQueue.shift();
+	}
 }
 INGAME.prototype.layer2=function()
 {
@@ -302,4 +309,14 @@ INGAME.prototype.layer2=function()
 		}
 	}
 	endShape();
+}
+INGAME.prototype.layer3=function(thresh)
+{
+	for(var i=0;i<this.field.Rows;i++)
+	{
+		for(var j=0;j<this.field.Columns;j++)
+		{
+			if(!thresh) this.field.cells[i][j].draw();
+		}
+	}
 }
