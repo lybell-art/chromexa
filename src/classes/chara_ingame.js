@@ -55,7 +55,7 @@ function PLAYER(row, col, boxNo)
 	this.myChara=myCharacter[boxNo];
 	this.indexNo=this.myChara.indexNo;
 	this.maxCP=this.myChara.maxCP;
-	this.CP=this.myChara.CP;
+	this.CP=this.myChara.maxCP;
 	this.coord=new COORD(row,col);
 	this.x=45*(1.5*col+1);
 	this.y=45*cos(PI/6)*(2*row+2-col%2);
