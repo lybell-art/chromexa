@@ -55,7 +55,8 @@ LOADING.prototype.inputMap=function(table, box)
 			s=split(table.getString(i,j),"|");
 			box.kind[i][j]=int(s[0]);
 			box.who[i][j]=int(s[1]);
-			box.enemy[i][j]=int(s[2]);
+			if(s[2]=="null") box.enemy[i][j]=null;
+			else box.enemy[i][j]=int(s[2]);
 		}
 	}
 	this.count++;
