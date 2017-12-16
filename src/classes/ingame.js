@@ -132,7 +132,7 @@ INGAME.prototype.input=function()
 		cSel=this.charaSelect(clickSignal.index);	//캐릭터를 클릭했는지를 파악함
 		if(cSel!=-1) clickSignal.signal=_CHARA;
 		console.log(clickSignal, cSel, this.currentP);
-		if(this.currentP!=-1)	//캐릭터 선택이 안 된 상태일 때
+		if(this.currentP==-1)	//캐릭터 선택이 안 된 상태일 때
 		{
 			if(clickSignal.signal==_CHARA) this.currentP=cSel;
 //			else if(clickSignal.signal==_FILLER) this.filler();
