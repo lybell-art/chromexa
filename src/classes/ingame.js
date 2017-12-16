@@ -172,7 +172,6 @@ INGAME.prototype.inputInterface=function()
 	 */
 	var clickSignal;
 	clickSignal=this.field.clickCheck();
-	console.log(clickSignal);
 	if(clickSignal!==null)
 	{
 		if(clickSignal.signal==_BACK)	//뒤로가기 버튼 클릭 시
@@ -204,7 +203,6 @@ INGAME.prototype.draw=function()
 	{
 		if(chara.isLive) chara.draw();
 	}
-	console.log(this.motionQueue);
 //	this.interface.draw();
 }
 INGAME.prototype.playerTurn=function()
@@ -256,6 +254,7 @@ INGAME.prototype.motion=function()
 	var thresh=this.motionQueue[0].thresh;
 	var i;
 	var isEnd;
+	console.log(who, func, func[0]);
 	for(i=0;i<func.length;i++)
 	{
 		isEnd=who.func[i]();
