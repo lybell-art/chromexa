@@ -92,14 +92,12 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 	{
 		for(var j=0;j<11;j++)
 		{
-			console.log(cRow(i), cCol(j), cells[cRow(i)]);
-			if(cRow(i)+j%2<0||cRow(i)+j%2>=map.row||cCol(i)<0||cCol(i)>=map.col) continue;
-			console.log("dimi");
-/*			if(this.attackMap[i][j]&&cells[cRow(i)+j%2][cCol(j)].who!=-1)
+			if(cRow(i)+cCol(j)%2<0||cRow(i)+cCol(j)%2>=map.row||cCol(j)<0||cCol(j)>=map.col) continue;
+			if(this.attackMap[i][j]&&cells[cRow(i)+cCol(j)%2][cCol(j)].who!=-1)
 			{
-				cells[cRow(i)][cCol(j)].who=this.who;
-				this.attack_other(cRow(i),cCol(j),otherPlayers,otherEnemys);
-			}*/
+				cells[cRow(i)+cCol(j)%2][cCol(j)].who=this.who;
+				this.attack_other(cRow(i)+cCol(j)%2,cCol(j),otherPlayers,otherEnemys);
+			}
 		}
 	}
 //	sceneNo++;
