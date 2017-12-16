@@ -257,9 +257,8 @@ INGAME.prototype.motion=function()
 	var isEnd;
 	for(i=0;i<func.length;i++)
 	{
-		console.log(func[i]);
-		motino=func[i]();
-		isEnd=who.motino();
+		if(func[i][0]=="move") isEnd=who.moveMotion(func[i][1]);
+		else if(func[i][0]=="attack") isEnd=who.attackMotion();
 	}
 	if(thresh==undefined)
 	{
