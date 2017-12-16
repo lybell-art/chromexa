@@ -56,7 +56,7 @@ INGAME.prototype.enemyCreate=function(data)
 	console.log(data);
 	for(var i=0;i<data.row;i++)
 	{
-		for(var j=0;j<data.col;j++)
+		for(var j=0;j<data.column;j++)
 		{
 			console.log(data.enemy[i][j]);
 			if(data.enemy[i][j]!=null)
