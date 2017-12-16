@@ -79,6 +79,7 @@ INGAME.prototype.playerCreate=function()
 	{
 		res.push(new PLAYER(i,i,0,i));
 		this.pLocation[i][i]=i+1;
+		console.log(i+1, this.pLocation[i][i]);
 	}
 	return res;
 }
