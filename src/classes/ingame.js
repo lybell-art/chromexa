@@ -88,11 +88,11 @@ INGAME.prototype.input=function()
 		{
 			if(hexCell_isLine(this.p1[this.currentP].coord,clickSignal.index)==-1)
 			{
-				clickSignal.signal=_NO_MOVE;
+				clickSignal.signal=_NOMOVE;
 			}
 			else if(hexCell_dist(this.p1[this.currentP].coord,clickSignal.index)>this.moveCost)
 			{
-				clickSignal.signal=_NO_MOVE;
+				clickSignal.signal=_NOMOVE;
 			}
 /*			switch(clickSignal.signal)
 			{
