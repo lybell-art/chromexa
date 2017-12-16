@@ -28,6 +28,7 @@ INGAME.prototype.setup=function()
 	this.world=1;
 	this.stage=2;
 	var mapData=resourceBox.map[this.world][this.stage].copy();
+	console.log(mapData, resourceBox.map[this.world][this.stage]);
 	this.field=new FIELD();
 	this.field.makeField(mapData);
 //	this.field.makeField();
