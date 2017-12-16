@@ -3,8 +3,8 @@
  * 육각형 셀의 인덱싱과 연산을 제어한다.
  * 
  * @author steliviere
- * @date 2017.12.14
- * @version 1.0
+ * @date 2017.12.16
+ * @version 1.2
  *
  */
 
