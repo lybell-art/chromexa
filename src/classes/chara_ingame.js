@@ -173,12 +173,22 @@ PLAYER.prototype=new CHARACTER_INGAME();
 PLAYER.prototype.constructor=PLAYER;
 PLAYER.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
-	if(this.isStunned) return false;
+	var res=[];
+	for(var i=0;i<map.Rows;i++)
+	{
+		res[i]=[];
+		for(var j=0;j<map.Columns;j++)
+		{
+			res[i][j]=false;
+		}
+	}
+	if(this.isStunned) return res;
 	if(this.CP>0)
 	{
-		CHARACTER_INGAME.prototype.attack.call(this, map, otherPlayers, otherEnemys);
+		res=CHARACTER_INGAME.prototype.attack.call(this, map, otherPlayers, otherEnemys);
 		this.CP--;
 	}
+	return res;
 }
 PLAYER.prototype.hit=function()
 {
