@@ -101,9 +101,10 @@ INGAME.prototype.draw=function()
 	background(255);
 	screenControl.setScreen();
 	this.field.draw();
+	console.log(this.p1[0]);
+	this.p1[0].draw();
 	for(chara in this.p1)
-	{
-		console.log(this.p1);
+	
 		chara.draw();
 	}
 	for(chara in this.p2)
