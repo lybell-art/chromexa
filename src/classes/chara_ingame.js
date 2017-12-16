@@ -155,7 +155,7 @@ PLAYER.prototype.attack=function(map, otherPlayers, otherEnemys)
 }
 PLAYER.prototype.hit=function()
 {
-	if(this.CP==0) this.isLive=false;
+	if(this.CP==0) this.death();
 	else this.CP--;
 }
 PLAYER.prototype.heal=function()
@@ -180,5 +180,5 @@ ENEMY.prototype=new CHARACTER_INGAME();
 ENEMY.prototype.constructor=ENEMY;
 ENEMY.prototype.hit=function()
 {
-	this.isLive=false;
+	this.death();
 }
