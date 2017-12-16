@@ -92,7 +92,7 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 	{
 		for(var j=0;j<11;j++)
 		{
-			console.log(cRow(i), cCol(j), cells[cRow(i)+j%2][cCol(j)]);
+			console.log(cRow(i), cCol(j), cells[cRow(i)+j%2][cCol(j)], cells);
 			if(cRow(i)+j%2<0||cRow(i)+j%2>=map.row||cCol(i)<0||cCol(i)>=map.col) continue;
 			console.log("dimi");
 /*			if(this.attackMap[i][j]&&cells[cRow(i)+j%2][cCol(j)].who!=-1)
