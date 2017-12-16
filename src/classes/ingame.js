@@ -37,7 +37,7 @@ INGAME.prototype.setup=function()
 	this.chaSel=false;
 	this.motionQueue=[];
 }
-INGAME.prototype.playerCreate()
+INGAME.prototype.playerCreate=function()
 {
 	var res=[];
 	for(var i=0;i<5;i++)
@@ -46,7 +46,7 @@ INGAME.prototype.playerCreate()
 	}
 	return res;
 }
-INGAME.prototype.playerCreate()
+INGAME.prototype.enemyCreate=function()
 {
 	var res=[];
 	for(var i=0;i<1;i++)
