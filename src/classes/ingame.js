@@ -276,6 +276,7 @@ INGAME.prototype.motion=function()
 		this.motionQueue.shift();
 		if(this.motionQueue.length==0) sceneNo--;
 	}
+	console.log(this.pLocation);
 }
 INGAME.prototype.layer2=function()
 {
