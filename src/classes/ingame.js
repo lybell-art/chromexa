@@ -23,15 +23,14 @@ function INGAME()
 }
 INGAME.prototype.setup=function()
 {
-	/*
-	this.world=stream.StoG1;
-	this.stage=stream.StoG2;
+//	this.world=stream.StoG1;
+//	this.stage=stream.StoG2;
+	this.world=1;
+	this.stage=2;
 	var mapData=resourceBox.map[this.world][this.stage].copy();
 	this.field=new FIELD();
 	this.field.makeField(mapData);
-	*/
-	this.field=new FIELD();
-	this.field.makeField();
+//	this.field.makeField();
 	screenControl.set(this.field.w,this.field.h);
 	this.p1=this.playerCreate();
 	if(this.world==_MULTIPLAY) this.p2=this.playerCreate();
@@ -39,6 +38,7 @@ INGAME.prototype.setup=function()
 	this.chaSel=false;
 	this.motionQueue=[];
 	this.whosTurn=1;
+	sceneNo=11;
 }
 INGAME.prototype.playerCreate=function()
 {
