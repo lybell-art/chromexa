@@ -46,7 +46,7 @@ const charaProto=
 		sprite:function(x,y)
 		{
 			noStroke();
-			fill(255);
+			fill("#00ffff");
 			ellipse(x,y,40,40);
 		},
 		evolve:[2],
