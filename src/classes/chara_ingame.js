@@ -97,7 +97,7 @@ function ENEMY(row, col, indexNo,arrNo)
 	this.x=45*(1.5*col+1);
 	this.y=45*cos(PI/6)*(2*row+2-col%2);
 	this.who=2;
-	this.sprite=charaProto[indexNo].draw;
+	this.sprite=charaProto[indexNo].sprite;
 	this.attackMap=charaProto[indexNo].attackMap.slice();
 	this.attackRadius=charaProto[indexNo].attackRadius;
 }
