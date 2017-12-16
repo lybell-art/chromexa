@@ -11,6 +11,10 @@ function CHARACTER_INGAME()
 	var attackMap=[];
 	var attackRadius=0;
 }
+CHARACTER_INGAME.prototype.draw=function()
+{
+	this.sprite(this.x,this.y);
+}
 CHARACTER_INGAME.prototype.move=function(where, target)
 {
 	// 선언부
@@ -54,7 +58,8 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	dist=i;
 	for(i=0;i<dist;i++)
 	{
-		where.motionQueue.push({
+		console.log(trace[i]);
+/*		where.motionQueue.push({
 			who:this,
 			motion:[function(){return this.moveMotion(trace[i])}]
 		});
@@ -65,13 +70,12 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 				who:this,
 				motion:[function(){return this.attackMotion(trace[i])}]
 			});
-		}
+		}*/
 	}
 	
 }
-CHARACTER_INGAME.prototype.draw=function()
+CHARACTER_INGAME.prototype.moveMotion=function(target)
 {
-	this.sprite(this.x,this.y);
 }
 CHARACTER_INGAME.prototype.attack=function(cells, otherPlayers, otherEnemys)
 {
