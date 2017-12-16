@@ -53,8 +53,7 @@ function sceneExecute()
 //		case 3:selection.modeSelect_multi(); break;
 //		case 4:selection.stageSelect_multi(); break;
 		case 10:ingame.setup(); break;
-		case 11:ingame.execute(); break;
-//		case 11:ingame.playerTurn(); break;
+		case 11:ingame.playerTurn(); break;
 //		case 12:ingame.playerTurn_motion(); break;
 //		case 13:ingame.enemyTurn(); break;
 //		case 14:ingame.enemyTurn_motion(); break;
