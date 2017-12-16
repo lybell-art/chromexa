@@ -42,7 +42,6 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	{
 		cur=hexCell_trans(cur,dir,1);
 		trace.push(map[cur.row][cur.col]);
-		console.log(cur, trace[i])
 		if([0,5].indexOf(trace[i].kind)!=-1) return false;
 		if(this.CP!=undefined)
 		{
