@@ -26,6 +26,14 @@ COORD.prototype.isSame=function(other)
 {
 	return (this.row==other.row&&this.col==other.col);
 }
+COORD.prototype.x=function()
+{
+	return 45*(1.5*this.col+1);
+}
+COORD.prototype.y=function()
+{
+	return 45*cos(PI/6)*(2*this.row+2-this.col%2);
+}
 
 /**
  *
@@ -72,6 +80,42 @@ function hexCell_dist(start, end)
 	else if(bound1-end.row>0) return xdist+bound1-end.row;
 	else if(end.row-bound2>0) return xdist-bound2+end.row;
 	else return xdist;
+}
+
+/**
+ *
+ * 대상 셀이 기준 셀의 직선 방향에 있는지 파악한다.
+ *
+ * @param {COORD} o		기준이 되는 셀
+ * @param {COORD} target	대상 셀
+ *
+ * @return {int}		o를 기준으로 한 대상 셀의 방향(대각선 방향일 시 -1)
+ *
+ */
+function hexCell_isLine(o,target)
+{
+	var dx=target.col-o.col;
+	var dy=target.row-o.row;
+	var xdist=abs(dx);
+	var xsign=int(xdist/dx);
+	var bound1=o.row-int((xdist+o.col%2)/2);
+	var bound2=o.row+int((xdist+(o.col+1)%2)/2);
+	if(xdist==0)
+	{
+		if(dy<0) return _HEX_DOWN;
+		else if(dy>0) return _HEX_UP;
+	}
+	else if(bound1-end.row==0)
+	{
+		if(dx>0) return _HEX_RIGHTUP;
+		else if(dx<0) return _HEX_LEFTUP;
+	}
+	else if(end.row-bound2==0)
+	{
+		if(dx>0) return _HEX_RIGHTDOWN;
+		else if(dx<0) return _HEX_LEFTDOWN;
+	}
+	else return -1;
 }
 
 //비디오 엠피포
