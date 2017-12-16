@@ -60,7 +60,7 @@ function PLAYER(row, col, boxNo)
 	this.x=45*(1.5*col+1);
 	this.y=45*cos(PI/6)*(2*row+2-col%2);
 	this.who=1;
-	this.sprite=charaProto[this.indexNo].draw;
+	this.sprite=charaProto[this.indexNo].sprite;
 	this.attackMap=charaProto[this.indexNo].attackMap.slice();
 	this.attackRadius=charaProto[this.indexNo].attackRadius;
 }
