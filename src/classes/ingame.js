@@ -86,8 +86,8 @@ INGAME.prototype.input=function()
 		}
 		else
 		{
-			if(hexCell_isLine(this.p1[this.currentP].pos,clickSignal.index)==-1) clickSignal.signal=_NO_MOVE;
-			else if(hexCell_dist(this.p1[this.currentP].pos,clickSignal.index)>moveCost) clickSignal.signal=_NO_MOVE;
+			if(hexCell_isLine(this.p1[this.currentP].coord,clickSignal.index)==-1) clickSignal.signal=_NO_MOVE;
+			else if(hexCell_dist(this.p1[this.currentP].coord,clickSignal.index)>moveCost) clickSignal.signal=_NO_MOVE;
 /*			switch(clickSignal.signal)
 			{
 				case _CHARA:
