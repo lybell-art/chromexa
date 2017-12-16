@@ -72,7 +72,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 //		this.y=this.coord.y();
 		where.motionQueue.push({
 			who:this,
-			motion:[["move",this.trace[i]]]
+			motion:[["move",trace[i]]]
 		});
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
