@@ -6,7 +6,7 @@ function CHARACTER_INGAME()
 	var x=0;
 	var y=0;
 	var who=0;
-	var sprite=null;
+	var sprite=function(x,y){};
 	var attackMap=[];
 	var attackRadius=0;
 }
