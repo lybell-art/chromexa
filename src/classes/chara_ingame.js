@@ -58,7 +58,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	dist=i;
 	for(i=0;i<dist;i++)
 	{
-		this.coord=trace[i];
+		this.coord=trace[i].copy();
 		this.x=this.coord.x();
 		this.y=this.coord.y();
 /*		where.motionQueue.push({
