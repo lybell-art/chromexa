@@ -286,10 +286,10 @@ INGAME.prototype.layer2=function()
 			else
 			{
 				beginContour();
-				roundedHexagonContour(cells[i][j].x,cells[i][j].y,cells[i][j].r-1.25);
+				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r-1.25);
 				endContour();
 				beginContour();
-				roundedHexagonContour(cells[i][j].x,cells[i][j].y,cells[i][j].r+1.25);
+				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r+1.25);
 				endContour();
 			}
 		}
