@@ -102,7 +102,6 @@ INGAME.prototype.draw=function()
 	screenControl.setScreen();
 	this.field.draw();
 	console.log(this.p1[0]);
-	this.p1[0].draw();
 	for(chara of this.p1)
 	{
 		chara.draw();
@@ -111,7 +110,7 @@ INGAME.prototype.draw=function()
 	{
 		chara.draw();
 	}
-	this.interface.draw();
+//	this.interface.draw();
 }
 INGAME.prototype.execute=function()
 {
