@@ -103,11 +103,11 @@ INGAME.prototype.draw=function()
 	this.field.draw();
 	console.log(this.p1[0]);
 	this.p1[0].draw();
-	for(chara in this.p1)
+	for(chara of this.p1)
 	{
 		chara.draw();
 	}
-	for(chara in this.p2)
+	for(chara of this.p2)
 	{
 		chara.draw();
 	}
