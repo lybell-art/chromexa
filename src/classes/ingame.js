@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.14
- * @version 0.06
+ * @version 0.07
  *
  */
 function INGAME()
@@ -34,6 +34,7 @@ INGAME.prototype.setup=function()
 	this.p1=this.playerCreate();
 	if(this.world==_MULTIPLAY) this.p2=this.playerCreate();
 	else this.p2=this.enemyCreate(mapData);
+	console.log(this.p1, this.p2);
 	this.chaSel=false;
 	this.motionQueue=[];
 	this.whosTurn=1;
@@ -54,7 +55,7 @@ INGAME.prototype.enemyCreate=function(data)
 	var count=0;
 	for(var i=0;i<data.row;i++)
 	{
-		for(var j=0;i<data.col;i++)
+		for(var j=0;j<data.col;j++)
 		{
 			if(data.enemy[i][j]!=null)
 			{
