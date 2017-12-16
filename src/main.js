@@ -32,7 +32,7 @@ function setup()
 	ingame=new INGAME();
 //	popup=new POPUP();
 	//load data
-	loading.dataLoad();
+	loading.loadData();
 	myCharacter=[new MY_CHARA(2,0)];
 	ingame.setup();
 	sceneNo=11;
