@@ -38,8 +38,6 @@ FIELD.prototype.makeField=function(mapData)
 	console.log(this.cells);
 	this.Rows=mapData.row;
 	this.Columns=mapData.column;
-	this.Rows=10;
-	this.Columns=15;
 	this.w=45*(1.5*this.Columns+0.5);
 	this.h=45*cos(PI/6)*(2*this.Rows+1);
 	for(var i=0;i<this.Rows;i++)
