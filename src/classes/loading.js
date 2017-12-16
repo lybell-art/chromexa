@@ -9,12 +9,12 @@ LOADING.prototype.loadData=function()
 	var table, url;
 	for(i=1;i<2;i++)
 	{
-		resource_map[i]=[];
+		resourceBox.map[i]=[];
 		for(j=1;j<=6;j++)
 		{
-			resource_map[i][j]=new MAP_DATA();
+			resourceBox.map[i][j]=new MAP_DATA();
 			url="resource/"+i+"-"+j+".csv";
-			table=loadTable(url, "csv", "header", this.inputMap(table,resource_map[i][j]));
+			table=loadTable(url, "csv", "header", this.inputMap(table,resourceBox.map[i][j]));
 			this.max++;
 		}
 	}
