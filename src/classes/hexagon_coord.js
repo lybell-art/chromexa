@@ -26,6 +26,11 @@ COORD.prototype.isSame=function(other)
 {
 	return (this.row==other.row&&this.col==other.col);
 }
+COORD.prototype.copy=function()
+{
+	var res=new COORD(this.row, this.col);
+	return res;
+}
 COORD.prototype.x=function()
 {
 	return 45*(1.5*this.col+1);
