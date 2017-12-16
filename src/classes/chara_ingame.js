@@ -88,11 +88,11 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 	var myCoord=this.coord.copy();
 	const cRow=function(i){return myCoord.row-5+i};
 	const cCol=function(i){return myCoord.col-5+i};
-	console.log(map.cells);
 	for(var i=0;i<11;i++)
 	{
 		for(var j=0;j<11;j++)
 		{
+			console.log(cells[cRow(i)+j%2][cCol(j)]);
 			if(cRow(i)+j%2<0||cRow(i)+j%2>map.row||cCol(i)<0||cCol(i)>map.col) continue;
 			if(this.attackMap[i][j]&&cells[cRow(i)+j%2][cCol(j)].who!=-1)
 			{
