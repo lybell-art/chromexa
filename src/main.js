@@ -33,7 +33,7 @@ function setup()
 //	popup=new POPUP();
 	//load data
 	loading.loadData();
-	myCharacter=[new MY_CHARA(2,0)];
+	myCharacter=[new MY_CHARA(1,0)];
 }
 function draw()
 {
