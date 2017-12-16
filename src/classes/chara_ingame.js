@@ -1,6 +1,7 @@
 function CHARACTER_INGAME()
 {
 	var indexNo=0;
+	var arrNo=0;
 	var isLive=true;
 	var coord=null;
 	var x=0;
@@ -37,21 +38,24 @@ CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys
 {
 	var cur=new COORD(i,j);
 	var other;
-	for(other in otherPlayers)
+	for(other of otherPlayers)
 	{
+		if(other.isLive==false||other.arrNo==this.arrNo) continue;
 		if(cur.same(other.coord)) other.heal();
 	}
-	for(other in otherEnemys)
+	for(other of otherEnemys)
 	{
+		if(other.isLive==false) continue;
 		if(cur.same(other.coord)) other.hit();
 	}
 }
 CHARACTER_INGAME.prototype.hit=function(){}
 CHARACTER_INGAME.prototype.heal=function(){}
 
-function PLAYER(row, col, boxNo)
+function PLAYER(row, col, boxNo, arrNo)
 {
 	CHARACTER_INGAME.call(this);
+	this.arrNo=arrNo;
 	this.myChara=myCharacter[boxNo];
 	this.indexNo=this.myChara.indexNo;
 	this.maxCP=this.myChara.maxCP;
