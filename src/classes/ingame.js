@@ -193,11 +193,11 @@ INGAME.prototype.draw=function()
 	this.field.draw();
 	for(chara of this.p1)
 	{
-		chara.draw();
+		if(chara.isLive) chara.draw();
 	}
 	for(chara of this.p2)
 	{
-		chara.draw();
+		if(chara.isLive) chara.draw();
 	}
 //	this.interface.draw();
 }
