@@ -4,8 +4,7 @@ function CHARACTER_INGAME()
 	var arrNo=0;
 	var isLive=true;
 	var coord=null;
-	var x=0;
-	var y=0;
+	var x=0, y=0;
 	var who=0;
 	var sprite=function(x,y){};
 	var attackMap=[];
@@ -59,7 +58,9 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	dist=i;
 	for(i=0;i<dist;i++)
 	{
-		console.log(trace[i]);
+		this.coord=trace[i];
+		this.x=this.coord.x();
+		this.y=this.coord.y();
 /*		where.motionQueue.push({
 			who:this,
 			motion:[function(){return this.moveMotion(trace[i])}]
