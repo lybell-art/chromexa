@@ -61,6 +61,7 @@ INGAME.prototype.setup=function()
 	//reset other properties
 	this.motionQueue=[];
 	this.whosTurn=1;
+	this.currentP=-1;
 	screenControl.set(this.field.w,this.field.h);
 	sceneNo=11;
 }
@@ -116,7 +117,6 @@ INGAME.prototype.input=function()
 	var cSel;
 	var thisChara=null;
 	clickSignal=this.field.clickCheck();
-	console.log(clickSignal);
 	if(clickSignal!==null)
 	{
 		if(clickSignal.signal==_BACK)	//뒤로가기 버튼 클릭 시
@@ -131,6 +131,7 @@ INGAME.prototype.input=function()
 		}
 		cSel=this.charaSelect(clickSignal.index);	//캐릭터를 클릭했는지를 파악함
 		if(cSel!=-1) clickSignal.signal=_CHARA;
+		console.log(clickSignal, cSel);
 		if(this.currnentP!=-1)	//캐릭터 선택이 안 된 상태일 때
 		{
 			if(clickSignal.signal==_CHARA) this.currentP=cSel;
