@@ -72,14 +72,14 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 //		this.y=this.coord.y();
 		where.motionQueue.push({
 			who:this,
-			motion:[function(){return this.moveMotion(trace[i]);}]
+			motion:[["move",this.trace[i]]]
 		});
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
 			var tMap=this.attack(where.field,ally,enemy);
 			where.motionQueue.push({
 				who:this,
-				motion:[function(){return this.attackMotion();}],
+				motion:[["attack"]],
 				thresh:tMap
 			});
 		}
