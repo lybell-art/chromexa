@@ -86,8 +86,9 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
 	console.log(map, otherPlayers, otherEnemys);
 	var cells=map.cells;
-	const cRow=function(i){console.log(this); return this.coord.row-5+i};
-	const cCol=function(i){return this.coord.col-5+i};
+	var myCoord=this.coord.copy();
+	const cRow=function(i){return myCoord.row-5+i};
+	const cCol=function(i){return myCoord.col-5+i};
 	for(var i=0;i<11;i++)
 	{
 		for(var j=0;j<11;j++)
