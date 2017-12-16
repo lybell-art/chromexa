@@ -202,6 +202,7 @@ INGAME.prototype.draw=function()
 	{
 		if(chara.isLive) chara.draw();
 	}
+	console.log(this.motionQueue);
 //	this.interface.draw();
 }
 INGAME.prototype.playerTurn=function()
