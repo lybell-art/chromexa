@@ -3,8 +3,8 @@
  * 인게임 클래스
  * 
  * @author steliviere
- * @date 2017.12.14
- * @version 0.07
+ * @date 2017.12.16
+ * @version 0.1
  *
  */
 function INGAME()
@@ -122,12 +122,12 @@ INGAME.prototype.input=function()
 		if(clickSignal.signal==_BACK)	//뒤로가기 버튼 클릭 시
 		{
 			sceneNo=1;
-			return;
+			return false;
 		}
 		else if(clickSignal.signal==_SETTING)	//설정 버튼 클릭 시
 		{
 			popupNo=1;
-			return;
+			return false;
 		}
 		cSel=this.charaSelect(clickSignal.index);	//캐릭터를 클릭했는지를 파악함
 		if(cSel!=-1) clickSignal.signal=_CHARA;
