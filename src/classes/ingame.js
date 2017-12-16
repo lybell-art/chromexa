@@ -158,7 +158,7 @@ INGAME.prototype.input=function()
 		}
 	}
 }
-INGAME.prototype.inputInterface()
+INGAME.prototype.inputInterface=function()
 {
 	/**
 	 * 적(AI)의 턴일 시, 인터페이스 부분만 클릭할 수 있게 한다.
