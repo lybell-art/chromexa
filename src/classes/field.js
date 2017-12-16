@@ -35,7 +35,6 @@ FIELD.prototype.makeField=function(mapData)
 {
 	var mapData_kind=mapData.kind;
 	var mapData_who=mapData.who;
-	console.log(this.cells);
 	this.Rows=mapData.row;
 	this.Columns=mapData.column;
 	this.w=45*(1.5*this.Columns+0.5);
@@ -43,7 +42,6 @@ FIELD.prototype.makeField=function(mapData)
 	for(var i=0;i<this.Rows;i++)
 	{
 		this.cells[i]=[];
-		console.log(this.cells);
 		for(var j=0;j<this.Columns;j++)
 		{
 			this.cells[i][j]=new CELL(i,j,mapData_kind[i][j],mapData_who[i][j]);
