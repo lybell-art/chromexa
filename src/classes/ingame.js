@@ -251,13 +251,15 @@ INGAME.prototype.motion=function()
 {
 	var who=this.motionQueue[0].who;
 	var func=this.motionQueue[0].motion;
+	var motino;
 	var thresh=this.motionQueue[0].thresh;
 	var i;
 	var isEnd;
 	console.log(who, func, func[0]);
 	for(i=0;i<func.length;i++)
 	{
-		isEnd=who.func[i]();
+		motino=func[i];
+		isEnd=who.motino();
 	}
 	if(thresh==undefined)
 	{
