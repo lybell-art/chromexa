@@ -92,8 +92,8 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 	{
 		for(var j=0;j<11;j++)
 		{
-			console.log(cRow(i)+cCol(j)%2, map, map.row, cRow(i)+cCol(j)%2>map.row);
-			if(cRow(i)+cCol(j)%2<0||cRow(i)+cCol(j)%2>=map.row||cCol(j)<0||cCol(j)>=map.col) continue;
+			console.log(cRow(i)+cCol(j)%2);
+			if(cRow(i)+cCol(j)%2<0||cRow(i)+cCol(j)%2>=map.Rows||cCol(j)<0||cCol(j)>=map.Columns) continue;
 			if(this.attackMap[i][j]&&cells[cRow(i)+cCol(j)%2][cCol(j)].who!=-1)
 			{
 				cells[cRow(i)+cCol(j)%2][cCol(j)].who=this.who;
