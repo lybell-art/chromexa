@@ -27,10 +27,6 @@ LOADING.prototype.execute=function()
 	fill(255);
 	noStroke();
 	rect(0,0,map(this.count,0,this.max,0,width),50);
-	for(var i=1;i<=6;i++)
-	{
-		console.log(resourceBox.map[1][i]);
-	}
 	if(this.count==this.max) sceneNo=10;
 }
 LOADING.prototype.inputMapClosure=function(a,i,j)
