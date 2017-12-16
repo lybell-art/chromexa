@@ -42,7 +42,7 @@ INGAME.prototype.playerCreate=function()
 	var res=[];
 	for(var i=0;i<5;i++)
 	{
-		res.push(new PLAYER(i,i,0));
+		res.push(new PLAYER(i,i,0,i));
 	}
 	return res;
 }
@@ -51,7 +51,7 @@ INGAME.prototype.enemyCreate=function()
 	var res=[];
 	for(var i=0;i<1;i++)
 	{
-		res.push(new ENEMY(7,7,1001));
+		res.push(new ENEMY(7,7,1001,i));
 	}
 	return res;
 }
