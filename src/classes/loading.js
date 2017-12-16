@@ -11,7 +11,7 @@ LOADING.prototype.loadData=function()
 	for(i=1;i<2;i++)
 	{
 		resourceBox.map[i]=[];
-		for(j=1;j<=6;j++)
+		for(j=0;j<=6;j++)
 		{
 			resourceBox.map[i][j]=new MAP_DATA();
 			url="resource/"+i+"-"+j+".csv";
