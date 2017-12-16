@@ -193,7 +193,6 @@ INGAME.prototype.draw=function()
 	this.field.draw();
 	for(chara of this.p1)
 	{
-		console.log(chara, chara.isLive);
 		if(chara.isLive) chara.draw();
 	}
 	for(chara of this.p2)
