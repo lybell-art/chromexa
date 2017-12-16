@@ -139,11 +139,11 @@ function PLAYER(row, col, boxNo, arrNo)
 }
 PLAYER.prototype=new CHARACTER_INGAME();
 PLAYER.prototype.constructor=PLAYER;
-PLAYER.prototype.attack=function()
+PLAYER.prototype.attack=function(map, otherPlayers, otherEnemys)
 {
 	if(this.CP>0)
 	{
-		CHARACTER_INGAME.prototype.attack.call(this);
+		CHARACTER_INGAME.prototype.attack.call(this, map, otherPlayers, otherEnemys);
 		this.CP--;
 	}
 }
