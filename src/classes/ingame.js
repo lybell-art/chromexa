@@ -103,6 +103,7 @@ INGAME.prototype.draw=function()
 	this.field.draw();
 	for(chara in this.p1)
 	{
+		console.log(chara);
 		chara.draw();
 	}
 	for(chara in this.p2)
