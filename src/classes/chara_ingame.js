@@ -68,7 +68,6 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		});*/
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
-			console.log(where.field, "is attack time");
 			this.attack(where.field,ally,enemy);
 /*			where.motionQueue.push({
 				who:this,
@@ -88,7 +87,6 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 	var myCoord=this.coord.copy();
 	const cCol=function(i){return myCoord.col-5+i};
 	const cRow=function(i,j){return myCoord.row-5+i+((myCoord.col+1)%2)*(cCol(j)%2)};
-	console.log(this.CP);
 	for(var i=0;i<11;i++)
 	{
 		for(var j=0;j<11;j++)
