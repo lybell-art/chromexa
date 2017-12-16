@@ -3,8 +3,8 @@
  * 육각형 셀 클래스
  * 
  * @author steliviere
- * @date 2017.12.13
- * @version 0.35
+ * @date 2017.12.16
+ * @version 0.4
  *
  */
 function CELL(i,j,kind,who)
@@ -30,8 +30,8 @@ function CELL(i,j,kind,who)
 	 *
 	 */
 	this.index=new COORD(i,j);
-	this.x=45*(1.5*this.index.col+1);
-	this.y=45*cos(PI/6)*(2*this.index.row+2-this.index.col%2);
+	this.x=this.index.x();
+	this.y=this.index.y();
 	this.kind=kind;
 	this.who=who;
 	this.r=30;
@@ -61,6 +61,7 @@ CELL.prototype.draw=function()
 	}
 	else
 	{
+		strokeWeight(2.5);
 		fill(255);
 		stroke(col);
 	}
