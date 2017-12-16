@@ -29,7 +29,7 @@ function INGAME()
 	this.p1=null, this.p2=null;
 	this.whosTurn=1;
 	this.currentP=-1;
-	this.moveCost=3;
+	this.moveCost=5;
 	this.motionQueue=[];
 }
 //-------------------------------------------------------setting method---------------------------------------------------------------//
