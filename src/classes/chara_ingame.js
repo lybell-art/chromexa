@@ -13,37 +13,59 @@ function CHARACTER_INGAME()
 }
 CHARACTER_INGAME.prototype.move=function(where, target)
 {
+	// 선언부
 	var dir=hexCell_isLine(this.coord,target);
 	var dist=hexCell_dist(this.coord,target);
 	var cur=this.coord.copy();
 	var isRotated=false;
 	var trace=[];
 	var map=where.field.cells;
-	var ally, enemy;
+	var ally, enemy, myBuho;
 	if(where.whosTurn==1) 
 	{
 		ally=where.p1;
 		enemy=where.p2;
+		myBuho=1;
 	}
 	else
 	{
 		ally=where.p2;
 		enemy=where.p1;
+		myBuho=-1;
 	}
+	// 계산
 	var i;
-	for(i=0;i<dist;i++)
+	while(!isRotated&&i<dist)
 	{
 		cur=hexCell_trans(cur,dir,1);
-		trace.push(map[cur.row][cur.col].kind);
-		if([0,5].indexOf(trace[i])!=-1) return;
+		trace.push(map[cur.row][cur.col]);
+		if([0,5].indexOf(trace[i].kind)!=-1) return;
 /*		<incomplete>
-		if([6,7,8,9,10,11].indexOf(trace[i])!=-1)
+		if([6,7,8,9,10,11].indexOf(trace[i].kind)!=-1)
 		{
 			isRotated=true;
 			dir=(trace[i]-6)%6;
 		}
-		if(isRotated&&[1,3,4].indexOf(trace[i])!=-1) break;
 		*/
+		if(isRotated&&[1,3,4].indexOf(trace[i].kind)!=-1) break;
+		i++;
+	}
+	// 큐에 모션을 넣는다
+	dist=i;
+	for(i=0;i<dist;i++)
+	{
+		where.motionQueue.push({
+			who:this,
+			motion:[function(){return this.moveMotion(trace[i])}]
+		});
+		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
+		{
+			this.attack(map,ally,enemy);
+			where.motionQueue.push({
+				who:this,
+				motion:[function(){return this.attackMotion(trace[i])}]
+			});
+		}
 	}
 	
 }
