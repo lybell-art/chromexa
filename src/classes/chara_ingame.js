@@ -11,7 +11,42 @@ function CHARACTER_INGAME()
 	var attackMap=[];
 	var attackRadius=0;
 }
-CHARACTER_INGAME.prototype.move=function(){}
+CHARACTER_INGAME.prototype.move=function(where, target)
+{
+	var dir=hexCell_isLine(this.coord,target);
+	var dist=hexCell_dist(this.coord,target);
+	var cur=this.coord.copy();
+	var isRotated=false;
+	var trace=[];
+	var map=where.field.cells;
+	var ally, enemy;
+	if(where.whosTurn==1) 
+	{
+		ally=where.p1;
+		enemy=where.p2;
+	}
+	else
+	{
+		ally=where.p2;
+		enemy=where.p1;
+	}
+	var i;
+	for(i=0;i<dist;i++)
+	{
+		cur=hexCell_trans(cur,dir,1);
+		trace.push(map[cur.row][cur.col].kind);
+		if([0,5].indexOf(trace[i])!=-1) return;
+/*		<incomplete>
+		if([6,7,8,9,10,11].indexOf(trace[i])!=-1)
+		{
+			isRotated=true;
+			dir=(trace[i]-6)%6;
+		}
+		if(isRotated&&[1,3,4].indexOf(trace[i])!=-1) break;
+		*/
+	}
+	
+}
 CHARACTER_INGAME.prototype.draw=function()
 {
 	this.sprite(this.x,this.y);
