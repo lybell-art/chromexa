@@ -148,12 +148,12 @@ INGAME.prototype.input=function()
 			{
 				clickSignal.signal=_NOMOVE;
 			}
-/*			switch(clickSignal.signal)
+			switch(clickSignal.signal)
 			{
 				case _CHARA:
 				case _MOVEABLE:thisChara.move(this, clickSignal.index); break;
-				case _FILLAR:this.filler();
-			}*/
+//				case _FILLAR:this.filler();
+			}
 			this.currentP=-1;
 		}
 	}
