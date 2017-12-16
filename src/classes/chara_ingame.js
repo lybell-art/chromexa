@@ -65,15 +65,15 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 /*		where.motionQueue.push({
 			who:this,
 			motion:[function(){return this.moveMotion(trace[i])}]
-		});
+		});*/
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
-			this.attack(map,ally,enemy);
-			where.motionQueue.push({
+			this.attack(where.field,ally,enemy);
+/*			where.motionQueue.push({
 				who:this,
 				motion:[function(){return this.attackMotion(trace[i])}]
-			});
-		}*/
+			});*/
+		}
 	}
 	where.pLocation[this.coord.row][this.coord.col]=(this.arrNo+1)*myBuho;
 	
