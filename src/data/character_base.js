@@ -19,7 +19,7 @@ const charaProto=
 		],
 		sprite:function(x,y)
 		{
-			ellipse(x,y,50,50);
+			ellipse(x,y,40,40);
 		},
 		evolve:[1,2,3],
 		evolveLV:36,
@@ -47,7 +47,7 @@ const charaProto=
 		{
 			noStroke();
 			fill(255);
-			ellipse(x,y,50,50);
+			ellipse(x,y,40,40);
 		},
 		evolve:[2],
 		evolveLV:15,
@@ -75,7 +75,7 @@ const charaProto=
 		{
 			noStroke();
 			fill(255);
-			ellipse(x,y,50,50);
+			ellipse(x,y,40,40);
 		},
 		evolve:[2],
 		evolveLV:36,
@@ -102,7 +102,7 @@ const charaProto=
 		{
 			noStroke();
 			fill(255);
-			ellipse(x,y,50,50);
+			ellipse(x,y,40,40);
 		},
 		attackRadius:4,
 		evolve:[],
@@ -130,7 +130,7 @@ const charaProto=
 		{
 			noStroke();
 			fill(0);
-			ellipse(x,y,50,50);
+			ellipse(x,y,40,40);
 		}
 	}
 };
