@@ -230,6 +230,7 @@ INGAME.prototype.draw=function()
 	 * 현재 장면을 화면에 출력한다.
 	 */
 	var chara;
+	var moveSync=0;
 	background(255);
 	screenControl.setScreen();
 	this.field.draw();
@@ -237,12 +238,13 @@ INGAME.prototype.draw=function()
 	{
 		if(chara.isLive) chara.draw();
 	}
-	this.syncMotion();
+	this.syncMotion(0);
+	moveSync=this.motionQueue.length;
 	for(chara of this.p2)
 	{
 		if(chara.isLive) chara.draw();
 	}
-	this.syncMotion();
+	this.syncMotion(moveSync);
 //	this.interface.draw();
 }
 INGAME.prototype.playerTurn=function()
@@ -395,38 +397,48 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		}
 	}
 }
-INGAME.prototype.syncMotion=function()
+INGAME.prototype.syncMotion=function(bar)
 {
-	var moveMotions=[];
+	var moveMotions=[[]];
 	var attackMotions=[];
 	var hitMotions=[];
-	var sync=[];
-	var temp;
+	var sync=this.motionQueue.slice(0,bar);
+	var temp, a;
 	var arrayLink=function(_p,q)
 	{
 		for(var i=0;i<q.length;i++)
 		{
 			_p.push(q[i]);
 		}
+		return _p;
 	}
-	for(var i=0;i<this.motionQueue.length;i++)
+	for(var i=bar;i<this.motionQueue.length;i++)
 	{
-		switch(this.motionQueue[i].type)
+		if(this.motionQueue[i].type=="move")
 		{
-			case "move":arrayLink(moveMotions, this.motionQueue[i].result); break;
-			case "attack":arrayLink(attackMotions, this.motionQueue[i].result); break;
-			case "hit":arrayLink(hitMotions, this.motionQueue[i].result); break;
-/*			case "bar":moveMotions=[];
-				attackMotions=[];
-				hitMotions=[];
-				arrayLink(sync, this.motionQueue.slice());
-				break;*/
+			if(temp!=this.motionQueue[i].result[0].who)
+			{
+				a=0;
+				moveMotions[0].push(this.motionQueue[i].result);
+			}
+			else
+			{
+				a++;
+				if(moveMotions.length<=a) moveMotions.push([]);
+				moveMotions[a].push(this.motionQueue[i].result);
+			}
+			temp=this.motionQueue[i].result[0].who;
 		}
+		else if(this.motionQueue[i].type=="attack") arrayLink(attackMotions, this.motionQueue[i].result);
+		else if(this.motionQueue[i].type=="hit") arrayLink(hitMotions, this.motionQueue[i].result);
 	}
-	if(moveMotions.length!=0) sync.push({type:"move",result:moveMotions});
+	for(var p=0;p<moveMotions.length;p++)
+	{
+		sync.push({type:"move",result:moveMotions[p]});
+	}
+//	if(moveMotions.length!=0) sync.push({type:"move",result:moveMotions});
 	if(hitMotions.length!=0) sync.push({type:"hit",result:hitMotions});
 	if(attackMotions.length!=0) sync.push({type:"attack",result:attackMotions});
-//	sync.push({type:"bar",result:[]});
 	this.motionQueue=sync;
 }
 INGAME.prototype.layer2=function()
