@@ -399,7 +399,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 }
 INGAME.prototype.syncMotion=function(bar)
 {
-	var moveMotions=[[]];
+	var moveMotions=[];
 	var attackMotions=[];
 	var hitMotions=[];
 	var sync=this.motionQueue.slice(0,bar);
@@ -436,9 +436,12 @@ INGAME.prototype.syncMotion=function(bar)
 	{
 		sync.push({type:"move",result:moveMotions[p]});
 	}
+	console.log(sync);
 //	if(moveMotions.length!=0) sync.push({type:"move",result:moveMotions});
 	if(hitMotions.length!=0) sync.push({type:"hit",result:hitMotions});
+	console.log(sync);
 	if(attackMotions.length!=0) sync.push({type:"attack",result:attackMotions});
+	console.log(sync);
 	this.motionQueue=sync;
 }
 INGAME.prototype.layer2=function()
