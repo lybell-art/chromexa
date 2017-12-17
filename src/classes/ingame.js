@@ -219,6 +219,7 @@ INGAME.prototype.enemyAI=function()
 	{
 		chara.move(this);
 	}
+	console.log(this.motionQueue);
 	for(chara of this.p2)
 	{
 		chara.attack(this, chara.coord);
