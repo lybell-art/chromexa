@@ -250,18 +250,17 @@ INGAME.prototype.charaSelect=function(coord)
 INGAME.prototype.motion=function()
 {
 	console.log(this.motionQueue);
-	var who=this.motionQueue[0].who;
-	var func=this.motionQueue[0].motion;
-	var motino;
-	var thresh=this.motionQueue[0].thresh;
+	var thisMotion=this.motionQueue[0];
+	var who_;
 	var i;
-	var isPros;
-	for(i=0;i<func.length;i++)
+	var isPros=false;
+	for(i=0;i<thisMotion.result.length;i++)
 	{
-		if(func[i][0]=="move") isPros=who.moveMotion(func[i][1]);
-		else if(func[i][0]=="attack") isPros=who.attackMotion();
+		who_=thisMotion.result.who;
+		if(type=="move") isPros=who_.moveMotion(thisMotion.result[i].newCoord);
+		else if(type=="attack") isPros=who_.attackMotion();
 	}
-	if(thresh==undefined)
+	if(thisMotion.type!="attack")
 	{
 		this.draw();
 	}
@@ -273,10 +272,54 @@ INGAME.prototype.motion=function()
 	console.log(isPros);
 	if(!isPros)
 	{
+		this.motionEnd(thisMotion);
 		this.motionQueue.shift();
 		if(this.motionQueue.length==0) sceneNo--;
 	}
 	console.log(this.pLocation);
+}
+INGAME.prototype.motionEnd=function(thisMotion)
+{
+	var i, who_;
+	var r,c;
+	var datum_=thisMotion.result;
+	var threshMap=datum_[0].threshMap;
+	for(i=0;i<datum_.length;i++)
+	{
+		who_=datum_[i].who;
+		switch(thisMotion.type)
+		{
+			case "move":
+				who_.coord=datum_[i].newCoord.copy();
+				this.pLocation[datum_[i].pCoord.row][datum_[i].pCoord.col]=0;
+				this.pLocation[datum_[i].newCoord.row][datum_[i].newCoord.col]=	\
+					(who_.arrNo+1)*(who_.who==1?1:-1);
+				break;
+			case "attack":
+				for(r=0;r<threshMap.length;r++)
+				{
+					for(c=0;c<threshMap[r].length;c++)
+					{
+						threshMap[r][c]=threshMap[r][c]||datum_.thresh[r][c];
+					}
+				}
+				break;
+			case "hit":
+				if(datum_.stat=="damage") who_.hit();
+				else who_.heal();
+				break;
+		}
+	}
+	if(thisMotion.type=="attack")
+	{
+		for(r=0;r<threshMap.length;r++)
+		{
+			for(c=0;c<threshMap[r].length;c++)
+			{
+				if(threshMap[r][c]) this.field.cells[r][c].who=this.whosTurn;
+			}
+		}
+	}
 }
 INGAME.prototype.layer2=function()
 {
