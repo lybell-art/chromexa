@@ -24,7 +24,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var isRotated=false;
 	var trace=[];
 	var map=where.field.cells;
-	var myBuho=(where.whosTurn?1,-1);
+	var myBuho=(where.whosTurn?1:-1);
 	// 계산
 	var i=0;
 	while(!isRotated&&i<dist)
