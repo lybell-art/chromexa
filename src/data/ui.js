@@ -43,7 +43,7 @@ const UI={
 		//inner hexagon
 		v.normalize();
 		v.mult(-H*2/3*4/5);
-		v2.mult(-H*2/3*4/5);
+		v2.mult(H*2/3*4/5);
 		noFill();
 		strokeCap(ROUND);
 		strokeJoin(ROUND);
