@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.16
- * @version 0.4
+ * @version 0.5
  *
  */
 function CELL(i,j,kind,who)
@@ -44,7 +44,7 @@ function CELL(i,j,kind,who)
  */
 CELL.prototype.draw=function()
 {
-	cellImage[i](this.who,this.x,this.y);
+	cellImage[this.kind](this.who,this.x,this.y);
 }
 /**
  *
