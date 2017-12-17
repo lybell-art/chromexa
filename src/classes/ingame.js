@@ -283,14 +283,12 @@ INGAME.prototype.motion=function()
 		this.layer2();
 		this.layer3(threshMap);
 	}
-	console.log(isPros);
 	if(!isPros)
 	{
 		this.motionEnd(thisMotion);
 		this.motionQueue.shift();
 		if(this.motionQueue.length==0) sceneNo--;
 	}
-	console.log(this.pLocation);
 }
 INGAME.prototype.motionEnd=function(thisMotion)
 {
