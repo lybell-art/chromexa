@@ -174,7 +174,7 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 }
 CHARACTER_INGAME.prototype.attackMotion=function()
 {
-	var r=(this.frame-15)*(this.frame-15)+180*this.attackRadius;
+	var r=(180*this.attackRadius/pow(15*3))*pow(this.frame-15,3)+180*this.attackRadius;
 	if(this.who==1) fill(_BLUE);
 	else fill(_RED);
 	noStroke();
