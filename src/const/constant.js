@@ -1,7 +1,7 @@
 //color constant
 const _RED="#f96e64";
 const _BLUE="#2196f3";
-const _ORENGE="#ffa766";
+const _ORANGE="#ffa766";
 const _YELLOW="#ffe966";
 const _GREEN="#52dd69";
 const _PURPLE="#cc66ff";
