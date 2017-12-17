@@ -273,6 +273,7 @@ ENEMY.prototype.setPath=function(where, goal)
 {
 	var pathfinder=new PATHFINDER();
 	this.path=pathfinder.find(where, this.coord.copy(),goal);
+	this.path.pop();
 }
 ENEMY.prototype.move=function(where)
 {
