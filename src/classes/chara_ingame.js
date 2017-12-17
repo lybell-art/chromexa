@@ -100,8 +100,10 @@ CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 	const cRow=function(p,q){return myCoord.row-5+p+((myCoord.col+1)%2)*(cCol(q)%2)};
 	for(i=0;i<11;i++)
 	{
+		console.log("dimi--"+i);
 		for(j=0;j<11;j++)
 		{
+			console.log(cRow(i,j),cCol(j));
 			if(cRow(i,j)<0||cRow(i,j)>=map.Rows||cCol(j)<0||cCol(j)>=map.Columns) continue;
 			if(this.attackMap[i][j]&&cells[cRow(i,j)][cCol(j)].who!=-1)
 			{
