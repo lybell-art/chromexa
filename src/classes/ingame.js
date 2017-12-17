@@ -237,6 +237,7 @@ INGAME.prototype.interface=function()
 {
 	resetMatrix();
 	UI.ingame_banner();
+	UI.ingame_banner2(this.whosTurn);
 	UI.ingame_status(this.whosTurn,this.turns,this.moveCost);
 }
 INGAME.prototype.draw=function()
