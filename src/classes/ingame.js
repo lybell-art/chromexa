@@ -401,17 +401,25 @@ INGAME.prototype.syncMotion=function()
 	var attackMotions=[];
 	var hitMotions=[];
 	var sync=[];
+	var temp;
+	var arrayLink=function(_p,q)
+	{
+		for(var i=0;i<q.length;i++)
+		{
+			_p.push(q[i]);
+		}
+	}
 	for(var i=0;i<this.motionQueue.length;i++)
 	{
 		switch(this.motionQueue[i].type)
 		{
-			case "move":moveMotions=moveMotions.concat(this.motionQueue[i].result); break;
-			case "attack":attackMotions=attackMotions.concat(this.motionQueue[i].result); break;
-			case "hit":hitMotions=attackMotions.concat(this.motionQueue[i].result); break;
+			case "move":arrayLink(moveMotions, this.motionQueue[i].result); break;
+			case "attack":arrayLink(attackMotions, this.motionQueue[i].result); break;
+			case "hit":arrayLink(hitMotions, this.motionQueue[i].result); break;
 			case "bar":moveMotions=[];
 				attackMotions=[];
 				hitMotions=[];
-				sync=sync.concat(this.motionQueue);
+				arrayLink(sync, this.motionQueue);
 				break;
 		}
 	}
