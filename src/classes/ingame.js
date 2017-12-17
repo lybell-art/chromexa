@@ -256,7 +256,7 @@ INGAME.prototype.motion=function()
 	var isPros=false;
 	for(i=0;i<thisMotion.result.length;i++)
 	{
-		who_=thisMotion.result.who;
+		who_=thisMotion.result[i].who;
 		if(thisMotion.type=="move") isPros=who_.moveMotion(thisMotion.result[i].newCoord);
 		else if(thisMotion.type=="attack") isPros=who_.attackMotion();
 	}
