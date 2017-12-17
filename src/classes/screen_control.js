@@ -42,7 +42,7 @@ SCREEN_CONTROL.prototype.setBound=function(x,y,w,h)
 	this.screenX=x;
 	this.screenY=y;
 	this.screenWidth=w;
-	tihs.screenHeight=h;
+	this.screenHeight=h;
 }
 /**
  *
