@@ -129,14 +129,14 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 	var myBuho;
 	if(where.whosTurn==1) 
 	{
-		ally=clone(where.p1);
-		enemy=clone(where.p2);
+		ally=where.p1;
+		enemy=where.p2;
 		myBuho=1;
 	}
 	else
 	{
-		ally=clone(where.p2);
-		enemy=clone(where.p1);
+		ally=where.p2;
+		enemy=where.p1;
 		myBuho=-1;
 	}
 	var thisLocation=where.pLocation[i][j]*myBuho;
