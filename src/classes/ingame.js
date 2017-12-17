@@ -237,10 +237,12 @@ INGAME.prototype.draw=function()
 	{
 		if(chara.isLive) chara.draw();
 	}
+	this.syncMotion();
 	for(chara of this.p2)
 	{
 		if(chara.isLive) chara.draw();
 	}
+	this.syncMotion();
 //	this.interface.draw();
 }
 INGAME.prototype.playerTurn=function()
@@ -392,6 +394,32 @@ INGAME.prototype.motionEnd=function(thisMotion)
 			}
 		}
 	}
+}
+INGAME.prototype.syncMotion=function()
+{
+	var moveMotions=[];
+	var attackMotions=[];
+	var hitMotions=[];
+	var sync=[];
+	for(var i=0;i<this.motionQueue.length;i++)
+	{
+		switch(this.motionQueue[i].type)
+		{
+			case "move":moveMotions=moveMotions.concat(this.motionQueue[i].result); break;
+			case "attack":attackMotions=attackMotions.concat(this.motionQueue[i].result); break;
+			case "hit":hitMotions=attackMotions.concat(this.motionQueue[i].result); break;
+			case "bar":moveMotions=[];
+				attackMotions=[];
+				hitMotions=[];
+				sync=sync.concat(this.motionQueue);
+				break;
+		}
+	}
+	if(moveMotions.length!=0) sync.push({type:"move",result:moveMotions});
+	if(hitMotions.length!=0) sync.push({type:"hit",result:hitMotions});
+	if(attackMotions.length!=0) sync.push({type:"attack",result:hitMotions});
+	sync.push({type:"bar",result:[]});
+	this.motionQueue=sync;
 }
 INGAME.prototype.layer2=function()
 {
