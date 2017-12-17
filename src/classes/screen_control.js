@@ -84,7 +84,7 @@ SCREEN_CONTROL.prototype.scale=function(newZoom,pinX,pinY)
  */
 SCREEN_CONTROL.prototype.limit=function()
 {
-	var zoomMin=min(this.screenWidth/this.w,this.screenWidth/this.h,1);
+	var zoomMin=min(this.screenWidth/this.w,this.screenHeight/this.h,1);
 	this.zoom=constrain(this.zoom,zoomMin,4);
 	var wLimit=this.screenX+this.screenWidth-this.w*this.zoom;
 	var hLimit=this.screenY+this.screenHeight-this.h*this.zoom;
