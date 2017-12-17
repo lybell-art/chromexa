@@ -20,6 +20,10 @@ LOADING.prototype.loadData=function()
 			this.max++;
 		}
 	}
+	resourceBox.font[0]=loadFont("http://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf",function(){this.count++;});
+	resourceBox.font[1]=loadFont("http://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf",function(){this.count++;});
+	resourceBox.font[2]=loadFont("http://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf",function(){this.count++;});
+	this.max+=3;
 }
 LOADING.prototype.execute=function()
 {
