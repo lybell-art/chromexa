@@ -34,6 +34,7 @@ function setup()
 	//load data
 	loading.loadData();
 	myCharacter=[new MY_CHARA(1,0)];
+	frameRate(10);
 }
 function draw()
 {
