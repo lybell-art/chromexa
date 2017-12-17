@@ -21,6 +21,7 @@ function INGAME()
 	 * @var {PLAYER} p1		플레이어/1p
 	 * @var {PLAYER/ENEMY} p2	적/2p
 	 * @var {int} whosTurn		1p 턴:1, 2p 턴:2
+	 * @var {int} turns		현재까지 경과된 턴수
 	 * @var {int} currentP		선택된 캐릭터 (없을 시 -1)
 	 * @var {int} moveCost		현재 플레이어의 이동 코스트
 	 * @var {object} motionQueue	모션 broadcaster
@@ -33,6 +34,7 @@ function INGAME()
 	this.Nuarea={filler:[]};
 	this.p1=null, this.p2=null;
 	this.whosTurn=1;
+	this.turns=0;
 	this.currentP=-1;
 	this.moveCost=5;
 	this.motionQueue=[];
@@ -83,10 +85,12 @@ INGAME.prototype.setup=function()
 	}
 	//reset other properties
 	this.motionQueue=[];
-	this.whosTurn=2;
+	this.whosTurn=1;
+	this.turns=1;
+	this.moveCost=3+this.P1area.filler.length*2;
 	this.currentP=-1;
 	screenControl.set(this.field.w,this.field.h);
-	sceneNo=13;
+	sceneNo=11;
 }
 INGAME.prototype.playerCreate=function()
 {
@@ -232,6 +236,7 @@ INGAME.prototype.interface=function()
 {
 	resetMatrix();
 	UI.ingame_banner();
+	UI.ingame_status(this.whosTurn,this.turns,this.moveCost);
 }
 INGAME.prototype.draw=function()
 {
