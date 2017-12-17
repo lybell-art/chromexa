@@ -425,7 +425,7 @@ INGAME.prototype.syncMotion=function()
 	}
 	if(moveMotions.length!=0) sync.push({type:"move",result:moveMotions});
 	if(hitMotions.length!=0) sync.push({type:"hit",result:hitMotions});
-	if(attackMotions.length!=0) sync.push({type:"attack",result:hitMotions});
+	if(attackMotions.length!=0) sync.push({type:"attack",result:attackMotions});
 //	sync.push({type:"bar",result:[]});
 	this.motionQueue=sync;
 }
