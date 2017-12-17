@@ -1,4 +1,4 @@
-const UI_draw={
+const UI={
 	ingame_banner:function()
 	{
 		var base=min(width,height);
