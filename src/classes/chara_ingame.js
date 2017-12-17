@@ -23,7 +23,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var cur=this.coord.copy();
 	var isRotated=false;
 	var trace=[];
-	var map=clone(where.field.cells);
+	var map=where.field.cells;
 	var ally, enemy, myBuho;
 	if(where.whosTurn==1) 
 	{
