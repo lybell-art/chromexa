@@ -280,7 +280,6 @@ INGAME.prototype.motion=function()
 		}
 		this.layer2();
 		this.layer3(threshMap);
-		(function() {
 		var chara;
 		for(chara of this.p1)
 		{
@@ -290,7 +289,6 @@ INGAME.prototype.motion=function()
 		{
 			if(chara.isLive) chara.draw();
 		}
-		}());
 	}
 	if(!isPros)
 	{
