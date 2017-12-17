@@ -254,7 +254,7 @@ INGAME.prototype.motion=function()
 	var who_;
 	var i;
 	var isPros=false;
-	var threshMap=thisMotion.result.threshMap.slice();
+	var threshMap;
 	for(i=0;i<thisMotion.result.length;i++)
 	{
 		who_=thisMotion.result[i].who;
@@ -267,6 +267,7 @@ INGAME.prototype.motion=function()
 	}
 	else
 	{
+		threshMap=thisMotion.result[0].thresh.slice();
 		for(i=0;i<thisMotion.result.length;i++)
 		{
 			for(var r=0;r<threshMap.length;r++)
