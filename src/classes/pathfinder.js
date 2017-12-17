@@ -10,7 +10,7 @@ this.prototype.pathfind(where, start, goal)
 	var current, child;
 	var values;
 	open.push({pos:start, g:0, f:0, parent:null});
-	while(open.length>0)
+	while(open.size()>0)
 	{
 		current=open.pop();
 		if(goal.isSame(current.pos))
