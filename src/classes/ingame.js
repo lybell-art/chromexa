@@ -259,6 +259,7 @@ INGAME.prototype.motion=function()
 	var i;
 	var isPros=false;
 	var threshMap;
+	if(thisMotion.type=="attack") screenControl.setScreen();
 	for(i=0;i<thisMotion.result.length;i++)
 	{
 		who_=thisMotion.result[i].who;
@@ -271,12 +272,6 @@ INGAME.prototype.motion=function()
 	}
 	else
 	{
-		fill("#ffff00");
-		ellipse(50,50,50,50);
-		screenControl.setScreen();
-		fill("#ff0000");
-		ellipse(30,30,30,30);
-		console.log(screenControl);
 		threshMap=thisMotion.result[0].thresh.slice();
 		for(i=0;i<thisMotion.result.length;i++)
 		{
