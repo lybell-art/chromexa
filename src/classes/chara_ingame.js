@@ -23,18 +23,18 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var cur=this.coord.copy();
 	var isRotated=false;
 	var trace=[];
-	var map=where.field.cells;
+	var map=clone(where.field.cells);
 	var ally, enemy, myBuho;
 	if(where.whosTurn==1) 
 	{
-		ally=where.p1;
-		enemy=where.p2;
+		ally=clone(where.p1);
+		enemy=clone(where.p2);
 		myBuho=1;
 	}
 	else
 	{
-		ally=where.p2;
-		enemy=where.p1;
+		ally=clone(where.p2);
+		enemy=clone(where.p1);
 		myBuho=-1;
 	}
 	// 계산
@@ -64,27 +64,19 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	}
 	// 큐에 모션을 넣는다
 	dist=i;
-	
+	cur=this.coord.copy();
 	for(i=0;i<dist;i++)
 	{
-//		this.coord=trace[i].index.copy();
-//		this.x=this.coord.x();
-//		this.y=this.coord.y();
 		where.motionQueue.push({
-			who:this,
-			motion:[["move",trace[i].index]]
+			type:"move",
+			result:[{who:this, pCoord:cur, newCoord:trace[i].index}]
 		});
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
-			var tMap=this.attack(where.field,ally,enemy);
-			where.motionQueue.push({
-				who:this,
-				motion:[["attack"]],
-				thresh:tMap
-			});
+			this.attack(where);
 		}
+		cur=trace[i].index;
 	}
-	where.pLocation[trace[dist-1].index.row][trace[dist-1].index.col]=(this.arrNo+1)*myBuho;
 }
 CHARACTER_INGAME.prototype.moveMotion=function(target)
 {
@@ -95,24 +87,24 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 	this.y=lerp(O.y,T.y,this.frame/15);
 	if(this.frame>=15)
 	{
-		ingame.pLocation[this.coord.row][this.coord.col]=0;
-		this.coord=target.copy();
-		ingame.pLocation[this.coord.row][this.coord.col]=(this.arrNo+1)*(3-this.who*2);
 		this.frame=-1;
 		return false;
 	}
 	else return true;
 }
-CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
+CHARACTER_INGAME.prototype.attack=function(where)
 {
-	var cells=map.cells;
+	var cells=clone(where.field.cells);
 	var myCoord=this.coord.copy();
+	var Rows=where.field.Rows;
+	var Columns=where.field.Columns;
 	var i,j;
 	var threshMap=[];
-	for(i=0;i<map.Rows;i++)
+	var queueLastType=where.motionQueue[where.motionQueue.length-1].type;
+	for(i=0;i<Rows;i++)
 	{
 		threshMap[i]=[];
-		for(j=0;j<map.Columns;j++)
+		for(j=0;j<Columns;j++)
 		{
 			threshMap[i][j]=false;
 		}
@@ -127,27 +119,68 @@ CHARACTER_INGAME.prototype.attack=function(map, otherPlayers, otherEnemys)
 			if(this.attackMap[i][j]&&cells[cRow(i,j)][cCol(j)].who!=-1)
 			{
 				threshMap[cRow(i,j)][cCol(j)]=true;
-				cells[cRow(i,j)][cCol(j)].who=this.who;
-				this.attack_other(cRow(i,j),cCol(j),otherPlayers,otherEnemys);
+				this.attack_other(where, cRow(i,j),cCol(j));
 			}
 		}
 	}
-//	sceneNo++;
-	return threshMap;
-}
-CHARACTER_INGAME.prototype.attack_other=function(i, j, otherPlayers, otherEnemys)
-{
-	var cur=new COORD(i,j);
-	var other;
-	for(other of otherPlayers)
+	if(queueLastType=="attack")
 	{
-		if(other.isLive==false||other.arrNo==this.arrNo) continue;
-		if(cur.isSame(other.coord)) other.heal();
+		where.motionQueue[where.motionQueue.length-1].result.push({who:this, thresh:threshMap});
 	}
-	for(other of otherEnemys)
+	else
 	{
-		if(other.isLive==false) continue;
-		if(cur.isSame(other.coord)) other.hit();
+		where.motionQueue.push({
+			type:"attack",
+			result:[{who:this, thresh:threshMap}]
+		});
+	}
+}
+CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
+{
+	var ally, enemy;
+	var myBuho;
+	if(where.whosTurn==1) 
+	{
+		ally=clone(where.p1);
+		enemy=clone(where.p2);
+		myBuho=1;
+	}
+	else
+	{
+		ally=clone(where.p2);
+		enemy=clone(where.p1);
+		myBuho=-1;
+	}
+	var thisLocation=where.pLocation[i][j]*myBuho;
+	var type_, who_;
+	var targetNo=abs(thisLocation)-1;
+	var queueLastType=where.motionQueue[where.motionQueue.length-1].type;
+	
+	//hit or heal
+	if(thisLocation<0)
+	{
+		type_="damage";
+		who_=enemy[targetNo];
+	}
+	else if(thisLocation>0&&thisLocation-1!=this.arrNo)
+	{
+		type_="heal";
+		who_=ally[targetNo];
+	}
+	
+	//push motionQueue
+	if(queueLastType=="hit")
+	{
+		where.motionQueue[where.motionQueue.length-1].result.push({
+			who:who_, stat:type_
+		});
+	}
+	else
+	{
+		where.motionQueue.push({
+			type:"hit",
+			result:[{who:who_, stat:type_}]
+		});
 	}
 }
 CHARACTER_INGAME.prototype.attackMotion=function()
