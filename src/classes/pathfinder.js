@@ -2,7 +2,7 @@ function PATHFINDER()
 {
 	this.goal=null;
 }
-this.prototype.pathfind(where, start, goal)
+this.prototype.pathfind=function(where, start, goal)
 {
 	var open=new BinaryHeap(function(x){return x.f;});
 	var close=[];
