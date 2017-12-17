@@ -267,6 +267,7 @@ INGAME.prototype.motion=function()
 	}
 	else
 	{
+		screenControl.setScreen();
 		threshMap=thisMotion.result[0].thresh.slice();
 		console.log(threshMap);
 		for(i=0;i<thisMotion.result.length;i++)
@@ -296,7 +297,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 	var i, who_;
 	var r,c;
 	var datum_=thisMotion.result.slice();
-	var threshMap=datum_[0].threshMap;
+	var threshMap=datum_[0].thresh;
 	for(i=0;i<datum_.length;i++)
 	{
 		who_=datum_[i].who;
