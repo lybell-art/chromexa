@@ -254,6 +254,7 @@ INGAME.prototype.motion=function()
 	var who_;
 	var i;
 	var isPros=false;
+	var threshMap=thisMotion.result.threshMap.slice();
 	for(i=0;i<thisMotion.result.length;i++)
 	{
 		who_=thisMotion.result[i].who;
@@ -266,8 +267,18 @@ INGAME.prototype.motion=function()
 	}
 	else
 	{
+		for(i=0;i<thisMotion.result.length;i++)
+		{
+			for(var r=0;r<threshMap.length;r++)
+			{
+				for(var c=0;c<threshMap[r].length;c++)
+				{
+					threshMap[r][c]=threshMap[r][c]||datum_.thresh[r][c];
+				}
+			}
+		}
 		this.layer2();
-		this.layer3(thresh);
+		this.layer3(threshMap);
 	}
 	console.log(isPros);
 	if(!isPros)
@@ -282,7 +293,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 {
 	var i, who_;
 	var r,c;
-	var datum_=thisMotion.result;
+	var datum_=thisMotion.result.slice();
 	var threshMap=datum_[0].threshMap;
 	for(i=0;i<datum_.length;i++)
 	{
