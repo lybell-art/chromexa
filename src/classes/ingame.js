@@ -476,6 +476,7 @@ INGAME.prototype.layer3=function(thresh)
 		for(var j=0;j<this.field.Columns;j++)
 		{
 			if(!thresh[i][j]) this.field.cells[i][j].draw();
+			else this.field.cells[i][j].drawUpper();
 		}
 	}
 }
