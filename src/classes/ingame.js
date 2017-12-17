@@ -228,6 +228,11 @@ INGAME.prototype.enemyAI=function()
 	}
 	this.syncMotion(moveSync);
 }
+INGAME.prototype.interface=function()
+{
+	resetMatrix();
+	UI.ingame_banner();
+}
 INGAME.prototype.draw=function()
 {
 	/**
@@ -245,7 +250,7 @@ INGAME.prototype.draw=function()
 	{
 		if(chara.isLive) chara.draw();
 	}
-//	this.interface.draw();
+	this.interface();
 }
 INGAME.prototype.playerTurn=function()
 {
@@ -338,6 +343,7 @@ INGAME.prototype.motion=function()
 		{
 			if(chara.isLive) chara.draw();
 		}
+		this.interface();
 	}
 	// 모션이 끝난 후, 캐릭터의 상태를 변경시키고 큐를 한 칸 뽑아낸다.
 	if(!isPros)
