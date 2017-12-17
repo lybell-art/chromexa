@@ -249,11 +249,6 @@ INGAME.prototype.charaSelect=function(coord)
 //--------------------------------------------------------motion method---------------------------------------------------------------//
 INGAME.prototype.motion=function()
 {
-	for(var p=0;p<this.motionQueue.length;p++)
-	{
-		console.log(this.motionQueue[p]);
-	}
-	console.log(this.motionQueue[0]);
 	var thisMotion=this.motionQueue[0];
 	var who_;
 	var i;
