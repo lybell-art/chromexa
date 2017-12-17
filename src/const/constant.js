@@ -1,8 +1,12 @@
 //color constant
 const _RED="#f96e64";
 const _BLUE="#2196f3";
+const _ORENGE="#ffa766";
+const _YELLOW="#ffe966";
+const _GREEN="#52dd69";
+const _PURPLE="#cc66ff";
 const _WHITE="#ecf0f1";
-const _DARK_WHITE="#8dc3c7";
+const _DARK_WHITE="#bdc3c7";
 const _BLACK="#262626";
 
 //ingame signal constant
