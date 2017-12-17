@@ -1,14 +1,9 @@
 function RESOURCE_BOX()
 {
 	this.map=[];
-	this.cellImage=null;
-	this.cellPlus=[];
-}
-RESOURCE_BOX.prototype.loadMap=function()
-{
-}
-RESOURCE_BOX.prototype.loadImage=function()
-{
+	this.font=[];
+//	this.cellImage=null;
+//	this.cellPlus=[];
 }
 
 function MAP_DATA()
