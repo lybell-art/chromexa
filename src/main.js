@@ -93,3 +93,7 @@ function mouseWheel(event)
 	var newZoom=screenControl.zoom+0.001*event.delta;
 	if(sceneNo%10==1 || sceneNo==31) screenControl.scale(newZoom,mouseX,mouseY);
 }
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+	screenControl.setBound(0,min(width,height)/6.5,width,height-min(width,height)/6.5);
+}
