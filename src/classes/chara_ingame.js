@@ -59,8 +59,6 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			type:"move",
 			result:[{who:this, pCoord:cur, newCoord:trace[i].index.copy()}]
 		});
-		console.log(this.arrNo, trace[i].index, where.pLocation[trace[i].index.row][trace[i].index.col]);
-		console.log(where.whosTurn);
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
 			this.attack(where, trace[i].index.copy());
@@ -85,13 +83,14 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 }
 CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 {
-	console.log(where, myCoord);
 	var cells=where.field.cells;
 	var Rows=where.field.Rows;
 	var Columns=where.field.Columns;
 	var i,j;
 	var threshMap=[];
-	var queueLastType=where.motionQueue[where.motionQueue.length-1].type;
+	var queueLastType;
+	if(where.motionQueue.length==0) queueLastType="NONE";
+	else queueLastType=where.motionQueue[where.motionQueue.length-1].type;
 	for(i=0;i<Rows;i++)
 	{
 		threshMap[i]=[];
