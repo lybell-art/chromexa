@@ -19,7 +19,7 @@ PATHFINDER.prototype.find=function(where, start, goal)
 			res=this.setPath(current);
 			return res;
 		}
-		if(close.indexOf(current)==-1) continue;
+		if(close.indexOf(current)!=-1) continue;
 		close.push(current);
 		for(var i=0;i<6;i++)
 		{
