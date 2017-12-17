@@ -113,7 +113,7 @@ CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 			}
 		}
 	}
-	console.log(where.motionQueue, where.motionQueue.length-1);
+	console.log(where.motionQueue[where.motionQueue.length-1]);
 	if(queueLastType=="attack")
 	{
 		where.motionQueue[where.motionQueue.length-1].result.push({who:this, thresh:threshMap});
