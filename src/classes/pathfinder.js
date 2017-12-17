@@ -19,8 +19,8 @@ PATHFINDER.prototype.find=function(where, start, goal)
 			res=this.setPath(current);
 			return res;
 		}
-		close.push(current);
 		if(close.indexOf(current)) continue;
+		close.push(current);
 		for(var i=0;i<6;i++)
 		{
 			child=this.childCur_detect(where, current, i);
