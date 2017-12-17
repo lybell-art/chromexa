@@ -173,6 +173,9 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 CHARACTER_INGAME.prototype.attackMotion=function()
 {
 	var r=this.frame*this.frame*10;
+	if(this.who==1) fill(_BLUE);
+	else fill(_RED);
+	noStroke();
 	ellipse(this.x,this.y,r,r);
 	this.frame++;
 	if(this.frame>=15)
