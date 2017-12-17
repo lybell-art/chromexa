@@ -219,10 +219,10 @@ INGAME.prototype.enemyAI=function()
 	{
 		chara.move(this);
 	}
-	for(chara of this.p2)
+/*	for(chara of this.p2)
 	{
 		chara.attack(this, this.coord);
-	}
+	}*/
 }
 INGAME.prototype.draw=function()
 {
