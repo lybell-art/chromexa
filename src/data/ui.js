@@ -41,8 +41,8 @@ const UI={
 		}
 		endShape(CLOSE);
 		//inner hexagon
-		v.normalize();
-		v.mult(-H*2/3*4/5);
+		v=createVector(0,-1);
+		v.mult(H*2/3*4/5);
 		v2.mult(H*2/3*4/5);
 		noFill();
 		strokeCap(ROUND);
