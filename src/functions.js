@@ -41,8 +41,8 @@ function detectCell(kind)
 }
 
 function clone(obj) {
-	if (obj === null || typeof(obj) !== 'object')
-	return obj;
+	console.log(obj);
+	if (obj === null || typeof(obj) !== 'object') return obj;
 	var copy = obj.constructor();
 	for (var attr in obj) {
 		if (obj.hasOwnProperty(attr)) {
