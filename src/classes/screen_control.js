@@ -89,9 +89,9 @@ SCREEN_CONTROL.prototype.limit=function()
 	var wLimit=this.screenX+this.screenWidth-this.w*this.zoom;
 	var hLimit=this.screenY+this.screenHeight-this.h*this.zoom;
 	if(wLimit<this.screenX) this.ox=constrain(this.ox,wLimit,this.screenX);
-	else this.ox=wLimit/2;
+	else this.ox=(this.screenX+wLimit)/2;
 	if(hLimit<this.screenY) this.oy=constrain(this.oy,hLimit,this.screenY);
-	else this.oy=hLimit/2;
+	else this.oy=(this.screenY+hLimit)/2;
 }
 /**
  *
