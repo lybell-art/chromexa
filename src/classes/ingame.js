@@ -322,6 +322,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 			case "hit":
 				if(datum_.stat=="damage") who_.hit();
 				else who_.heal();
+				console.log(who_);
 				break;
 		}
 	}
