@@ -15,6 +15,9 @@ function INGAME()
 	 * @var {int} stage		현재 레벨의 작은 스테이지 번호
 	 * @var {FIELD} field		맵 필드
 	 * @var {array|COORD} pLocation	플레이어와 적의 위치
+	 * @var {OBJECT} P1area		플레이어/1p의 허브와 필러의 위치
+	 * @var {OBJECT} P2area		적/2p의 허브와 필러의 위치
+	 * @var {OBJECT} Nuarea		점령되지 않은 필러의 위치
 	 * @var {PLAYER} p1		플레이어/1p
 	 * @var {PLAYER/ENEMY} p2	적/2p
 	 * @var {int} whosTurn		1p 턴:1, 2p 턴:2
@@ -26,6 +29,8 @@ function INGAME()
 	this.world=1, this.stage=1;
 	this.field=null;
 	this.pLocation=[];
+	this.P1area={hub:null, filler:[]}, this.P2area={hub:null, filler:[]};
+	this.Nuarea={filler:[]};
 	this.p1=null, this.p2=null;
 	this.whosTurn=1;
 	this.currentP=-1;
@@ -53,17 +58,35 @@ INGAME.prototype.setup=function()
 		for(var j=0;j<this.field.Columns;j++)
 		{
 			this.pLocation[i][j]=0;
+			if(this.field.cells[i][j].kind==3)
+			{
+				if(this.field.cells[i][j].who==1) this.P1area.hub=new COORD(i,j);
+				else  this.P2area.hub=new COORD(i,j);
+			}
+			else if(this.field.cells[i][j].kind==4)
+			{
+				if(this.field.cells[i][j].who==1) this.P1area.filler.push(new COORD(i,j));
+				else if(this.field.cells[i][j].who==2)  this.P2area.filler.push(new COORD(i,j));
+				else this.Nuarea.filler.push(new COORD(i,j));
+			}
 		}
 	}
 	this.p1=this.playerCreate();
 	if(this.world==_MULTIPLAY) this.p2=this.playerCreate();
-	else this.p2=this.enemyCreate(mapData);
+	else
+	{
+		this.p2=this.enemyCreate(mapData);
+		for(var no=0;no<this.p2.length;no++)
+		{
+			this.p2.setPath(this,this.P1area.hub);
+		}
+	}
 	//reset other properties
 	this.motionQueue=[];
-	this.whosTurn=1;
+	this.whosTurn=2;
 	this.currentP=-1;
 	screenControl.set(this.field.w,this.field.h);
-	sceneNo=11;
+	sceneNo=13;
 }
 INGAME.prototype.playerCreate=function()
 {
@@ -186,6 +209,21 @@ INGAME.prototype.inputInterface=function()
 		}
 	}
 }
+INGAME.prototype.enemyAI=function()
+{
+	/**
+	 * 적(AI)의 움직임을 제어한다.
+	 */
+	var chara;
+	for(chara of this.p2)
+	{
+		chara.move(this);
+	}
+	for(chara of this.p2)
+	{
+		chara.attack(this, this.coord);
+	}
+}
 INGAME.prototype.draw=function()
 {
 	/**
@@ -249,11 +287,15 @@ INGAME.prototype.charaSelect=function(coord)
 //--------------------------------------------------------motion method---------------------------------------------------------------//
 INGAME.prototype.motion=function()
 {
+	/**
+	 * 모션 큐에 따라 캐릭터를 움직인다.
+	 */
 	var thisMotion=this.motionQueue[0];
 	var who_;
 	var i;
 	var isPros=false;
 	var threshMap;
+	// 캐릭터의 모션을 제어한다.
 	if(thisMotion.type=="attack") screenControl.setScreen();
 	for(i=0;i<thisMotion.result.length;i++)
 	{
@@ -261,6 +303,7 @@ INGAME.prototype.motion=function()
 		if(thisMotion.type=="move") isPros=who_.moveMotion(thisMotion.result[i].newCoord);
 		else if(thisMotion.type=="attack") isPros=who_.attackMotion();
 	}
+	// 실제 화면을 출력한다.
 	if(thisMotion.type!="attack")
 	{
 		this.draw();
@@ -290,6 +333,7 @@ INGAME.prototype.motion=function()
 			if(chara.isLive) chara.draw();
 		}
 	}
+	// 모션이 끝난 후, 캐릭터의 상태를 변경시키고 큐를 한 칸 뽑아낸다.
 	if(!isPros)
 	{
 		this.motionEnd(thisMotion);
@@ -299,6 +343,13 @@ INGAME.prototype.motion=function()
 }
 INGAME.prototype.motionEnd=function(thisMotion)
 {
+	/**
+	 *
+	 * 모션이 끝난 후, 캐릭터의 상태를 변경시킨다.
+	 *
+	 * param {thisMotion}	현재 제어 중인 모션
+	 *
+	 */
 	var i, who_;
 	var r,c;
 	var datum_=thisMotion.result.slice();
@@ -308,12 +359,12 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		who_=datum_[i].who;
 		switch(thisMotion.type)
 		{
-			case "move":
+			case "move":	//캐릭터의 위치와 배열상의 위치를 변경시킨다.
 				who_.coord=datum_[i].newCoord.copy();
 				this.pLocation[datum_[i].pCoord.row][datum_[i].pCoord.col]=0;
 				this.pLocation[datum_[i].newCoord.row][datum_[i].newCoord.col]=(who_.arrNo+1)*(who_.who==1?1:-1);
 				break;
-			case "attack":
+			case "attack":	//최종적으로 칠해질 맵의 배열을 정한다.
 				for(r=0;r<threshMap.length;r++)
 				{
 					for(c=0;c<threshMap[r].length;c++)
@@ -322,12 +373,13 @@ INGAME.prototype.motionEnd=function(thisMotion)
 					}
 				}
 				break;
-			case "hit":
+			case "hit":	//플레이어의 CP 등을 변경시킨다.
 				if(datum_[i].stat=="damage") who_.hit();
 				else who_.heal();
 				break;
 		}
 	}
+	//공격 시 필드를 공격자의 색으로 채운다.
 	if(thisMotion.type=="attack")
 	{
 		for(r=0;r<threshMap.length;r++)
