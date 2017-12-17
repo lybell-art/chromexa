@@ -360,7 +360,7 @@ INGAME.prototype.layer2=function()
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r);
 				endContour();
 			}
-			else
+			else if(cells[i][j].kind!=0)
 			{
 				beginContour();
 				roundedHexagonRaw(cells[i][j].x,cells[i][j].y,cells[i][j].r-1.25);
