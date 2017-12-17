@@ -348,17 +348,10 @@ INGAME.prototype.layer2=function()
 	fill(255);
 	noStroke();
 	beginShape();
-	(function() {
-		var p=max(field.w,field.h);
-		vertex((field.w-p)/2,(field.h-p)/2);
-		vertex((field.w-p)/2,(field.h+p)/2);
-		vertex((field.w+p)/2,(field.h+p)/2);
-		vertex((field.w+p)/2,(field.h-p)/2);
-	}());
-//	vertex(0,0);
-//	vertex(0,field.h);
-//	vertex(field.w,field.h);
-//	vertex(field.w,0);
+	vertex(-900,-900);
+	vertex(-900,field.h+900);
+	vertex(field.w+900,field.h+900);
+	vertex(field.w+900,-900);
 	for(var i=0;i<field.Rows;i++)
 	{
 		for(var j=0;j<field.Columns;j++)
