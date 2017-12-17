@@ -261,9 +261,15 @@ function ENEMY(row, col, indexNo,arrNo)
 	this.sprite=charaProto[indexNo].sprite;
 	this.attackMap=charaProto[indexNo].attackMap.slice();
 	this.attackRadius=charaProto[indexNo].attackRadius;
+	this.path=[];
 }
 ENEMY.prototype=new CHARACTER_INGAME();
 ENEMY.prototype.constructor=ENEMY;
+ENEMY.prototype.setPath=function(where, goal)
+{
+	var pathfinder=new PATHFINDER();
+	this.path=pathfinder.find(where, goal);
+}
 ENEMY.prototype.hit=function()
 {
 	this.death();
