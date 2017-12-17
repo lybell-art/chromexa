@@ -1,6 +1,6 @@
 const cellImage=
 {
-	0:function()
+	0:function(who, x, y)
 	{
 		//nothing
 	}
@@ -62,7 +62,7 @@ const cellImage=
 		endShape(CLOSE);
 		line(x,y-16,x,y+15);
 	}
-	5:function(x, y)
+	5:function(who, x, y)
 	{
 		noStroke();
 		var v1=createVector(30,0);
