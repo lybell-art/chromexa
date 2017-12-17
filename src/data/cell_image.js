@@ -27,19 +27,6 @@ const cellImage=
 		fill(col);
 		noStroke();
 		roundedHexagon(x,y,40);
-		noFill();
-		stroke(255);
-		strokeCap(ROUND);
-		strokeJoin(ROUND);
-		var v1=createVector(25,0);
-		var v2=p5.Vector.fromAngle(radians(60));
-		v2.mult(25);
-		for(var i=0;i<6;i++)
-		{
-			triangle(x, y, x+v1.x, y+v1.y, x+v2.x, y+v2.y);
-			v1.rotate(PI/3);
-			v2.rotate(PI/3);
-		}
 	},
 	4:function(who, x, y)
 	{
@@ -47,20 +34,6 @@ const cellImage=
 		fill(col);
 		noStroke();
 		roundedHexagon(x,y,30);
-		noFill();
-		stroke(255);
-		strokeCap(ROUND);
-		strokeJoin(ROUND);
-		beginShape();
-		vertex(x,y-16);
-		vertex(x-9,y-4);
-		vertex(x-9,y+13.5);
-		vertex(x-5,y+15);
-		vertex(x+5,y+15);
-		vertex(x+9,y+13.5);
-		vertex(x+9,y-4);
-		endShape(CLOSE);
-		line(x,y-16,x,y+15);
 	},
 	5:function(who, x, y)
 	{
@@ -101,5 +74,43 @@ const cellImage=
 			case 0:return _WHITE; break;
 			default:return _DARK_WHITE;
 		}
+	}
+}
+const cellUpper=
+{
+	3:function(who, x, y)
+	{
+		noFill();
+		stroke(255);
+		strokeCap(ROUND);
+		strokeJoin(ROUND);
+		strokeWeight(2.5);
+		var v1=createVector(25,0);
+		var v2=p5.Vector.fromAngle(radians(60));
+		v2.mult(25);
+		for(var i=0;i<6;i++)
+		{
+			triangle(x, y, x+v1.x, y+v1.y, x+v2.x, y+v2.y);
+			v1.rotate(PI/3);
+			v2.rotate(PI/3);
+		}
+	},
+	4:function(who, x, y)
+	{
+		noFill();
+		stroke(255);
+		strokeCap(ROUND);
+		strokeJoin(ROUND);
+		strokeWeight(2.5);
+		beginShape();
+		vertex(x,y-16);
+		vertex(x-9,y-4);
+		vertex(x-9,y+13.5);
+		vertex(x-5,y+15);
+		vertex(x+5,y+15);
+		vertex(x+9,y+13.5);
+		vertex(x+9,y-4);
+		endShape(CLOSE);
+		line(x,y-16,x,y+15);
 	}
 }
