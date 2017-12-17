@@ -18,6 +18,8 @@ CHARACTER_INGAME.prototype.draw=function()
 CHARACTER_INGAME.prototype.move=function(where, target)
 {
 	// 선언부
+	console.log(where);
+	console.log(where.field.cells);
 	var dir=hexCell_isLine(this.coord,target);
 	var dist=hexCell_dist(this.coord,target);
 	var cur=this.coord.copy();
