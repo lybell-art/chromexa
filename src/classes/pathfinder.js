@@ -42,6 +42,10 @@ PATHFINDER.prototype.childCur_detect=function(where, current, dir)
 	for(var j=1;j<4;j++)
 	{
 		childCur=hexCell_trans(current.pos,dir,j);
+		if(childCur.row<0||childCur.row>=where.field.Rows||childCur.col<0||childCur.col>where.field.Columns)
+		{
+			return null;
+		}
 		thisCellStatus=where.field.cells[childCur.row][childCur.col].kind;
 		if([0,5].indexOf(thisCellStatus)!=-1) return null;
 		else if([1,3,4].indexOf(thisCellStatus)!=-1) break;
