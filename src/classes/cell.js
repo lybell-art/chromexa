@@ -44,33 +44,7 @@ function CELL(i,j,kind,who)
  */
 CELL.prototype.draw=function()
 {
-	var col;
-	var isMoveable;
-	switch(this.who)
-	{
-		case 1:col=_BLUE; break;
-		case 2:col=_RED; break;
-		case 0:col=_WHITE; break;
-		default:col=_DARK_WHITE;
-	}
-	isMoveable=detectCell(this.kind)!=0;
-	if(isMoveable)
-	{
-		fill(col);
-		noStroke();
-	}
-	else if(this.kind==0)
-	{
-		fill(255);
-		noStroke();
-	}
-	else
-	{
-		strokeWeight(2.5);
-		fill(255);
-		stroke(col);
-	}
-	roundedHexagon(this.x,this.y,this.r);
+	cellImage[i](this.who,this.x,this.y);
 }
 /**
  *
