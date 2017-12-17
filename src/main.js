@@ -56,7 +56,8 @@ function sceneExecute()
 		case 11:ingame.playerTurn(); break;
 		case 12:ingame.motion(); break;
 //		case 12:ingame.playerTurn_motion(); break;
-//		case 13:ingame.enemyTurn(); break;
+		case 13:ingame.enemyTurn(); break;
+		case 14:ingame.motion(); break;
 //		case 14:ingame.enemyTurn_motion(); break;
 //		case 15:ingame.result(); break;
 //		case 20:manageChara.setup(); break;
