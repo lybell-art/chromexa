@@ -45,6 +45,11 @@ function CELL(i,j,kind,who)
 CELL.prototype.draw=function()
 {
 	cellImage[this.kind](this.who,this.x,this.y);
+	cellUpper[this.kind](this.who,this.x,this.y);
+}
+CELL.prototype.drawUpper=function()
+{
+	cellUpper[this.kind](this.who,this.x,this.y);
 }
 /**
  *
