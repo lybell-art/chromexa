@@ -60,6 +60,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			result:[{who:this, pCoord:cur, newCoord:trace[i].index.copy()}]
 		});
 		console.log(this.arrNo, trace[i].index, where.pLocation[trace[i].index.row][trace[i].index.col]);
+		console.log(myBuho);
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
 			this.attack(where, trace[i].index.copy());
