@@ -27,7 +27,7 @@ function SCREEN_CONTROL(w,h)
 	this.screenX=0;
 	this.screenY=0;
 	this.screenWidth=width;
-	tihs.screenHeight=height;
+	this.screenHeight=height;
 }
 SCREEN_CONTROL.prototype.set=function(w,h)
 {
