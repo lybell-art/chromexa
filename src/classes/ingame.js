@@ -249,7 +249,11 @@ INGAME.prototype.charaSelect=function(coord)
 //--------------------------------------------------------motion method---------------------------------------------------------------//
 INGAME.prototype.motion=function()
 {
-	console.log(this.motionQueue);
+	for(var p=0;p<this.motionQueue.length;p++)
+	{
+		console.log(this.motionQueue[i]);
+	}
+	console.log(this.motionQueue[0]);
 	var thisMotion=this.motionQueue[0];
 	var who_;
 	var i;
@@ -268,8 +272,8 @@ INGAME.prototype.motion=function()
 	else
 	{
 		screenControl.setScreen();
+		console.log(screenControl);
 		threshMap=thisMotion.result[0].thresh.slice();
-		console.log(threshMap);
 		for(i=0;i<thisMotion.result.length;i++)
 		{
 			for(var r=0;r<threshMap.length;r++)
