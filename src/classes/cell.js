@@ -59,13 +59,18 @@ CELL.prototype.draw=function()
 		fill(col);
 		noStroke();
 	}
+	else if(this.kind==0)
+	{
+		fill(255);
+		noStroke();
+	}
 	else
 	{
 		strokeWeight(2.5);
 		fill(255);
 		stroke(col);
 	}
-	if(this.kind!=0) roundedHexagon(this.x,this.y,this.r);
+	roundedHexagon(this.x,this.y,this.r);
 }
 /**
  *
