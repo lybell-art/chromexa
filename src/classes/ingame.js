@@ -263,6 +263,7 @@ INGAME.prototype.enemyTurn=function()
 		if(inputBroadcast.isMousePress) this.inputInterface();
 		this.enemyAI();
 		this.draw();
+		console.log(this.motionQueue);
 		if(this.motionQueue.length>0) sceneNo++;
 	}
 }
@@ -291,7 +292,6 @@ INGAME.prototype.motion=function()
 	/**
 	 * 모션 큐에 따라 캐릭터를 움직인다.
 	 */
-	console.log(this.motionQueue);
 	var thisMotion=this.motionQueue[0];
 	var who_;
 	var i;
