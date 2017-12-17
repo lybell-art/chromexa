@@ -4,18 +4,19 @@ function PATHFINDER()
 }
 this.prototype.pathfind(where, start, goal)
 {
-	var values;
 	var open=new BinaryHeap(function(x){return x.f;});
 	var close=[];
 	var current, child;
 	var values;
+	var res=[];
 	open.push({pos:start, g:0, f:0, parent:null});
 	while(open.size()>0)
 	{
 		current=open.pop();
 		if(goal.isSame(current.pos))
 		{
-			return this.setPath(current);
+			res=this.setPath(current);
+			return res;
 		}
 		close.push(current);
 		if(close.indexOf(current)) continue;
@@ -31,6 +32,7 @@ this.prototype.pathfind(where, start, goal)
 			}
 		}
 	}
+	return [];
 }
 PATHFINDER.prototype.childCur_detect=function(where, current, dir)
 {
