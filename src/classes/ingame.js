@@ -78,7 +78,7 @@ INGAME.prototype.setup=function()
 		this.p2=this.enemyCreate(mapData);
 		for(var no=0;no<this.p2.length;no++)
 		{
-			this.p2.setPath(this,this.P1area.hub);
+			this.p2[no].setPath(this,this.P1area.hub);
 		}
 	}
 	//reset other properties
