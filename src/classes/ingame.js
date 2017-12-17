@@ -372,7 +372,7 @@ INGAME.prototype.layer3=function(thresh)
 	{
 		for(var j=0;j<this.field.Columns;j++)
 		{
-			if(!thresh) this.field.cells[i][j].draw();
+			if(!thresh[i][j]) this.field.cells[i][j].draw();
 		}
 	}
 }
