@@ -39,7 +39,7 @@ FIELD.prototype.makeField=function(mapData)
 	this.Columns=mapData.column;
 	this.w=45*(1.5*this.Columns+0.5);
 	this.h=45*cos(PI/6)*(2*this.Rows+1);
-	console.log(mapData);
+	console.log(mapData_kind[0][0], mapData_who[0][0]);
 	for(var i=0;i<this.Rows;i++)
 	{
 		this.cells[i]=[];
