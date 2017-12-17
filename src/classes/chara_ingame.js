@@ -65,6 +65,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		}
 		cur=trace[i].index.copy();
 	}
+	return true;
 }
 CHARACTER_INGAME.prototype.moveMotion=function(target)
 {
@@ -262,6 +263,7 @@ function ENEMY(row, col, indexNo,arrNo)
 	this.attackMap=charaProto[indexNo].attackMap.slice();
 	this.attackRadius=charaProto[indexNo].attackRadius;
 	this.path=[];
+	this.pathOrder=0;
 }
 ENEMY.prototype=new CHARACTER_INGAME();
 ENEMY.prototype.constructor=ENEMY;
@@ -269,6 +271,14 @@ ENEMY.prototype.setPath=function(where, goal)
 {
 	var pathfinder=new PATHFINDER();
 	this.path=pathfinder.find(where, this.coord.copy(),goal);
+	this.pathOrder=0;
+}
+ENEMY.prototype.move=function(where)
+{
+	var isSuccess;
+	isSuccess=CHARACTER_INGAME.prototype.move.call(this, where, this.path[this.pathOrder]);
+	if(isSuccess) this.pathOrder++;
+	else this.setPath(where, where.P1area.hub);
 }
 ENEMY.prototype.hit=function()
 {
