@@ -275,7 +275,7 @@ INGAME.prototype.motion=function()
 			{
 				for(var c=0;c<threshMap[r].length;c++)
 				{
-					threshMap[r][c]=threshMap[r][c]||datum_.thresh[r][c];
+					threshMap[r][c]=threshMap[r][c]||thisMotion.result[i].thresh[r][c];
 				}
 			}
 		}
