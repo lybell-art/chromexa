@@ -416,18 +416,10 @@ INGAME.prototype.syncMotion=function(bar)
 	{
 		if(this.motionQueue[i].type=="move")
 		{
-			if(temp!=this.motionQueue[i].result[0].who)
-			{
-				a=0;
-				if(moveMotions.length==0) moveMotions.push([]);
-				moveMotions[0].push(this.motionQueue[i].result);
-			}
-			else
-			{
-				a++;
-				if(moveMotions.length<=a) moveMotions.push([]);
-				moveMotions[a].push(this.motionQueue[i].result);
-			}
+			if(temp!=this.motionQueue[i].result[0].who) a=0;
+			else a++;
+			if(moveMotions.length<=a) moveMotions.push([]);
+			arrayLink(moveMotions[0],this.motionQueue[i].result);
 			temp=this.motionQueue[i].result[0].who;
 		}
 		else if(this.motionQueue[i].type=="attack") arrayLink(attackMotions, this.motionQueue[i].result);
