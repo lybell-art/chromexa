@@ -104,7 +104,7 @@ CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 		for(j=0;j<11;j++)
 		{
 			console.log(cRow(i,j),cCol(j));
-			if(cRow(i,j)<0||cRow(i,j)>=map.Rows||cCol(j)<0||cCol(j)>=map.Columns) continue;
+			if(cRow(i,j)<0||cRow(i,j)>=Rows||cCol(j)<0||cCol(j)>=Columns) continue;
 			if(this.attackMap[i][j]&&cells[cRow(i,j)][cCol(j)].who!=-1)
 			{
 				threshMap[cRow(i,j)][cCol(j)]=true;
