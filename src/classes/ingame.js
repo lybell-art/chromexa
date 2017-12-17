@@ -313,7 +313,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 				{
 					for(c=0;c<threshMap[r].length;c++)
 					{
-						threshMap[r][c]=threshMap[r][c]||datum_.thresh[r][c];
+						threshMap[r][c]=threshMap[r][c]||datum_[i].thresh[r][c];
 					}
 				}
 				break;
