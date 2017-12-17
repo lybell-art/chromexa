@@ -155,7 +155,7 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 		type_="heal";
 		who_=ally[targetNo];
 	}
-	
+	else return 0;
 	//push motionQueue
 	if(queueLastType=="hit")
 	{
