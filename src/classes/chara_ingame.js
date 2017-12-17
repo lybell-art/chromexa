@@ -89,8 +89,6 @@ CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 	var i,j;
 	var threshMap=[];
 	var queueLastType;
-	if(where.motionQueue.length==0) queueLastType="NONE";
-	else queueLastType=where.motionQueue[where.motionQueue.length-1].type;
 	for(i=0;i<Rows;i++)
 	{
 		threshMap[i]=[];
@@ -113,7 +111,8 @@ CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 			}
 		}
 	}
-	console.log(where.motionQueue[where.motionQueue.length-1]);
+	if(where.motionQueue.length==0) queueLastType="NONE";
+	else queueLastType=where.motionQueue[where.motionQueue.length-1].type;
 	if(queueLastType=="attack")
 	{
 		where.motionQueue[where.motionQueue.length-1].result.push({who:this, thresh:threshMap});
