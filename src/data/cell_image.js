@@ -78,6 +78,9 @@ const cellImage=
 }
 const cellUpper=
 {
+	0:function(who, x, y){},
+	1:function(who, x, y){},
+	2:function(who, x, y){},
 	3:function(who, x, y)
 	{
 		noFill();
@@ -112,5 +115,6 @@ const cellUpper=
 		vertex(x+9,y-4);
 		endShape(CLOSE);
 		line(x,y-16,x,y+15);
-	}
+	},
+	5:function(who, x, y){}
 }
