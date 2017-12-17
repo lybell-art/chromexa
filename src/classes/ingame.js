@@ -268,6 +268,7 @@ INGAME.prototype.motion=function()
 	else
 	{
 		threshMap=thisMotion.result[0].thresh.slice();
+		console.log(threshMap);
 		for(i=0;i<thisMotion.result.length;i++)
 		{
 			for(var r=0;r<threshMap.length;r++)
