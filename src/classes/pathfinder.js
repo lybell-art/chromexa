@@ -73,6 +73,6 @@ PATHFINDER.prototype.setPath=function(node)
 	var path=[node.pos];
 	var res;
 	if(node.parent==null) return path;
-	res=path.concat(setPath(node.parent));
+	res=path.concat(this.setPath(node.parent));
 	return res;
 }
