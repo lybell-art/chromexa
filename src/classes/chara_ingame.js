@@ -24,19 +24,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var isRotated=false;
 	var trace=[];
 	var map=where.field.cells;
-	var ally, enemy, myBuho;
-	if(where.whosTurn==1) 
-	{
-		ally=clone(where.p1);
-		enemy=clone(where.p2);
-		myBuho=1;
-	}
-	else
-	{
-		ally=clone(where.p2);
-		enemy=clone(where.p1);
-		myBuho=-1;
-	}
+	var myBuho=(where.whosTurn?1,-1);
 	// 계산
 	var i=0;
 	while(!isRotated&&i<dist)
@@ -69,13 +57,13 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	{
 		where.motionQueue.push({
 			type:"move",
-			result:[{who:this, pCoord:cur, newCoord:trace[i].index}]
+			result:[{who:this, pCoord:cur, newCoord:trace[i].index.copy()}]
 		});
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
 			this.attack(where);
 		}
-		cur=trace[i].index;
+		cur=trace[i].index.copy();
 	}
 }
 CHARACTER_INGAME.prototype.moveMotion=function(target)
@@ -94,7 +82,7 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 }
 CHARACTER_INGAME.prototype.attack=function(where)
 {
-	var cells=clone(where.field.cells);
+	var cells=where.field.cells;
 	var myCoord=this.coord.copy();
 	var Rows=where.field.Rows;
 	var Columns=where.field.Columns;
