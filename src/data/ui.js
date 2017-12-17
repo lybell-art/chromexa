@@ -23,7 +23,7 @@ const UI={
 	{
 		var base=min(width,height);
 		var H=base/6.5;
-		var v=createVector(0,1);
+		var v=createVector(1,0);
 		var v2=p5.Vector.fromAngle(radians(-120));
 		var pos=createVector(width/2,H*2/3*cos(PI/6));
 		var edge=createVector();
@@ -41,7 +41,7 @@ const UI={
 		}
 		endShape(CLOSE);
 		//inner hexagon
-		v=createVector(0,-1);
+		v=createVector(-1,0);
 		v.mult(H*2/3*4/5);
 		v2.mult(H*2/3*4/5);
 		noFill();
