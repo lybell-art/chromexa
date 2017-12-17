@@ -276,6 +276,7 @@ ENEMY.prototype.setPath=function(where, goal)
 ENEMY.prototype.move=function(where)
 {
 	var isSuccess;
+	console.log(where, this.path[this.pathOrder]);
 	isSuccess=CHARACTER_INGAME.prototype.move.call(this, where, this.path[this.pathOrder]);
 	if(isSuccess) this.pathOrder++;
 	else this.setPath(where, where.P1area.hub);
