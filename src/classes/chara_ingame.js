@@ -71,9 +71,9 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 	var O=createVector(this.coord.x(),this.coord.y());
 	var T=createVector(target.x(),target.y());
 	this.frame++;
-	this.x=lerp(O.x,T.x,this.frame/15);
-	this.y=lerp(O.y,T.y,this.frame/15);
-	if(this.frame>=15)
+	this.x=lerp(O.x,T.x,this.frame/12);
+	this.y=lerp(O.y,T.y,this.frame/12);
+	if(this.frame>=12)
 	{
 		this.frame=-1;
 		return false;
@@ -172,13 +172,13 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 }
 CHARACTER_INGAME.prototype.attackMotion=function()
 {
-	var r=(180*this.attackRadius/pow(15*3))*pow(this.frame-15,3)+180*this.attackRadius;
+	var r=(180*this.attackRadius/pow(12,3))*pow(this.frame-12,3)+180*this.attackRadius;
 	if(this.who==1) fill(_BLUE);
 	else fill(_RED);
 	noStroke();
 	ellipse(this.x,this.y,r,r);
 	this.frame++;
-	if(this.frame>=15)
+	if(this.frame>=12)
 	{
 		this.frame=-1;
 		return false;
