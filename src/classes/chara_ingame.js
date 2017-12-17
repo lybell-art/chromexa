@@ -263,7 +263,6 @@ function ENEMY(row, col, indexNo,arrNo)
 	this.attackMap=charaProto[indexNo].attackMap.slice();
 	this.attackRadius=charaProto[indexNo].attackRadius;
 	this.path=[];
-	this.pathOrder=0;
 }
 ENEMY.prototype=new CHARACTER_INGAME();
 ENEMY.prototype.constructor=ENEMY;
@@ -271,15 +270,18 @@ ENEMY.prototype.setPath=function(where, goal)
 {
 	var pathfinder=new PATHFINDER();
 	this.path=pathfinder.find(where, this.coord.copy(),goal);
-	this.pathOrder=0;
 }
 ENEMY.prototype.move=function(where)
 {
 	var isSuccess;
-	console.log(where, this.path[this.pathOrder]);
-	isSuccess=CHARACTER_INGAME.prototype.move.call(this, where, this.path[this.pathOrder]);
-	if(isSuccess) this.pathOrder++;
-	else this.setPath(where, where.P1area.hub);
+	var nextPath;
+	if(this.path.length!=0)
+	{
+		var nextPath=this.path.pop();
+		isSuccess=CHARACTER_INGAME.prototype.move.call(this, where, nextPath);
+	}
+	else isSuccess=false;
+	if(!isSuccess) this.setPath(where, where.P1area.hub);
 }
 ENEMY.prototype.hit=function()
 {
