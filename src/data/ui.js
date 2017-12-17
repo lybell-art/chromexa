@@ -19,7 +19,7 @@ const UI={
 		rect(width-H,0,H,H-R);
 		rect(width-H,0,H-R,H);
 	},
-	ingame_status:function(whosTurn, turns, cost)
+	ingame_banner2:function(whosTurn)
 	{
 		var base=min(width,height);
 		var H=base/6.5;
@@ -47,7 +47,7 @@ const UI={
 		noFill();
 		strokeCap(ROUND);
 		strokeJoin(ROUND);
-		strokeWeight(5);
+		strokeWeight(H/20);
 		for(i=0;i<6;i++)
 		{
 			switch(i)
@@ -81,5 +81,30 @@ const UI={
 		vertex(width/2+clamp,H*2/3*cos(PI/6));
 		vertex(width/2+(clamp-H*1/3),H*4/3*cos(PI/6));
 		endShape();
+	},
+	ingame_status:function(whosTurn, turns, cost)
+	{
+		var base=min(width,height);
+		var H=base/6.5;
+		var F=base/768;
+		var light=resourceBox.font[0];
+		var regular=resourceBox.font[1];
+		var medium=resourceBox.font[2];
+		if(whosTurn==1) fill(_BLUE);
+		else fill(_RED);
+		textAlign(CENTER);
+		textFont(light);
+		textSize(12*F);
+		text('TURN', width/2,0.42*H);
+		textFont(regular);
+		textSize(45*F);
+		text(turns, width/2,0.8*H);
+		fill(_BLACK);
+		textFont(light);
+		textSize(20*F);
+		text(turns, width/2-20*F,1.5*H);
+		textFont(medium);
+		textSize(30*F);
+		text(turns, width/2+37*F,1.55*H);
 	}
 }
