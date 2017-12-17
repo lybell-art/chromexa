@@ -419,7 +419,7 @@ INGAME.prototype.syncMotion=function()
 			case "bar":moveMotions=[];
 				attackMotions=[];
 				hitMotions=[];
-				arrayLink(sync, this.motionQueue);
+				arrayLink(sync, this.motionQueue.slice());
 				break;
 		}
 	}
