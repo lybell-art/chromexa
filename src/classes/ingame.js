@@ -215,14 +215,18 @@ INGAME.prototype.enemyAI=function()
 	 * 적(AI)의 움직임을 제어한다.
 	 */
 	var chara;
+	var moveSync=0;
 	for(chara of this.p2)
 	{
 		chara.move(this);
 	}
+	this.syncMotion(0);
+	moveSync=this.motionQueue.length;
 	for(chara of this.p2)
 	{
 		chara.attack(this, chara.coord);
 	}
+	this.syncMotion(moveSync);
 }
 INGAME.prototype.draw=function()
 {
@@ -230,7 +234,6 @@ INGAME.prototype.draw=function()
 	 * 현재 장면을 화면에 출력한다.
 	 */
 	var chara;
-	var moveSync=0;
 	background(255);
 	screenControl.setScreen();
 	this.field.draw();
@@ -238,13 +241,10 @@ INGAME.prototype.draw=function()
 	{
 		if(chara.isLive) chara.draw();
 	}
-	this.syncMotion(0);
-	moveSync=this.motionQueue.length;
 	for(chara of this.p2)
 	{
 		if(chara.isLive) chara.draw();
 	}
-	this.syncMotion(moveSync);
 //	this.interface.draw();
 }
 INGAME.prototype.playerTurn=function()
@@ -429,12 +429,8 @@ INGAME.prototype.syncMotion=function(bar)
 	{
 		sync.push({type:"move",result:moveMotions[p]});
 	}
-	console.log(sync);
-//	if(moveMotions.length!=0) sync.push({type:"move",result:moveMotions});
 	if(hitMotions.length!=0) sync.push({type:"hit",result:hitMotions});
-	console.log(sync);
 	if(attackMotions.length!=0) sync.push({type:"attack",result:attackMotions});
-	console.log(sync);
 	this.motionQueue=sync;
 }
 INGAME.prototype.layer2=function()
