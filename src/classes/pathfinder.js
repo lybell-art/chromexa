@@ -4,6 +4,7 @@ function PATHFINDER()
 }
 PATHFINDER.prototype.find=function(where, start, goal)
 {
+	this.goal=goal;
 	var open=new BinaryHeap(function(x){return x.f;});
 	var close=[];
 	var current, child;
