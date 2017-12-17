@@ -416,17 +416,17 @@ INGAME.prototype.syncMotion=function()
 			case "move":arrayLink(moveMotions, this.motionQueue[i].result); break;
 			case "attack":arrayLink(attackMotions, this.motionQueue[i].result); break;
 			case "hit":arrayLink(hitMotions, this.motionQueue[i].result); break;
-			case "bar":moveMotions=[];
+/*			case "bar":moveMotions=[];
 				attackMotions=[];
 				hitMotions=[];
 				arrayLink(sync, this.motionQueue.slice());
-				break;
+				break;*/
 		}
 	}
 	if(moveMotions.length!=0) sync.push({type:"move",result:moveMotions});
 	if(hitMotions.length!=0) sync.push({type:"hit",result:hitMotions});
 	if(attackMotions.length!=0) sync.push({type:"attack",result:hitMotions});
-	sync.push({type:"bar",result:[]});
+//	sync.push({type:"bar",result:[]});
 	this.motionQueue=sync;
 }
 INGAME.prototype.layer2=function()
