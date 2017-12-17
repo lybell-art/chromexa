@@ -24,7 +24,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var isRotated=false;
 	var trace=[];
 	var map=where.field.cells;
-	var myBuho=(where.whosTurn?1:-1);
+	var myBuho=(this.who==1?1:-1);
 	// 계산
 	var i=0;
 	while(!isRotated&&i<dist)
@@ -129,7 +129,7 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 {
 	var ally, enemy;
 	var myBuho;
-	if(where.whosTurn==1) 
+	if(this.who==1) 
 	{
 		ally=where.p1;
 		enemy=where.p2;
