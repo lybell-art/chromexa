@@ -85,6 +85,7 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 }
 CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 {
+	console.log(where, myCoord);
 	var cells=where.field.cells;
 	var Rows=where.field.Rows;
 	var Columns=where.field.Columns;
