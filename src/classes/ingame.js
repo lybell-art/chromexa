@@ -218,13 +218,11 @@ INGAME.prototype.enemyAI=function()
 	for(chara of this.p2)
 	{
 		chara.move(this);
-		console.log("1");
 	}
-	console.log(this.motionQueue);
-/*	for(chara of this.p2)
+	for(chara of this.p2)
 	{
 		chara.attack(this, chara.coord);
-	}*/
+	}
 }
 INGAME.prototype.draw=function()
 {
