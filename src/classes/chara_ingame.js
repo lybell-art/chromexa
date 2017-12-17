@@ -190,7 +190,10 @@ CHARACTER_INGAME.prototype.heal=function(){}
 CHARACTER_INGAME.prototype.death=function()
 {
 	this.isLive=false;
-	ingame.pLocation[this.coord.row][this.coord.col]=0;
+	if(abs(ingame.pLocation[this.coord.row][this.coord.col]-1)==this.arrNo)
+	{
+		ingame.pLocation[this.coord.row][this.coord.col]=0;
+	}
 }
 
 function PLAYER(row, col, boxNo, arrNo)
