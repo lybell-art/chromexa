@@ -263,6 +263,7 @@ INGAME.prototype.enemyTurn=function()
 		if(inputBroadcast.isMousePress) this.inputInterface();
 		this.enemyAI();
 		this.draw();
+		if(this.motionQueue.length>0) sceneNo++;
 	}
 }
 INGAME.prototype.charaSelect=function(coord)
