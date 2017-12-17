@@ -90,6 +90,7 @@ INGAME.prototype.setup=function()
 	this.moveCost=3+this.P1area.filler.length*2;
 	this.currentP=-1;
 	screenControl.set(this.field.w,this.field.h);
+	screenControl.setBound(0,min(width,height)/6.5,width,height-min(width,height)/6.5);
 	sceneNo=11;
 }
 INGAME.prototype.playerCreate=function()
