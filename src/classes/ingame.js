@@ -292,8 +292,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 			case "move":
 				who_.coord=datum_[i].newCoord.copy();
 				this.pLocation[datum_[i].pCoord.row][datum_[i].pCoord.col]=0;
-				this.pLocation[datum_[i].newCoord.row][datum_[i].newCoord.col]=	\
-					(who_.arrNo+1)*(who_.who==1?1:-1);
+				this.pLocation[datum_[i].newCoord.row][datum_[i].newCoord.col]=(who_.arrNo+1)*(who_.who==1?1:-1);
 				break;
 			case "attack":
 				for(r=0;r<threshMap.length;r++)
