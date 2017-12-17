@@ -24,6 +24,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var isRotated=false;
 	var trace=[];
 	var map=where.field.cells;
+	console.log(map);
 	var ally, enemy, myBuho;
 	if(where.whosTurn==1) 
 	{
