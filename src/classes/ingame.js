@@ -46,6 +46,7 @@ INGAME.prototype.setup=function()
 	var mapData=resourceBox.map[this.world][this.stage].copy();
 	this.field=new FIELD();
 	this.field.makeField(mapData);
+	console.log(this.field);
 	//create players
 	for(var i=0;i<this.field.Rows;i++)
 	{
