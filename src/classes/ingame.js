@@ -419,6 +419,7 @@ INGAME.prototype.syncMotion=function(bar)
 			if(temp!=this.motionQueue[i].result[0].who)
 			{
 				a=0;
+				if(moveMotions.length==0) moveMotions.push([]);
 				moveMotions[0].push(this.motionQueue[i].result);
 			}
 			else
