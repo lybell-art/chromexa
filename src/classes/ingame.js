@@ -260,7 +260,7 @@ INGAME.prototype.enemyTurn=function()
 	if(this.world==_MULTIPLAY) this.playerTurn();
 	else
 	{
-		if(inputBroadcast.isMousePress) this.inputEnemy();
+		if(inputBroadcast.isMousePress) this.inputInterface();
 		this.enemyAI();
 		this.draw();
 	}
