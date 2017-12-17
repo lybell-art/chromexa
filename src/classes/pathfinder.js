@@ -22,7 +22,7 @@ PATHFINDER.prototype.find=function(where, start, goal)
 		if(close.indexOf(current)) continue;
 		for(var i=0;i<6;i++)
 		{
-			child=this.childCur_detect(i);
+			child=this.childCur_detect(where, current, i);
 			if(child==null) continue;
 			if(this.isChildInClosed(child,close)) continue;
 			else
