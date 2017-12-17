@@ -221,7 +221,7 @@ INGAME.prototype.enemyAI=function()
 	}
 	for(chara of this.p2)
 	{
-		chara.attack(this, this.coord);
+		chara.attack(this, chara.coord);
 	}
 }
 INGAME.prototype.draw=function()
