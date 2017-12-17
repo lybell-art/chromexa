@@ -61,7 +61,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		});
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
-			this.attack(where);
+			this.attack(where, trace[i].index.copy());
 		}
 		cur=trace[i].index.copy();
 	}
@@ -80,10 +80,9 @@ CHARACTER_INGAME.prototype.moveMotion=function(target)
 	}
 	else return true;
 }
-CHARACTER_INGAME.prototype.attack=function(where)
+CHARACTER_INGAME.prototype.attack=function(where, myCoord)
 {
 	var cells=where.field.cells;
-	var myCoord=this.coord.copy();
 	var Rows=where.field.Rows;
 	var Columns=where.field.Columns;
 	var i,j;
