@@ -14,15 +14,15 @@ LOADING.prototype.loadData=function()
 		for(j=0;j<=6;j++)
 		{
 			resourceBox.map[i][j]=new MAP_DATA();
-			url="resource/"+i+"-"+j+".csv";
+			url="resource/map/"+i+"-"+j+".csv";
 			callback=this.inputMapClosure(this,i,j);
 			table=loadTable(url, "csv", "header", callback);
 			this.max++;
 		}
 	}
-	resourceBox.font[0]=loadFont("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf",function(){this.count++;});
-	resourceBox.font[1]=loadFont("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf",function(){this.count++;});
-	resourceBox.font[2]=loadFont("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf",function(){this.count++;});
+	resourceBox.font[0]=loadFont("resource/font/NotoSansCJKkr-DemiLight.otf",function(){this.count++;});
+	resourceBox.font[1]=loadFont("resource/font/NotoSansCJKkr-Regular.otf",function(){this.count++;});
+	resourceBox.font[2]=loadFont("resource/font/NotoSansCJKkr-Medium.otf",function(){this.count++;});
 	this.max+=3;
 }
 LOADING.prototype.execute=function()
