@@ -268,7 +268,7 @@ ENEMY.prototype.constructor=ENEMY;
 ENEMY.prototype.setPath=function(where, goal)
 {
 	var pathfinder=new PATHFINDER();
-	this.path=pathfinder.find(where, goal);
+	this.path=pathfinder.find(where, this.coord.copy(),goal);
 }
 ENEMY.prototype.hit=function()
 {
