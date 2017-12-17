@@ -24,14 +24,25 @@ function SCREEN_CONTROL(w,h)
 	this.ox=(width-w)/2;
 	this.oy=(height-h)/2;
 	this.zoom=1;
+	this.screenX=0;
+	this.screenY=0;
+	this.screenWidth=width;
+	tihs.screenHeight=height;
 }
 SCREEN_CONTROL.prototype.set=function(w,h)
 {
 	this.w=w;
 	this.h=h;
-	this.ox=(width-w)/2;
-	this.oy=(height-h)/2;
+	this.ox=this.screenX+(this.screenWidth-w)/2;
+	this.oy=this.screenY+(this.screenHeight-h)/2;
 	this.zoom=1;
+}
+SCREEN_CONTROL.prototype.setBound=function(x,y,w,h)
+{
+	this.screenX=x;
+	this.screenY=y;
+	this.screenWidth=w;
+	tihs.screenHeight=h;
 }
 /**
  *
@@ -73,13 +84,13 @@ SCREEN_CONTROL.prototype.scale=function(newZoom,pinX,pinY)
  */
 SCREEN_CONTROL.prototype.limit=function()
 {
-	var zoomMin=min(width/this.w,height/this.h,1);
+	var zoomMin=min(this.screenWidth/this.w,this.screenWidth/this.h,1);
 	this.zoom=constrain(this.zoom,zoomMin,4);
-	var wLimit=width-this.w*this.zoom;
-	var hLimit=height-this.h*this.zoom;
-	if(wLimit<0) this.ox=constrain(this.ox,wLimit,0);
+	var wLimit=this.screenX+this.screenWidth-this.w*this.zoom;
+	var hLimit=this.screenY+this.screenHeight-this.h*this.zoom;
+	if(wLimit<this.screenX) this.ox=constrain(this.ox,wLimit,this.screenX);
 	else this.ox=wLimit/2;
-	if(hLimit<0) this.oy=constrain(this.oy,hLimit,0);
+	if(hLimit<this.screenY) this.oy=constrain(this.oy,hLimit,this.screenY);
 	else this.oy=hLimit/2;
 }
 /**
