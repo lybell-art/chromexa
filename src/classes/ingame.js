@@ -256,8 +256,16 @@ INGAME.prototype.interface=function()
 	strokeWeight(1.2);
 	if(this.currentP!=-1)
 	{
-		if(this.whosTurn==1) roundedHexagon(this.p1[this.currentP].x,this.p1[this.currentP].y,45);
-		else roundedHexagon(this.p2[this.currentP].x,this.p2[this.currentP].y,45);
+		if(this.whosTurn==1)
+		{
+			roundedHexagon(this.p1[this.currentP].x,this.p1[this.currentP].y,45);
+			roundedHexagon(this.p1[this.currentP].x,this.p1[this.currentP].y,40);
+		}
+		else
+		{
+			roundedHexagon(this.p2[this.currentP].x,this.p2[this.currentP].y,45);
+			roundedHexagon(this.p2[this.currentP].x,this.p2[this.currentP].y,40);
+		}
 	}
 	resetMatrix();
 	UI.ingame_banner();
