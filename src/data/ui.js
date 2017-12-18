@@ -201,5 +201,21 @@ const UI={
 			ellipse(ox,oy,8,8);
 			if(CP!=maxCP) arc(ox,oy,15,15,r,-HALF_PI);
 		}
+	},
+	stunmark:function(x,y)
+	{
+		noFill();
+		stroke(_YELLOW);
+		for(var i=-1;i<2;i+=2)
+		{
+			beginShape();
+			for(var j=0;j<4;j++)
+			{
+				vertex(x+25*i,y-20+10*j);
+				vertex(x+30*i,y-15+10*j);
+			}
+			vertex(x+25*i,y+20);
+			endShape();
+		}
 	}
 }
