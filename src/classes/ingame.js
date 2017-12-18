@@ -421,8 +421,9 @@ INGAME.prototype.motionEnd=function(thisMotion)
 	 */
 	var i, who_;
 	var r,c;
+	var threshMap;
 	var datum_=thisMotion.result.slice();
-	var threshMap=datum_[0].thresh;
+	if(datum_[0].type!="end") threshMap=datum_[0].thresh;
 	for(i=0;i<datum_.length;i++)
 	{
 		who_=datum_[i].who;
