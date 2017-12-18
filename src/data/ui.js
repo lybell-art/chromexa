@@ -150,5 +150,43 @@ const UI={
 		line(buttonX+3*R,buttonY,buttonX+W-3*R,buttonY);
 		stroke(_RED);
 		line(buttonX+R,buttonY,buttonX+3*R,buttonY);
+	},
+	CPmeter:function(x,y,CP,maxCP)
+	{
+		var ox=x+25;
+		var oy=y-25;
+		var col;
+		var r=CP/maxCP*TWO_PI-HALF_PI;
+		if(CP==0)
+		{
+			noFill();
+			stroke(_BLACK);
+			strokeWeight(2.5);
+			strokeCap(SQUARE);
+			line(ox-4.5,oy-4.5,ox+4.5,oy+4.5);
+			line(ox-4.5,oy+4.5,ox+4.5,oy-4.5);
+		}
+		else
+		{
+			if(CP/maxCP<=0.2) col=_RED;
+			else if(CP/maxCP<=0.5) col=_YELLOW;
+			else col=_BLUE;
+			fill(col);
+			stroke(255);
+			strokeWeight(1);
+			strokeCap(ROUND);
+			ellipse(ox,oy,15,15);
+			noFill();
+			stroke(255);
+			for(var i=0;i<maxCP;i++)
+			{
+				var cr=TWO_PI*i/maxCP;
+				line(ox-0.5,oy-0.5,ox-0.5+7.5*sin(cr),oy-0.5+7.5*sin(cr);
+			}
+			noStroke();
+			fill(255);
+			ellipse(ox,oy,8,8);
+			if(CP!=maxCP) arc(ox,oy,15,15,r,-HALF_PI);
+		}
 	}
 }
