@@ -31,15 +31,7 @@ const UI={
 		//hexagon
 		noStroke();
 		fill(255);
-		beginShape();
-		v.mult(H*2/3);
-		for(i=0;i<6;i++)
-		{
-			edge=p5.Vector.add(v,pos);
-			vertex(edge.x,edge.y);
-			v.rotate(PI/3);
-		}
-		endShape(CLOSE);
+		hexagon(width/2,H*2/3*cos(PI/6),H*2/3);
 		//inner hexagon
 		v=createVector(-1,0);
 		v.mult(H*2/3*4/5);
