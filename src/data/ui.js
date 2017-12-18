@@ -92,7 +92,7 @@ const UI={
 		var medium=resourceBox.font[2];
 		if(whosTurn==1) fill(_BLUE);
 		else fill(_RED);
-		nostroke();
+		noStroke();
 		textAlign(CENTER);
 		textFont(light);
 		textSize(12*F);
