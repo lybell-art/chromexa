@@ -144,6 +144,7 @@ INGAME.prototype.input=function()
 	 */
 	var clickSignal;
 	var cSel;
+	var selectContinue=false;
 	var thisChara=null;
 	clickSignal=this.field.clickCheck();
 	if(clickSignal!==null)
@@ -187,10 +188,10 @@ INGAME.prototype.input=function()
 			switch(clickSignal.signal)
 			{
 				case _CHARA:
-				case _MOVEABLE:thisChara.move(this, clickSignal.index); break;
+				case _MOVEABLE:selectContinue=thisChara.move(this, clickSignal.index); break;
 //				case _FILLAR:this.filler();
 			}
-			this.currentP=-1;
+			if(!selectContinue) this.currentP=-1;
 		}
 	}
 }
