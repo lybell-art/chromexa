@@ -79,7 +79,7 @@ const charaProto=
 	},
 	1:{
 		indexNo:1,
-		CPbase:3,
+		CPbase:7,
 		attackMap:
 		[
 			[0,0,0,0,0,0,0,0,0,0,0],
@@ -159,7 +159,7 @@ const charaProto=
 	},
 	3:{
 		indexNo:3,
-		CPbase:7,
+		CPbase:3,
 		attackMap:
 		[
 			[0,0,0,0,0,0,0,0,0,0,0],
