@@ -221,13 +221,13 @@ function PLAYER(row, col, boxNo, arrNo)
 }
 PLAYER.prototype=new CHARACTER_INGAME();
 PLAYER.prototype.constructor=PLAYER;
-PLAYER.prototype.attack=function(map, otherPlayers, otherEnemys)
+PLAYER.prototype.attack=function(where, myCoord)
 {
 	var res=[];
-	for(var i=0;i<map.Rows;i++)
+	for(var i=0;i<where.field.Rows;i++)
 	{
 		res[i]=[];
-		for(var j=0;j<map.Columns;j++)
+		for(var j=0;j<where.field.Columns;j++)
 		{
 			res[i][j]=false;
 		}
@@ -235,7 +235,7 @@ PLAYER.prototype.attack=function(map, otherPlayers, otherEnemys)
 	if(this.isStunned) return res;
 	if(this.CP>0)
 	{
-		res=CHARACTER_INGAME.prototype.attack.call(this, map, otherPlayers, otherEnemys);
+		res=CHARACTER_INGAME.prototype.attack.call(this, where, myCoord);
 		this.CP--;
 	}
 	return res;
