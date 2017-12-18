@@ -246,7 +246,7 @@ INGAME.prototype.interface=function()
 		{
 			UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
 		}
-	}}
+	}
 	resetMatrix();
 	UI.ingame_banner();
 	UI.ingame_banner2(this.whosTurn);
