@@ -144,7 +144,7 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 	var thisLocation=where.pLocation[i][j]*myBuho;
 	var type_, who_;
 	var targetNo=abs(thisLocation)-1;
-	var queueLastType=where.motionQueue[where.motionQueue.length-1].type;
+	var queueLastType;
 	
 	//hit or heal
 	if(thisLocation<0)
@@ -159,6 +159,8 @@ CHARACTER_INGAME.prototype.attack_other=function(where, i, j)
 	}
 	else return 0;
 	//push motionQueue
+	if(where.motionQueue.length==0) queueLastType="NONE";
+	else queueLastType=where.motionQueue[where.motionQueue.length-1].type;
 	if(queueLastType=="hit")
 	{
 		where.motionQueue[where.motionQueue.length-1].result.push({
@@ -286,6 +288,7 @@ ENEMY.prototype.move=function(where)
 	}
 	else isSuccess=false;
 	if(!isSuccess) this.setPath(where, where.P1area.hub);
+	return isSuccess;
 }
 ENEMY.prototype.hit=function()
 {
