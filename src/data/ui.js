@@ -106,5 +106,51 @@ const UI={
 		textFont(medium);
 		textSize(30*F);
 		text(turns, width/2+37*F,1.55*H);
+	},
+	endTurn_button:function()
+	{
+		//define varient
+		var base=min(width,height);
+		var W=base/3.7;
+		var H=base/5.8;
+		var R=W/10;
+		var buttonX=width-base*0.08-W;
+		var buttonY=height-base*0.08-H;
+		var strokeW=5*base/768;
+		strokeWeight(strokeW);
+		//draw inner area
+		noStroke();
+		fill(255);
+		rect(buttonX,buttonY+R,W,H-2*R);
+		rect(buttonX+R,buttonY,W-2*R,H);
+		ellipse(buttonX+R,buttonY+R,2*R,2*R);
+		ellipse(buttonX+R,buttonY+H-R,2*R,2*R);
+		ellipse(buttonX+W-R,buttonY+H-R,2*R,2*R);
+		ellipse(buttonX+W-R,buttonY+R,2*R,2*R);
+
+		noFill();
+		strokeWeight(strokeW);
+		//draw outer area
+		stroke(_RED);
+		line(buttonX,buttonY+H/2,buttonX,buttonY+R);
+		arc(buttonX+R,buttonY+R,2*R,2*R,PI,1.5*PI);
+		stroke(_PURPLE);
+		line(buttonX+3*R,buttonY+H,buttonX+R,buttonY+H);
+		arc(buttonX+R,buttonY+H-R,2*R,2*R,0.5*PI,PI);
+		line(buttonX,buttonY+H-R,buttonX,buttonY+H/2);
+		stroke(_BLUE);
+		line(buttonX+W-3*R,buttonY+H,buttonX+3*R,buttonY+H);
+		stroke(_GREEN);
+		line(buttonX+W,buttonY+H/2,buttonX+W,buttonY+H-R);
+		arc(buttonX+W-R,buttonY+H-R,2*R,2*R,0,0.5*PI);
+		line(buttonX+W-R,buttonY+H,buttonX+W-3*R,buttonY+H);
+		stroke(_YELLOW);
+		line(buttonX+W-3*R,buttonY,buttonX+W-R,buttonY);
+		arc(buttonX+W-R,buttonY+R,2*R,2*R,1.5*PI,TWO_PI);
+		line(buttonX+W,buttonY+R,buttonX+W,buttonY+H/2);
+		stroke(_ORANGE);
+		line(buttonX+3*R,buttonY,buttonX+W-3*R,buttonY);
+		stroke(_RED);
+		line(buttonX+R,buttonY,buttonX+3*R,buttonY);
 	}
 }
