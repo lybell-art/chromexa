@@ -193,7 +193,8 @@ CHARACTER_INGAME.prototype.heal=function(){}
 CHARACTER_INGAME.prototype.death=function()
 {
 	this.isLive=false;
-	if(abs(ingame.pLocation[this.coord.row][this.coord.col]-1)==this.arrNo)
+	var myBuho=(this.who==1?1:-1);
+	if(ingame.pLocation[this.coord.row][this.coord.col]*myBuho-1==this.arrNo)
 	{
 		ingame.pLocation[this.coord.row][this.coord.col]=0;
 	}
