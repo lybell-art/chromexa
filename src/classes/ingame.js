@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.16
- * @version 0.1
+ * @version 0.15
  *
  */
 function INGAME()
@@ -90,7 +90,8 @@ INGAME.prototype.setup=function()
 	this.moveCost=3+this.P1area.filler.length*2;
 	this.currentP=-1;
 	screenControl.set(this.field.w,this.field.h);
-	screenControl.setBound(0,min(width,height)*5/21,width,height-min(width,height)*5/21);
+	var bannerH=min(width,height)/map(width/height,16/9,9/16,8,5)*5/3;
+	screenControl.setBound(0,bannerH,width,height-bannerH);
 	sceneNo=11;
 }
 INGAME.prototype.playerCreate=function()
