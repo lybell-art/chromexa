@@ -92,6 +92,7 @@ const UI={
 		var medium=resourceBox.font[2];
 		if(whosTurn==1) fill(_BLUE);
 		else fill(_RED);
+		nostroke();
 		textAlign(CENTER);
 		textFont(light);
 		textSize(12*F);
@@ -102,10 +103,10 @@ const UI={
 		fill(_BLACK);
 		textFont(light);
 		textSize(20*F);
-		text(turns, width/2-20*F,1.5*H);
+		text("COST", width/2-20*F,1.5*H);
 		textFont(medium);
 		textSize(30*F);
-		text(turns, width/2+37*F,1.55*H);
+		text(cost, width/2+37*F,1.55*H);
 	},
 	endTurn_button:function()
 	{
