@@ -112,9 +112,12 @@ const UI={
 		var W=base/3.7;
 		var H=base/5.8;
 		var R=W/10;
+		var F=base/768;
 		var buttonX=width-base*0.08-W;
 		var buttonY=height-base*0.08-H;
 		var strokeW=5*base/768;
+		var regular=resourceBox.font[1];
+		var medium=resourceBox.font[2];
 		strokeWeight(strokeW);
 		//draw inner area
 		noStroke();
@@ -150,6 +153,16 @@ const UI={
 		line(buttonX+3*R,buttonY,buttonX+W-3*R,buttonY);
 		stroke(_RED);
 		line(buttonX+R,buttonY,buttonX+3*R,buttonY);
+		
+		noStroke();
+		fill(_BLACK);
+		textAlign(CENTER);
+		textFont(medium);
+		textSize(42*F);
+		text('END', buttonX+W/2,buttonY+H/3);
+		textFont(regular);
+		textSize(28*F);
+		text('END', buttonX+W/2,buttonY+H*2/3);
 	},
 	CPmeter:function(x,y,CP,maxCP)
 	{
