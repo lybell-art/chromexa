@@ -20,9 +20,9 @@ LOADING.prototype.loadData=function()
 			this.max++;
 		}
 	}
-	resourceBox.font[0]=loadFont("resource/font/NotoSans-Light.otf",function(){this.count++;});
-	resourceBox.font[1]=loadFont("resource/font/NotoSans-Regular.otf",function(){this.count++;});
-	resourceBox.font[2]=loadFont("resource/font/NotoSans-Medium.otf",function(){this.count++;});
+	resourceBox.font[0]=loadFont("resource/font/NotoSans-Light.ttf",function(){this.count++;});
+	resourceBox.font[1]=loadFont("resource/font/NotoSans-Regular.ttf",function(){this.count++;});
+	resourceBox.font[2]=loadFont("resource/font/NotoSans-Medium.ttf",function(){this.count++;});
 	this.max+=3;
 }
 LOADING.prototype.execute=function()
