@@ -307,17 +307,7 @@ INGAME.prototype.turnEnd=function()
 		}
 	}
 	this.syncMotion(moveSync);
-	if(this.whosTurn==1)
-	{
-		this.whosTurn=2;
-		sceneNo=13;
-	}
-	else
-	{
-		this.whosTurn=1;
-		sceneNo=11;
-		this.turns++;
-	}
+	this.motionQueue.push({type:"end",result:[]});
 }
 INGAME.prototype.playerTurn=function()
 {
@@ -467,6 +457,20 @@ INGAME.prototype.motionEnd=function(thisMotion)
 			{
 				if(threshMap[r][c]) this.field.cells[r][c].who=datum_[0].who.who;
 			}
+		}
+	}
+	if(thisMotion.type=="end")
+	{
+		if(this.whosTurn==1)
+		{
+			this.whosTurn=2;
+			sceneNo=14;
+		}
+		else
+		{
+			this.whosTurn=1;
+			sceneNo=12;
+			this.turns++;
 		}
 	}
 }
