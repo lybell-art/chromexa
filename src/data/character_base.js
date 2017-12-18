@@ -31,7 +31,6 @@ const charaProto=
 		fill(colA2);
 		var r=20*cos(radians(35))/cos(radians(15));
 		var arcY=20*(sin(radians(35))+cos(radians(35))*tan(radians(15)));
-		console.log(arcY);
 		arc(x,y,40,40,radians(-145),radians(-35),PIE);
 		arc(x,y-arcY,r*2,r*2,radians(15),radians(165),CHORD);
 		fill(colB);
