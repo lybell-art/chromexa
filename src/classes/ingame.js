@@ -198,7 +198,7 @@ INGAME.prototype.input=function()
 				case _MOVEABLE:selectContinue=thisChara.move(this, clickSignal.index); break;
 //				case _FILLAR:this.filler();
 			}
-			if(!selectContinue) this.currentP=-1;
+			if(!selectContinue||clickSignal.signal==_NOMOVE) this.currentP=-1;
 		}
 	}
 }
@@ -462,6 +462,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 	}
 	if(thisMotion.type=="end")
 	{
+		this.currentP=-1;
 		if(this.whosTurn==1)
 		{
 			this.whosTurn=2;
