@@ -2,7 +2,7 @@ const UI={
 	ingame_banner:function()
 	{
 		var base=min(width,height);
-		var H=base/6.5;
+		var H=base/7;
 		var R=H/5;
 		noStroke();
 		fill(_WHITE);
@@ -22,7 +22,7 @@ const UI={
 	ingame_banner2:function(whosTurn)
 	{
 		var base=min(width,height);
-		var H=base/6.5;
+		var H=base/7;
 		var v=createVector(1,0);
 		var v2=p5.Vector.fromAngle(radians(-120));
 		var pos=createVector(width/2,H*2/3*cos(PI/6));
@@ -85,7 +85,7 @@ const UI={
 	ingame_status:function(whosTurn, turns, cost)
 	{
 		var base=min(width,height);
-		var H=base/6.5;
+		var H=base/7;
 		var F=base/768;
 		var light=resourceBox.font[0];
 		var regular=resourceBox.font[1];
