@@ -162,7 +162,7 @@ const UI={
 		text('END', buttonX+W/2,buttonY+H/3);
 		textFont(regular);
 		textSize(28*F);
-		text('END', buttonX+W/2,buttonY+H*2/3);
+		text('TURN', buttonX+W/2,buttonY+H*2/3);
 	},
 	CPmeter:function(x,y,CP,maxCP)
 	{
