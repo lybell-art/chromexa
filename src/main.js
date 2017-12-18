@@ -95,6 +95,6 @@ function mouseWheel(event)
 }
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
-	screenControl.setBound(0,min(width,height)/6.5,width,height-min(width,height)/6.5);
+	screenControl.setBound(0,min(width,height)/6.5*5/3,width,height-min(width,height)/6.5*5/3);
 	if(sceneNo%10==1 || sceneNo==31) screenControl.limit();
 }
