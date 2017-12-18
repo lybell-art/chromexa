@@ -223,7 +223,7 @@ PLAYER.prototype=new CHARACTER_INGAME();
 PLAYER.prototype.constructor=PLAYER;
 PLAYER.prototype.draw=function()
 {
-	CHARACTER_INGAME.prototype.attack(this);
+	CHARACTER_INGAME.prototype.draw.call(this);
 	if(this.isStunned) UI.stunmark(this.x,this.y);
 }
 PLAYER.prototype.attack=function(where, myCoord)
