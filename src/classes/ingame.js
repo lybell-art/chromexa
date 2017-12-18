@@ -235,10 +235,23 @@ INGAME.prototype.enemyAI=function()
 }
 INGAME.prototype.interface=function()
 {
+	var chara;
+	for(chara of this.p1)
+	{
+		UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
+	}
+	if(this.whold==MULTIPLAY)
+	{
+		for(chara of this.p2)
+		{
+			UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
+		}
+	}}
 	resetMatrix();
 	UI.ingame_banner();
 	UI.ingame_banner2(this.whosTurn);
 	UI.ingame_status(this.whosTurn,this.turns,this.moveCost);
+	if((this.world==MULTIPLAY||this.whosTurn==1)&&sceneNo%2==1) UI.endTurn_button();
 }
 INGAME.prototype.draw=function()
 {
