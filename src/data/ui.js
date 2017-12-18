@@ -5,12 +5,19 @@ const UI={
 		var H=base/map(width/height,16/9,9/16,8,5);
 		var R=H/5;
 		noStroke();
-		fill(0,128);
-		rect(H/4,0,width-H*2/4,H);
-		rect(width/2-H+R,H,2*H-2*R,H*2/3);
-		rect(width/2-H,H,2*H,H*2/3-R);
-		ellipse(width/2-(H-R),H*5/3-R,2*R,2*R);
-		ellipse(width/2+(H-R),H*5/3-R,2*R,2*R);
+		fill(_WHITE);
+  		rect(H/4,0,width-H*2/4,H);
+ 		rect(width/2-H+R,H-10,2*H-2*R,H*2/3+10);
+ 		rect(width/2-H,H-10,2*H,H*2/3-R+10);
+  		ellipse(width/2-(H-R),H*5/3-R,2*R,2*R);
+  		ellipse(width/2+(H-R),H*5/3-R,2*R,2*R);
+ 		fill(_DARK_WHITE);
+ 		ellipse(R,H-R,2*R,2*R);
+ 		ellipse(width-R,H-R,2*R,2*R);
+ 		rect(0,0,H,H-R);
+ 		rect(R,0,H-R,H);
+ 		rect(width-H,0,H,H-R);
+ 		rect(width-H,0,H-R,H);
 	},
 	ingame_banner2:function(whosTurn)
 	{
