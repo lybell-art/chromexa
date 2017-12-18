@@ -242,13 +242,13 @@ INGAME.prototype.interface=function()
 	var chara;
 	for(chara of this.p1)
 	{
-		UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
+		if(chara.isLive) UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
 	}
 	if(this.whold==_MULTIPLAY)
 	{
 		for(chara of this.p2)
 		{
-			UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
+			if(chara.isLive) UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
 		}
 	}
 	noFill();
@@ -292,7 +292,11 @@ INGAME.prototype.turnEnd=function()
 	var moveSync=this.motionQueue.length;
 	for(var chara of charas)
 	{
-		if(chara.isLive) chara.attack(this, chara.coord);
+		if(chara.isLive)
+		{
+			chara.attack(this, chara.coord);
+			if(chara.isStunned!=undefined) chara.isStunned=false;
+		}
 	}
 	this.syncMotion(moveSync);
 	if(this.whosTurn==1)
