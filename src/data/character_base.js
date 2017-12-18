@@ -102,8 +102,8 @@ const charaProto=
 			var armorColor="#8fc082", armorColor2="#bffcae";
 			var gemColor="#fbe9e5";
 			var mouthColor="#3a3a3a";
-			this.player_base(x,y,bodyColor,bodyColor2,armorColor,mouthColor);
-			this.custom_armor(x,y,bodyColor,armorColor,armorColor2,[0,11.5]);
+			charaProto.player_base(x,y,bodyColor,bodyColor2,armorColor,mouthColor);
+			charaProto.custom_armor(x,y,bodyColor,armorColor,armorColor2,[0,11.5]);
 			fill(gemColor); noStroke();
 			ellipse(x+0,y-15,24,28);
 		},
@@ -133,8 +133,8 @@ const charaProto=
 		{
 			var bodyColor="#3a3a3a", bodyColor2="#212121";
 			var armorColor="#1abc9c", armorColor2="#5ef7da";
-			this.player_base(x,y,bodyColor,bodyColor2,armorColor,armorColor);
-			this.custom_armor(x,y,bodyColor,armorColor,armorColor2,[0,11.5]);
+			charaProto.player_base(x,y,bodyColor,bodyColor2,armorColor,armorColor);
+			charaProto.custom_armor(x,y,bodyColor,armorColor,armorColor2,[0,11.5]);
 			fill(armorColor); noStroke();
 			beginShape();
 			vertex(x-6,y-30);
@@ -180,8 +180,8 @@ const charaProto=
 			var bodyColor="#3a3a3a", bodyColor2="#212121";
 			var armorColor="#9b59b6", armorColor2="#d08eef";
 			var gemColor="#ffcd02", gemColor2="#ffe681";
-			this.player_base(x,y,bodyColor,bodyColor2,armorColor,armorColor);
-			this.custom_armor(x,y,bodyColor,armorColor,armorColor2,[]);
+			charaProto.player_base(x,y,bodyColor,bodyColor2,armorColor,armorColor);
+			charaProto.custom_armor(x,y,bodyColor,armorColor,armorColor2,[]);
 			fill(gemColor); noStroke();
 			star(x+0,y-15,15,8);
 			fill(gemColor2);
