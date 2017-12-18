@@ -248,6 +248,14 @@ INGAME.prototype.interface=function()
 			UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
 		}
 	}
+	noFill();
+	stroke(_YELLOW);
+	strokeWeight(1.2);
+	if(this.currentP!=-1)
+	{
+		if(this.whosTurn==1) roundedHexagon(this.p1[this.currentP].x,this.p1[this.currentP].y,45);
+		else roundedHexagon(this.p2[this.currentP].x,this.p2[this.currentP].y,45);
+	}
 	resetMatrix();
 	UI.ingame_banner();
 	UI.ingame_banner2(this.whosTurn);
