@@ -232,7 +232,7 @@ INGAME.prototype.enemyAI=function()
 	var moveSync=0;
 	for(chara of this.p2)
 	{
-		chara.move(this);
+		if(chara.isLive) chara.move(this);
 	}
 	this.syncMotion(0);
 	this.turnEnd();
