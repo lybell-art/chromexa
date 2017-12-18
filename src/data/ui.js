@@ -91,14 +91,19 @@ const UI={
 		text('TURN', width/2,0.42*H);
 		textFont(regular);
 		textSize(45*F);
-		text(turns, width/2,0.8*H);
+		if(str(turns).match(/1/gi)!=null)
+		{
+			var shifter=str(turns).match(/1/gi).length/str(turns).length;
+			text(turns,width/2-3*F*shifter,0.8*H);
+		}
+		else text(turns, width/2,0.8*H);
 		fill(_BLACK);
 		textFont(light);
 		textSize(20*F);
 		text("COST", width/2-20*F,1.5*H);
 		textFont(medium);
 		textSize(30*F);
-		text(cost, width/2+37*F,1.55*H);
+		text(cost, width/2+37*F,1.53*H);
 	},
 	endTurn_button:function()
 	{
