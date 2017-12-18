@@ -1,3 +1,23 @@
+function hexagon(x,y,r)
+{
+	var edge=createVector(r,0);
+	var pos=createVector(x,y);
+	var v;
+	beginShape();
+	for(var i=0;i<6;i++)
+	{
+		v=p5.Vector.add(edge,pos);
+		vertex(v.x,v.y);
+		edge.rotate(PI/3);
+	}
+	endShape();
+}
+function roundedHexagon(x,y,r)
+{
+	beginShape();
+	roundedHexagonRaw(x,y,r);
+	endShape(CLOSE);
+}
 function roundedHexagon(x,y,r)
 {
 	beginShape();
