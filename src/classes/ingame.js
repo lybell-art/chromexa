@@ -36,6 +36,7 @@ function INGAME()
 	this.whosTurn=1;
 	this.turns=0;
 	this.currentP=-1;
+	this.enemyMoved=false;
 	this.moveCost=5;
 	this.motionQueue=[];
 }
@@ -89,6 +90,7 @@ INGAME.prototype.setup=function()
 	this.turns=1;
 	this.moveCost=3+this.P1area.filler.length*2;
 	this.currentP=-1;
+	this.enemyMoved=false;
 	screenControl.set(this.field.w,this.field.h);
 	var bannerH=min(width,height)/map(width/height,16/9,9/16,8,5)*5/3;
 	screenControl.setBound(0,bannerH,width,height-bannerH);
@@ -230,12 +232,20 @@ INGAME.prototype.enemyAI=function()
 	 */
 	var chara;
 	var moveSync=0;
-	for(chara of this.p2)
+	if(this.enemyMoved==false)
 	{
-		if(chara.isLive) chara.move(this);
+		for(chara of this.p2)
+		{
+			if(chara.isLive) chara.move(this);
+		}
+		this.syncMotion(0);
+		this.enemyMoved=true;
 	}
-	this.syncMotion(0);
-	this.turnEnd();
+	else
+	{
+		this.turnEnd();
+		this.enemyMoved=false;
+	}
 }
 INGAME.prototype.interface=function()
 {
