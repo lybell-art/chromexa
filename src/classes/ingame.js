@@ -142,10 +142,17 @@ INGAME.prototype.input=function()
 	/**
 	 * 플레이어의 입력을 받아 캐릭터 연산을 수행한다.
 	 */
+	var base=min(width,height)
+	var endTurnButton=new BUTTON(width-base*0.08-base/3.7,height-base*0.08-base/5.8,base/3.7,base/5.8);	
 	var clickSignal;
 	var cSel;
 	var selectContinue=false;
 	var thisChara=null;
+	if(endTurnButton.mouseOn())
+	{
+		this.turnEnd();
+		return false;
+	}
 	clickSignal=this.field.clickCheck();
 	if(clickSignal!==null)
 	{
@@ -228,12 +235,7 @@ INGAME.prototype.enemyAI=function()
 		chara.move(this);
 	}
 	this.syncMotion(0);
-	moveSync=this.motionQueue.length;
-	for(chara of this.p2)
-	{
-		chara.attack(this, chara.coord);
-	}
-	this.syncMotion(moveSync);
+	this.turnEnd();
 }
 INGAME.prototype.interface=function()
 {
@@ -281,6 +283,29 @@ INGAME.prototype.draw=function()
 		if(chara.isLive) chara.draw();
 	}
 	this.interface();
+}
+INGAME.prototype.turnEnd=function()
+{
+	var charas;
+	if(this.whosTurn==1) charas=this.p1;
+	else charas=this.p2;
+	var moveSync=this.motionQueue.length;
+	for(var chara of charas)
+	{
+		if(chara.isLive) chara.attack(this, chara.coord);
+	}
+	this.syncMotion(moveSync);
+	if(this.whosTurn==1)
+	{
+		this.whosTurn=2;
+		sceneNo=13;
+	}
+	else
+	{
+		this.whosTurn=1;
+		sceneNo=11;
+		this.turns++;
+	}
 }
 INGAME.prototype.playerTurn=function()
 {
