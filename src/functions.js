@@ -28,6 +28,27 @@ function roundedHexagonRaw(x,y,r)
 	v2=p5.Vector.sub(edge,apoint);
 	bezierVertex(x+v1.x,y+v1.y,x+v2.x,y+v2.y,x+v2.x,y+v2.y);
 }
+function star(posX,posY,r1,r2)
+{
+	var v1=createVector(0,-r1);
+	var v2=p5.Vector.fromAngle(-HALF_PI+PI/5);
+	var pos=createVector(posX,posY);
+	var R1=createVector();
+	var R2=createVector();
+	v2.setMag(r2);
+	beginShape();
+	for(var i=0;i<5;i++)
+	{
+		R1=p5.Vector.add(v1,pos);
+		R2=p5.Vector.add(v2,pos);
+		vertex(R1.x,R1.y);
+		vertex(R2.x,R2.y);
+		v1.rotate(TWO_PI/5);
+		v2.rotate(TWO_PI/5);
+	}
+	endShape();
+}
+
 
 function detectCell(kind)
 {
