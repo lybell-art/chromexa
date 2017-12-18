@@ -453,7 +453,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		{
 			for(c=0;c<threshMap[r].length;c++)
 			{
-				if(threshMap[r][c]) this.field.cells[r][c].who=datum_[0].who_.who;
+				if(threshMap[r][c]) this.field.cells[r][c].who=datum_[0].who.who;
 			}
 		}
 	}
