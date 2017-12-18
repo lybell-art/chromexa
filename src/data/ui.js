@@ -181,7 +181,7 @@ const UI={
 			for(var i=0;i<maxCP;i++)
 			{
 				var cr=TWO_PI*i/maxCP;
-				line(ox-0.5,oy-0.5,ox-0.5+7.5*sin(cr),oy-0.5+7.5*sin(cr));
+				line(ox-0.5,oy-0.5,ox-0.5+7.5*sin(cr),oy-0.5+7.5*cos(cr));
 			}
 			noStroke();
 			fill(255);
