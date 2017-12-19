@@ -75,7 +75,7 @@ OTHER_DIALOGBUTTON.prototype.draw=function()
 		UI.ODL_swap(this.x+15,this.y+30);
 	}
 }
-OTHER_DIALOGBUTTON.prototype.isMouseOn=function()
+OTHER_DIALOGBUTTON.prototype.mouseOn=function()
 {
 	var selecter=new HEXA_BUTTON(this.x-15,this.y+30,12);
 	var swapper=new HEXA_BUTTON(this.x-15,this.y+30,12);
