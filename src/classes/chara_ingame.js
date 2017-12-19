@@ -43,7 +43,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 				beforeCur:beforeCell.copy(), 
 				thisCur:cur.copy(),
 				dist:hexCell_dist(beforeCell,cur),
-				p:0
+				p:-1
 			});
 		}
 		if([0,5].indexOf(trace[i].kind)!=-1) return false;
