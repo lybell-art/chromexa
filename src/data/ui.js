@@ -18,7 +18,7 @@ const UI={
 		translate(-306.25,0);
 		for(var i=0;i<8;i++)
 		{
-			typho(typePoint[i]);
+			UI.typho(typePoint[i]);
 			translate(87.5,0);
 		}
 		pop();
