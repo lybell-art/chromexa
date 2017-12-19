@@ -485,6 +485,8 @@ INGAME.prototype.motionEnd=function(thisMotion)
 	if(thisMotion.type=="end")
 	{
 		this.currentP=-1;
+		this.otherPlayerDialog=-1;
+		this.other_dialogButton.set(this,this.otherPlayerDialog);
 		if(this.whosTurn==1)
 		{
 			this.whosTurn=2;
