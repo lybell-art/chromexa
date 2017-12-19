@@ -36,6 +36,8 @@ function INGAME()
 	this.whosTurn=1;
 	this.turns=0;
 	this.currentP=-1;
+	this.otherPlayerDialog=-1;
+	this.other_dialogButton=null;
 	this.enemyMoved=false;
 	this.moveCost=5;
 	this.motionQueue=[];
@@ -91,7 +93,9 @@ INGAME.prototype.setup=function()
 	this.moveCost=3+this.P1area.filler.length*2;
 	this.currentP=-1;
 	this.enemyMoved=false;
-	this.otherPlayerDialog=false;
+	this.otherPlayerDialog=-1;
+	this.other_dialogButton=new OTHER_DIALOGBUTTON();
+	this.other_dialogButton.set(this,this.otherPlayerDialog);
 	screenControl.set(this.field.w,this.field.h);
 	var bannerH=min(width,height)/map(width/height,16/9,9/16,8,5)*5/3;
 	screenControl.setBound(0,bannerH,width,height-bannerH);
@@ -156,8 +160,8 @@ INGAME.prototype.input=function()
 		this.turnEnd();
 		return false;
 	}
-	var other_selectButton=new OTHER_DIALOGBUTTTON(this.whosTurn,this.otherPlayerDialog);
-	var dialogResult=other_selectButton.mouseOn();
+	this.other_dialogButton.set(this,this.otherPlayerDialog);
+	var dialogResult=this.other_dialogButton.mouseOn();
 	if(dialogResult=="none") this.otherPlayerDialog=-1;
 	clickSignal=this.field.clickCheck();
 	if(clickSignal!==null)
@@ -284,6 +288,7 @@ INGAME.prototype.interface=function()
 			roundedHexagon(this.p2[this.currentP].x,this.p2[this.currentP].y,40);
 		}
 	}
+	this.other_dialogButton.draw();
 	resetMatrix();
 	UI.ingame_banner();
 	UI.ingame_banner2(this.whosTurn);
