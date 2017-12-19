@@ -80,7 +80,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		});
 		if(otherAlly.length>0)
 		{
-			if(cur.index.isSame(otherAlly[0].beforeCur))
+			if(cur.isSame(otherAlly[0].beforeCur))
 			{
 				otherAlly[0].p=0;
 			}
