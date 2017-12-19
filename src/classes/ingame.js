@@ -90,7 +90,7 @@ INGAME.prototype.setup=function()
 	this.motionQueue=[];
 	this.whosTurn=1;
 	this.turns=1;
-	this.moveCost=3+this.P1area.filler.length*2;
+	this.moveCost=4+this.P1area.filler.length*2+this.p1.length*3;
 	this.currentP=-1;
 	this.enemyMoved=false;
 	this.otherPlayerDialog=-1;
@@ -498,36 +498,41 @@ INGAME.prototype.motionEnd=function(thisMotion)
 	}
 	if(thisMotion.type=="end")
 	{
-		this.currentP=-1;
-		this.otherPlayerDialog=-1;
-		this.other_dialogButton.set(this,this.otherPlayerDialog);
-		if(this.field.cells[this.P1area.hub.row][this.P1area.hub.col].who==2)
-		{
-			sceneNo=16;
-			return true;
-		}
-		else if(this.field.cells[this.P2area.hub.row][this.P2area.hub.col].who==1)
-		{
-			sceneNo=15;
-			return true;
-		}
-		if(this.whosTurn==1)
-		{
-			this.whosTurn=2;
-			this.moveCost=3+this.P2area.filler.length*2;
-			sceneNo=13;
-			return true;
-		}
-		else
-		{
-			this.whosTurn=1;
-			this.moveCost=3+this.P1area.filler.length*2;
-			sceneNo=11;
-			this.turns++;
-			return true;
-		}
+		this.turnEndSetting();
+		return true;
 	}
 	return false;
+}
+INGAME.prototype.turnEndSetting=function()
+{
+	this.currentP=-1;
+	this.otherPlayerDialog=-1;
+	this.other_dialogButton.set(this,this.otherPlayerDialog);
+	if(this.field.cells[this.P1area.hub.row][this.P1area.hub.col].who==2)
+	{
+		sceneNo=16;
+		return true;
+	}
+	else if(this.field.cells[this.P2area.hub.row][this.P2area.hub.col].who==1)
+	{
+		sceneNo=15;
+		return true;
+	}
+	if(this.whosTurn==1)
+	{
+		this.whosTurn=2;
+		this.moveCost=4+this.P2area.filler.length*2+this.p2.length*3;
+		sceneNo=13;
+		return true;
+	}
+	else
+	{
+		this.whosTurn=1;
+		this.moveCost=4+this.P1area.filler.length*2+this.p1.length*3;
+		sceneNo=11;
+		this.turns++;
+		return true;
+	}
 }
 INGAME.prototype.syncMotion=function(bar)
 {
