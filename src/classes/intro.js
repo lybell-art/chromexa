@@ -5,10 +5,10 @@ function INTRO()
 	this.press=false;
 	for(var i=0;i<4;i++)
 	{
-		shade[i]=[];
+		this.shade[i]=[];
 		for(var j=0;j<9;j++)
 		{
-			shade[i][j]=int(random(4))*5;
+			this.shade[i][j]=int(random(4))*5;
 		}
 	}
 }
