@@ -21,7 +21,7 @@ INTRO.prototype.execute=function()
 		sceneNo=1;
 		return 0;
 	}
-	if(inputBroadcast.isMousePress&&button.mouseOn)
+	if(inputBroadcast.isMousePress&&button.mouseOn())
 	{
 		this.press=true;
 	}
