@@ -217,5 +217,17 @@ const UI={
 			vertex(x+25*i,y+20);
 			endShape();
 		}
+	},
+	ODL_select:function(x,y)
+	{
+		noStroke();
+		fill(_RED);
+		hexagon(x,y,12);
+	}.
+	ODL_swap:function(x,y)
+	{
+		noStroke();
+		fill(_BLUE);
+		hexagon(x,y,12);
 	}
 }
