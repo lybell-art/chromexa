@@ -438,7 +438,7 @@ INGAME.prototype.motion=function()
 	// 모션이 끝난 후, 캐릭터의 상태를 변경시키고 큐를 한 칸 뽑아낸다.
 	if(!isPros)
 	{
-		isSceneChange=this.motionEnd(thisMotion);
+		isSceneChanged=this.motionEnd(thisMotion);
 		this.motionQueue.shift();
 		if(this.motionQueue.length==0&&isSceneChanged==false) sceneNo--;
 	}
