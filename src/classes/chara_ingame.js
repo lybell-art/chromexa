@@ -88,8 +88,8 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			{
 				where.motionQueue[where.motionQueue.length-1].result.push({
 					who:otherAlly[0].who,
-					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p], 
-					newCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1]
+					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p].index.copy(), 
+					newCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1].index.copy()
 				})
 				otherAlly[0].p++;
 			}
