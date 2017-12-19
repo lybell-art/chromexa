@@ -78,8 +78,8 @@ OTHER_DIALOGBUTTON.prototype.draw=function()
 OTHER_DIALOGBUTTON.prototype.mouseOn=function()
 {
 	var selecter=new HEXA_BUTTON(this.x-15,this.y+30,12);
-	var swapper=new HEXA_BUTTON(this.x-15,this.y+30,12);
-	if(selecter.isMouseOn(true)) return "select";
-	else if(swapper.isMouseOn(true)) return "swap";
+	var swapper=new HEXA_BUTTON(this.x+15,this.y+30,12);
+	if(selecter.mouseOn(true)) return "select";
+	else if(swapper.mouseOn(true)) return "swap";
 	else return "none";
 }
