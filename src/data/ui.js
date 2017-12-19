@@ -223,7 +223,7 @@ const UI={
 		noStroke();
 		fill(_RED);
 		hexagon(x,y,12);
-	}.
+	},
 	ODL_swap:function(x,y)
 	{
 		noStroke();
