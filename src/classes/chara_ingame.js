@@ -28,6 +28,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var map=where.field.cells;
 	var myBuho=(this.who==1?1:-1);
 	var myAlly;
+	var costDown=0;
 	if(this.who==1) myAlly=where.p1;
 	else myAlly=where.p2;
 	// 계산
@@ -38,6 +39,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		trace.push(map[cur.row][cur.col]);
 		if(where.pLocation[cur.row][cur.col]*myBuho>0)
 		{
+			if(isRotated) return false;
 			otherAlly.push({
 				who:myAlly[where.pLocation[cur.row][cur.col]*myBuho-1], 
 				beforeCur:beforeCell.copy(), 
@@ -68,6 +70,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			beforeCell=cur.copy();
 		}
 		i++;
+		if(!isRotated) costDown++;
 	}
 	// 큐에 모션을 넣는다
 	dist=i;
@@ -100,6 +103,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 					last.newCoord=res;
 				})(this);
 				otherAlly[0].p++;
+				costDown--;
 			}
 			if(otherAlly[0].p>=otherAlly[0].dist)
 			{
@@ -112,6 +116,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		}
 		cur=trace[i].index.copy();
 	}
+	where.moveCost-=costDown;
 	return true;
 }
 CHARACTER_INGAME.prototype.moveMotion=function(target)
