@@ -162,9 +162,14 @@ INGAME.prototype.input=function()
 	}
 	this.other_dialogButton.set(this,this.otherPlayerDialog);
 	var dialogResult=this.other_dialogButton.mouseOn();
-	if(dialogResult=="none") this.otherPlayerDialog=-1;
+	if(dialogResult=="none")
+	{
+		this.otherPlayerDialog=-1;
+		this.other_dialogButton.set(this,this.otherPlayerDialog);
+	}
+	console.log(dialogResult);
 	clickSignal=this.field.clickCheck();
-	if(clickSignal!==null)
+	if(clickSignal!==null||dialogResult!="none")
 	{
 		cSel=this.charaSelect(clickSignal.index);	//캐릭터를 클릭했는지를 파악함
 		if(cSel!=-1) clickSignal.signal=_CHARA;
@@ -195,19 +200,21 @@ INGAME.prototype.input=function()
 			switch(clickSignal.signal)
 			{
 				case _CHARA:
-					if(cSel&&this.otherPlayerDialog==-1)
+					if(this.otherPlayerDialog==-1)
 					{
 						this.otherPlayerDialog=cSel;
-						this.other_dialogButton.set(this,this.otherPlayerDialog);
 					}
 					else if(this.otherPlayerDialog>=0&&dialogResult=="select")
 					{
-						this.currentP=cSel;
+						this.currentP=this.otherPlayerDialog;
+						this.otherPlayerDialog=-1;
 					}
 					else
 					{
 						thisChara.move(this, clickSignal.index);
+						this.otherPlayerDialog=-1;
 					}
+					this.other_dialogButton.set(this,this.otherPlayerDialog);
 					break;
 				case _MOVEABLE:
 				case _FILLER:selectContinue=thisChara.move(this, clickSignal.index); break;
