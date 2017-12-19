@@ -596,3 +596,16 @@ INGAME.prototype.layer3=function(thresh)
 		}
 	}
 }
+//--------------------------------------------------------result method---------------------------------------------------------------//
+INGAME.prototype.victory=function()
+{
+	background(255);
+	textAlign(CENTER);
+	text("victory!",width/2,height/2);
+}
+INGAME.prototype.gameover=function()
+{
+	background(255);
+	textAlign(CENTER);
+	text("game over...",width/2,height/2);
+}
