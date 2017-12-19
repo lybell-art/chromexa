@@ -198,6 +198,7 @@ INGAME.prototype.input=function()
 					if(cSel&&this.otherPlayerDialog==-1)
 					{
 						this.otherPlayerDialog=cSel;
+						this.other_dialogButton.set(this,this.otherPlayerDialog);
 					}
 					else if(this.otherPlayerDialog>=0&&dialogResult=="select")
 					{
