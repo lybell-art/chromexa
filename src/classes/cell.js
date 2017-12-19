@@ -60,19 +60,8 @@ CELL.prototype.drawUpper=function()
  */
 CELL.prototype.isMouseOn=function()
 {
-	var mouse=screenControl.relativeMouse();
-	var mousePos=createVector(this.x,this.y);
-	mousePos.sub(mouse);
-	var edge=createVector(this.r,0);
-	var theta=0;
-	for(var i=0;i<6;i++)
-	{
-		var v1=p5.Vector.sub(edge,mousePos);
-		edge.rotate(PI/3);
-		var v2=p5.Vector.sub(edge,mousePos);
-		theta+=v1.angleBetween(v2);
-	}
-	return abs(theta-TWO_PI)<0.00001;
+	var detector=new HEXA_BUTTON(this.x,this.y,this.r);
+	return detector.isMouseOn(true);
 }
 /**
  *
