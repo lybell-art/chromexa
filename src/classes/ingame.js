@@ -172,7 +172,7 @@ INGAME.prototype.input=function()
 			case "swap":
 				if(this.whosTurn==1) thisChara=this.p1[this.currentP];
 				else thisChara=this.p2[this.currentP];
-				thisChara.move(this, clickSignal.index);
+				thisChara.move(this, this.otherPlayerDialog.p.coord);
 				break;
 		}
 		this.otherPlayerDialog=-1;
