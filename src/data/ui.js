@@ -1,4 +1,30 @@
 const UI={
+	start_button:function(x,y,r)
+	{
+		var edge=createVector(-r/2,0);
+		var cpoint=createVector(0,-r*sin(PI/3));
+		var apoint=createVector(0,-r*11/20);
+		var v1, v2;
+		v2=p5.Vector.add(edge,apoint);
+		beginShape();
+		vertex(x+v2.x,y+v2.y);
+		for(var i=0;i<3;i++)
+		{
+			v1=p5.Vector.sub(edge,cpoint);
+			v2=p5.Vector.sub(edge,apoint);
+			bezierVertex(x+v1.x,y+v1.y,x+v2.x,y+v2.y,x+v2.x,y+v2.y);
+			v1=p5.Vector.add(edge,cpoint);
+			v2=p5.Vector.add(edge,apoint);
+			bezierVertex(x+v2.x,y+v2.y,x+v1.x,y+v1.y,x+v2.x,y+v2.y);
+			edge.rotate(TWO_PI/3);
+			cpoint.rotate(TWO_PI/3);
+			apoint.rotate(TWO_PI/3);
+		}
+		v1=p5.Vector.sub(edge,cpoint);
+		v2=p5.Vector.sub(edge,apoint);
+		bezierVertex(x+v1.x,y+v1.y,x+v2.x,y+v2.y,x+v2.x,y+v2.y);
+		endShape();
+	},
 	ingame_banner:function()
 	{
 		var base=min(width,height);
