@@ -43,13 +43,13 @@ HEXA_BUTTON.prototype.mouseOn=function(isSC_on)
 	return abs(theta-TWO_PI)<0.00001;
 }
 
-function OTHER_DIALOGBUTTTON()
+function OTHER_DIALOGBUTTON()
 {
 	this.x=0;
 	this.y=0;
 	this.isValid=false;
 }
-OTHER_DIALOGBUTTTON.prototype.set=function(where,otherP)
+OTHER_DIALOGBUTTON.prototype.set=function(where,otherP)
 {
 	var p;
 	if(otherP!=-1)
@@ -67,7 +67,7 @@ OTHER_DIALOGBUTTTON.prototype.set=function(where,otherP)
 		this.isValid=false;
 	}
 }
-OTHER_DIALOGBUTTTON.prototype.draw=function()
+OTHER_DIALOGBUTTON.prototype.draw=function()
 {
 	if(this.isValid)
 	{
@@ -75,7 +75,7 @@ OTHER_DIALOGBUTTTON.prototype.draw=function()
 		UI.ODL_swap(this.x+15,this.y+30);
 	}
 }
-OTHER_DIALOGBUTTTON.prototype.isMouseOn=function()
+OTHER_DIALOGBUTTON.prototype.isMouseOn=function()
 {
 	var selecter=new HEXA_BUTTON(this.x-15,this.y+30,12);
 	var swapper=new HEXA_BUTTON(this.x-15,this.y+30,12);
