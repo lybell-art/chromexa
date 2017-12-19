@@ -26,7 +26,7 @@ INTRO.prototype.execute=function()
 		this.press=true;
 	}
 	this.draw();
-	this.tween+=this.tween/4+1;
+	if(this.press) this.tween+=this.tween/4+1;
 }
 INTRO.prototype.draw=function()
 {
