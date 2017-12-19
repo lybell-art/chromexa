@@ -44,7 +44,7 @@ INTRO.prototype.draw=function()
 		UI.start_button(width/2,height*11/16,map(this.tween,0,width/2,H/5,H/2));
 	}
 }
-INTRO.protoype.banner=function(base,H)
+INTRO.prototype.banner=function(base,H)
 {
 	var triW=H/8/cos(PI/6);
 	var ox;
