@@ -79,7 +79,7 @@ OTHER_DIALOGBUTTTON.prototype.isMouseOn=function()
 {
 	var selecter=new HEXA_BUTTON(this.x-15,this.y+30,12);
 	var swapper=new HEXA_BUTTON(this.x-15,this.y+30,12);
-	if(selecter.isMouseOn()) return "select";
-	else if(swapper.isMouseOn()) return "swap";
+	if(selecter.isMouseOn(true)) return "select";
+	else if(swapper.isMouseOn(true)) return "swap";
 	else return "none";
 }
