@@ -505,6 +505,8 @@ INGAME.prototype.motionEnd=function(thisMotion)
 }
 INGAME.prototype.turnEndSetting=function()
 {
+	var livingChara=0;
+	var i;
 	this.currentP=-1;
 	this.otherPlayerDialog=-1;
 	this.other_dialogButton.set(this,this.otherPlayerDialog);
@@ -521,14 +523,24 @@ INGAME.prototype.turnEndSetting=function()
 	if(this.whosTurn==1)
 	{
 		this.whosTurn=2;
-		this.moveCost=4+this.P2area.filler.length*2+this.p2.length*3;
+		this.moveCost=4+this.P2area.filler.length*2;
+		for(i=0;i<this.p2.length;i++)
+		{
+			if(this.p2[i].isLive) livingChara++;
+		}
+		this.moveCost+=livingChara;
 		sceneNo=13;
 		return true;
 	}
 	else
 	{
 		this.whosTurn=1;
-		this.moveCost=4+this.P1area.filler.length*2+this.p1.length*3;
+		this.moveCost=4+this.P1area.filler.length*2;
+		for(i=0;i<this.p1.length;i++)
+		{
+			if(this.p1[i].isLive) livingChara++;
+		}
+		this.moveCost+=livingChara;
 		sceneNo=11;
 		this.turns++;
 		return true;
