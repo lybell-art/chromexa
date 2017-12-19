@@ -12,7 +12,7 @@ function INTRO()
 		}
 	}
 }
-INTRO.prototype.execute()
+INTRO.prototype.execute=function()
 {
 	var base=min(width,height);
 	var button=new BUTTON(width/2-base/8,height*9/16,base/4,base/4);
