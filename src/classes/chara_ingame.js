@@ -91,13 +91,13 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1].index.copy(), 
 					newCoord:null
 				});
-				(function(){
+				(function(who){
 					var last=where.motionQueue[where.motionQueue.length-1].result[1];
 					var res;
-					if(i+otherAlly[0].dist-otherAlly[0].p-2<0) res=this.coord.copy();
+					if(i+otherAlly[0].dist-otherAlly[0].p-2<0) res=who.coord.copy();
 					else res=trace[i+otherAlly[0].dist-otherAlly[0].p-2].index.copy();
 					last.newCoord=res;
-				})();
+				})(this);
 				otherAlly[0].p++;
 			}
 			else if(otherAlly[0].p>=otherAlly[0].dist)
