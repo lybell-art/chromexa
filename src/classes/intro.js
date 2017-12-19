@@ -33,15 +33,15 @@ INTRO.prototype.draw=function()
 	background(255);
 	var base=min(width,height);
 	var H=base/4;
-	UI.logo(width/2,height*9/32,height/2);
+	UI.logo(width/2,height*9/32,width/2);
 	this.banner(base,H);
 	if(this.tween>0) fill(236,240,241,255);
 	else fill(255);
-	UI.start_button(width/2,height*21/32,H/5);
+	UI.start_button(width/2,height*9/16+H/2,H/5);
 	if(this.press)
 	{
 		fill(236,240,241,map(this.tween,0,width/2,255,0));
-		UI.start_button(width/2,height*21/32,map(this.tween,0,width/2,H/5,H/2));
+		UI.start_button(width/2,height*9/16+H/2,map(this.tween,0,width/2,H/5,H/2));
 	}
 }
 INTRO.prototype.banner=function(base,H)
