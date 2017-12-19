@@ -55,11 +55,10 @@ function sceneExecute()
 		case 10:ingame.setup(); break;
 		case 11:ingame.playerTurn(); break;
 		case 12:ingame.motion(); break;
-//		case 12:ingame.playerTurn_motion(); break;
 		case 13:ingame.enemyTurn(); break;
 		case 14:ingame.motion(); break;
-//		case 14:ingame.enemyTurn_motion(); break;
-//		case 15:ingame.result(); break;
+		case 15:ingame.victory(); break;
+		case 16:ingame.gameover(); break;
 //		case 20:manageChara.setup(); break;
 //		case 21:manageChara.myChara(); break;
 //		case 30:sandbox.setup(); break;
