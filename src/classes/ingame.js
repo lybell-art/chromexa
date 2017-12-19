@@ -211,7 +211,7 @@ INGAME.prototype.input=function()
 			switch(clickSignal.signal)
 			{
 				case _CHARA:
-					if(this.otherPlayerDialog==-1)
+					if(this.otherPlayerDialog==-1&&this.otherPlayerDialog!=this.currentP)
 					{
 						this.otherPlayerDialog=cSel;
 						selectContinue=true;
