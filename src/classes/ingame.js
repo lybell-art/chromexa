@@ -203,15 +203,14 @@ INGAME.prototype.input=function()
 			{
 				clickSignal.signal=_NOMOVE;
 			}
-			else if(hexCell_dist(thisChara.coord,clickSignal.index)>this.moveCost)
+			else if(clickSignal.signal!=_CHARA&&hexCell_dist(thisChara.coord,clickSignal.index)>this.moveCost)
 			{
 				clickSignal.signal=_NOMOVE;
 			}
-			console.log(clickSignal, thisChara);
 			switch(clickSignal.signal)
 			{
 				case _CHARA:
-					if(this.otherPlayerDialog==-1&&this.otherPlayerDialog!=this.currentP)
+					if(this.otherPlayerDialog==-1&&cSel!=this.currentP)
 					{
 						this.otherPlayerDialog=cSel;
 						selectContinue=true;
@@ -221,8 +220,9 @@ INGAME.prototype.input=function()
 				case _MOVEABLE:
 				case _FILLER:selectContinue=thisChara.move(this, clickSignal.index); break;
 			}
-			if(!selectContinue||clickSignal.signal==_NOMOVE||clickSignal==null) this.currentP=-1;
+			if(!selectContinue||clickSignal.signal==_NOMOVE) this.currentP=-1;
 		}
+		else this.currentP=-1;
 	}
 }
 INGAME.prototype.inputInterface=function()
