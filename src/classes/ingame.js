@@ -222,8 +222,8 @@ INGAME.prototype.input=function()
 			}
 			if(!selectContinue||clickSignal.signal==_NOMOVE) this.currentP=-1;
 		}
-		else this.currentP=-1;
 	}
+	else this.currentP=-1;
 }
 INGAME.prototype.inputInterface=function()
 {
