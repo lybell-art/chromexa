@@ -91,6 +91,7 @@ INGAME.prototype.setup=function()
 	this.moveCost=3+this.P1area.filler.length*2;
 	this.currentP=-1;
 	this.enemyMoved=false;
+	this.otherPlayerDialog=false;
 	screenControl.set(this.field.w,this.field.h);
 	var bannerH=min(width,height)/map(width/height,16/9,9/16,8,5)*5/3;
 	screenControl.setBound(0,bannerH,width,height-bannerH);
@@ -145,29 +146,22 @@ INGAME.prototype.input=function()
 	 * 플레이어의 입력을 받아 캐릭터 연산을 수행한다.
 	 */
 	var base=min(width,height)
-	var endTurnButton=new BUTTON(width-base*0.08-base/3.7,height-base*0.08-base/5.8,base/3.7,base/5.8);	
 	var clickSignal;
 	var cSel;
 	var selectContinue=false;
 	var thisChara=null;
+	var endTurnButton=new BUTTON(width-base*0.08-base/3.7,height-base*0.08-base/5.8,base/3.7,base/5.8);
 	if(endTurnButton.mouseOn())
 	{
 		this.turnEnd();
 		return false;
 	}
+	var other_selectButton=new OTHER_DIALOGBUTTTON(this.whosTurn,this.otherPlayerDialog);
+	var dialogResult=other_selectButton.mouseOn();
+	if(dialogResult=="none") this.otherPlayerDialog=-1;
 	clickSignal=this.field.clickCheck();
 	if(clickSignal!==null)
 	{
-		if(clickSignal.signal==_BACK)	//뒤로가기 버튼 클릭 시
-		{
-			sceneNo=1;
-			return false;
-		}
-		else if(clickSignal.signal==_SETTING)	//설정 버튼 클릭 시
-		{
-			popupNo=1;
-			return false;
-		}
 		cSel=this.charaSelect(clickSignal.index);	//캐릭터를 클릭했는지를 파악함
 		if(cSel!=-1) clickSignal.signal=_CHARA;
 		console.log(clickSignal, this.pLocation, this.currentP);
@@ -197,10 +191,23 @@ INGAME.prototype.input=function()
 			switch(clickSignal.signal)
 			{
 				case _CHARA:
-				case _MOVEABLE:selectContinue=thisChara.move(this, clickSignal.index); break;
-//				case _FILLAR:this.filler();
+					if(cSel&&this.otherPlayerDialog==-1)
+					{
+						this.otherPlayerDialog=cSel;
+					}
+					else if(this.otherPlayerDialog>=0&&dialogResult=="select")
+					{
+						this.currentP=cSel;
+					}
+					else
+					{
+						thisChara.move(this, clickSignal.index);
+					}
+					break;
+				case _MOVEABLE:
+				case _FILLAR:selectContinue=thisChara.move(this, clickSignal.index); break;
 			}
-			if(!selectContinue||clickSignal.signal==_NOMOVE) this.currentP=-1;
+			if(!selectContinue||clickSignal.signal==_NOMOVE||clickSignal==null) this.currentP=-1;
 		}
 	}
 }
