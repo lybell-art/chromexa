@@ -56,8 +56,8 @@ OTHER_DIALOGBUTTON.prototype.set=function(where,otherP)
 	{
 		if(where.whosTurn==1) this.p=where.p1[otherP];
 		else this.p=where.p2[otherP];
-		this.x=p.x;
-		this.y=p.y;
+		this.x=this.p.x;
+		this.y=this.p.y;
 		this.isValid=true;
 	}
 	else
