@@ -72,6 +72,11 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		i++;
 		if(!isRotated) costDown++;
 	}
+	for(i=0;i<otherAlly.length;i++)
+	{
+		costDown-=otherAlly[i].dist;
+	}
+	if(where.moveCost<costDown) return false;
 	// 큐에 모션을 넣는다
 	dist=i;
 	cur=this.coord.copy();
