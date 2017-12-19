@@ -37,7 +37,7 @@ INTRO.prototype.draw=function()
 	this.banner(base,H);
 	if(this.tween>0) fill(236,240,241,255);
 	else fill(255);
-	UI.startbutton(width/2,height*11/16,H/5);
+	UI.start_button(width/2,height*11/16,H/5);
 	if(this.press)
 	{
 		fill(236,240,241,map(this.tween,0,width/2,255,0));
