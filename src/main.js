@@ -25,7 +25,7 @@ function setup()
 	resourceBox=new RESOURCE_BOX();
 	//class definition
 	loading=new LOADING();
-//	intro=new INTRO();
+	intro=new INTRO();
 //	selection=new SELENTION();
 //	manageChara=new MANAGE_CHARA();
 //	sandBox=new SANDBOX();
@@ -47,7 +47,7 @@ function sceneExecute()
 	switch(sceneNo)
 	{
 		case -1:loading.execute(); break;
-//		case 0:intro.execute(); break;
+		case 0:intro.execute(); break;
 //		case 1:selection.mainSelect(); break;
 //		case 2:selection.stageSelect_single(); break;
 //		case 3:selection.modeSelect_multi(); break;
