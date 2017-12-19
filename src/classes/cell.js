@@ -61,7 +61,7 @@ CELL.prototype.drawUpper=function()
 CELL.prototype.isMouseOn=function()
 {
 	var detector=new HEXA_BUTTON(this.x,this.y,this.r);
-	return detector.isMouseOn(true);
+	return detector.mouseOn(true);
 }
 /**
  *
