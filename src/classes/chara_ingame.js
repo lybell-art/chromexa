@@ -101,7 +101,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 				})(this);
 				otherAlly[0].p++;
 			}
-			else if(otherAlly[0].p>=otherAlly[0].dist)
+			if(otherAlly[0].p>=otherAlly[0].dist)
 			{
 				otherAlly.shift();
 			}
