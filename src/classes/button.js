@@ -57,14 +57,14 @@ OTHER_DIALOGBUTTON.prototype.set=function(where,otherP)
 	{
 		if(where.whosTurn==1) p=where.p1[otherP];
 		else p=where.p2[otherP];
-		this.x=this.p.x;
-		this.y=this.p.y;
+		this.x=p.x;
+		this.y=p.y;
 		this.pos=p.coord.copy();
 		this.isValid=true;
 	}
 	else
 	{
-		this.p=null;
+		this.pos=null;
 		this.x=0;
 		this.y=0;
 		this.isValid=false;
