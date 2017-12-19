@@ -172,14 +172,13 @@ INGAME.prototype.input=function()
 			case "swap":
 				if(this.whosTurn==1) thisChara=this.p1[this.currentP];
 				else thisChara=this.p2[this.currentP];
-				console.log(this.other_dialogButton.pos);
+				console.log(thisChara,this.currentP,this.other_dialogButton.pos);
 				thisChara.move(this, this.other_dialogButton.pos);
 				break;
 		}
 		this.otherPlayerDialog=-1;
 		this.other_dialogButton.set(this,this.otherPlayerDialog);
 	}
-	console.log(dialogResult);
 	clickSignal=this.field.clickCheck();
 	if(clickSignal!==null)
 	{
