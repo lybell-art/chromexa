@@ -90,7 +90,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 					who:otherAlly[0].who,
 					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1].index.copy(), 
 					newCoord:null
-				})
+				});
 				(function(){
 					var last=where.motionQueue[where.motionQueue.length-1].result[1];
 					var res;
