@@ -33,15 +33,20 @@ INTRO.prototype.draw=function()
 	background(255);
 	var base=min(width,height);
 	var H=height/4;
+	var logoSize;
+	var windowRatio=width/height;
+	if(windowRatio>=16/9) logoSize=width/2;
+	else if(windowRatio<=9/16) logoSize=width*0.85;
+	else logoSize=map(windowRatio,16/9,9/16,0.5,0.85)*width;
 	UI.logo(width/2,height*9/32,width/2);
 	this.banner(base,H);
 	if(this.tween>0) fill(236,240,241,255);
 	else fill(255);
-	UI.start_button(width/2,height*21/32,H/5);
+	UI.start_button(width/2,height*11/16,H/5);
 	if(this.press)
 	{
 		fill(236,240,241,map(this.tween,0,width/2,255,0));
-		UI.start_button(width/2,height*21/32,map(this.tween,0,width/2,H/5,H/2));
+		UI.start_button(width/2,height*11/16,map(this.tween,0,width/2,H/5,H/2));
 	}
 }
 INTRO.prototype.banner=function(base,H)
