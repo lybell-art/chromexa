@@ -88,9 +88,16 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			{
 				where.motionQueue[where.motionQueue.length-1].result.push({
 					who:otherAlly[0].who,
-					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p].index.copy(), 
-					newCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1].index.copy()
+					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1].index.copy(), 
+					newCoord:null
 				})
+				(function(){
+					var last=where.motionQueue[where.motionQueue.length-1].result[1];
+					var res;
+					if(i+otherAlly[0].dist-otherAlly[0].p-2<0) res=target.copy();
+					else res=trace[i+otherAlly[0].dist-otherAlly[0].p-2].index.copy();
+					last.newCoord=res;
+				})();
 				otherAlly[0].p++;
 			}
 			else if(otherAlly[0].p>=otherAlly[0].dist)
