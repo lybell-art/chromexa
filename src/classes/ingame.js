@@ -395,6 +395,7 @@ INGAME.prototype.motion=function()
 	var i;
 	var isPros=false;
 	var threshMap;
+	var isSceneChanged;
 	// 캐릭터의 모션을 제어한다.
 	if(thisMotion.type=="attack") screenControl.setScreen();
 	for(i=0;i<thisMotion.result.length;i++)
@@ -437,9 +438,9 @@ INGAME.prototype.motion=function()
 	// 모션이 끝난 후, 캐릭터의 상태를 변경시키고 큐를 한 칸 뽑아낸다.
 	if(!isPros)
 	{
-		this.motionEnd(thisMotion);
+		isSceneChange=this.motionEnd(thisMotion);
 		this.motionQueue.shift();
-		if(this.motionQueue.length==0) sceneNo--;
+		if(this.motionQueue.length==0&&isSceneChanged==false) sceneNo--;
 	}
 }
 INGAME.prototype.motionEnd=function(thisMotion)
@@ -503,7 +504,7 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		if(this.field.cells[this.P1area.hub.row][this.P1area.hub.col].who==2)
 		{
 			sceneNo=16;
-			return false;
+			return true;
 		}
 		else if(this.field.cells[this.P2area.hub.row][this.P2area.hub.col].who==1)
 		{
@@ -514,14 +515,17 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		{
 			this.whosTurn=2;
 			sceneNo=14;
+			return true;
 		}
 		else
 		{
 			this.whosTurn=1;
 			sceneNo=12;
 			this.turns++;
+			return true;
 		}
 	}
+	return false;
 }
 INGAME.prototype.syncMotion=function(bar)
 {
