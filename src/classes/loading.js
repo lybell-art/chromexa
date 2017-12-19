@@ -31,7 +31,7 @@ LOADING.prototype.execute=function()
 	fill(255);
 	noStroke();
 	rect(0,0,map(this.count,0,this.max,0,width),50);
-	if(this.count==this.max) sceneNo=10;
+	if(this.count==this.max) sceneNo=0;
 }
 LOADING.prototype.inputMapClosure=function(a,i,j)
 {
