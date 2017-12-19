@@ -94,7 +94,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 				(function(){
 					var last=where.motionQueue[where.motionQueue.length-1].result[1];
 					var res;
-					if(i+otherAlly[0].dist-otherAlly[0].p-2<0) res=target.copy();
+					if(i+otherAlly[0].dist-otherAlly[0].p-2<0) res=this.coord.copy();
 					else res=trace[i+otherAlly[0].dist-otherAlly[0].p-2].index.copy();
 					last.newCoord=res;
 				})();
