@@ -1,4 +1,43 @@
 const UI={
+	logo:function(x,y,xscale)
+	{
+		const typePoint=[
+			[[[4,0],[1,0],[0,1],[1,2],[4,2]]],
+			[[[1,0],[0,1],[1,2]],[[3,0],[4,1],[3,2]],[[0,1],[4,1]]],
+			[[[1,0],[0,1],[1,2]],[[3,0],[4,1],[3,1],[4,2]]],
+			[[[3,0],[1,0],[0,1],[1,2],[3,2],[4,1],[3,0]]],
+			[[[0,0],[0,2]],[[1,0],[2,1],[3,0]],[[4,0],[4,2]]],
+			[[[4,0],[1,0],[0,1],[1,2],[4,2]]],
+			[[[0,0],[4,2]],[[4,0],[0,2]]],
+			[[[0,2],[2,0],[4,2]]]
+			];
+		push();
+		translate(x,y);
+		scale(xscale/683.5);
+		push();
+		translate(-306.25,0);
+		for(var i=0;i<8;i++)
+		{
+			typho(typePoint[i]);
+			translate(87.5,0);
+		}
+		pop();
+		pop();
+	},
+	typho:function(v)
+	{
+		const xValues=[0,20,71/2,51,71];
+		const yValues=[0,50,100];
+		for(var i=0;i<v.length;i++)
+		{
+			beginShape();
+			for(var j=0;j<v[i].length;j++)
+			{
+				vertex(xValues[v[i][j][0]],yValues[v[i][j][1]]);
+			}
+			endShape();
+		}
+	},
 	start_button:function(x,y,r)
 	{
 		var edge=createVector(-r/2,0);
