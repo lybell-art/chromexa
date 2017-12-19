@@ -214,6 +214,7 @@ INGAME.prototype.input=function()
 					if(this.otherPlayerDialog==-1)
 					{
 						this.otherPlayerDialog=cSel;
+						selectContinue=true;
 					}
 					this.other_dialogButton.set(this,this.otherPlayerDialog);
 					break;
