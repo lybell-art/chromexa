@@ -514,12 +514,14 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		if(this.whosTurn==1)
 		{
 			this.whosTurn=2;
+			this.moveCost=3+this.P2area.filler.length*2;
 			sceneNo=13;
 			return true;
 		}
 		else
 		{
 			this.whosTurn=1;
+			this.moveCost=3+this.P1area.filler.length*2;
 			sceneNo=11;
 			this.turns++;
 			return true;
