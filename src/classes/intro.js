@@ -25,8 +25,8 @@ INTRO.prototype.execute=function()
 	{
 		this.press=true;
 	}
-	this.draw();
 	if(this.press) this.tween+=this.tween/4+1;
+	this.draw();
 }
 INTRO.prototype.draw=function()
 {
@@ -37,11 +37,11 @@ INTRO.prototype.draw=function()
 	this.banner(base,H);
 	if(this.tween>0) fill(236,240,241,255);
 	else fill(255);
-	UI.start_button(width/2,height*11/16,H/5);
+	UI.start_button(width/2,height*21/32,H/5);
 	if(this.press)
 	{
 		fill(236,240,241,map(this.tween,0,width/2,255,0));
-		UI.start_button(width/2,height*11/16,map(this.tween,0,width/2,H/5,H/2));
+		UI.start_button(width/2,height*21/32,map(this.tween,0,width/2,H/5,H/2));
 	}
 }
 INTRO.prototype.banner=function(base,H)
