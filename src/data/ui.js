@@ -1,8 +1,6 @@
 const UI={
 	logo:function(x,y,xscale)
 	{
-		(x,y,xscale)
-	{
 		const typePoint=[
 		/*C*/	[[[4,0],[1,0],[0,1],[1,2],[4,2]]],
 		/*H*/	[[[1,0],[0,1],[1,2]],[[3,0],[4,1],[3,2]],[[0,1],[4,1]]],
@@ -25,7 +23,7 @@ const UI={
 		translate(-341.5,-50);
 		for(var i=0;i<8;i++)
 		{
-			typho(typePoint[i]);
+			UI.typho(typePoint[i]);
 			translate(87.5,0);
 		}
 		pop();
@@ -45,7 +43,6 @@ const UI={
 		stroke(_WHITE);
 		triangle(133,-15,133,15,159,0);
 		pop();
-	}
 	},
 	typho:function(v)
 	{
