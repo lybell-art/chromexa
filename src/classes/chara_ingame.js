@@ -27,6 +27,9 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 	var beforeCell=cur.copy();
 	var map=where.field.cells;
 	var myBuho=(this.who==1?1:-1);
+	var myAlly;
+	if(this.who==1) myAlly=where.p1;
+	else myAlly=where.p2;
 	// 계산
 	var i=0;
 	while(!isRotated&&i<dist)
@@ -36,11 +39,10 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		if(where.pLocation[cur.row][cur.col]*myBuho>0)
 		{
 			otherAlly.push({
-				who:where.pLocation[cur.row][cur.col]*myBuho-1, 
+				who:myAlly[where.pLocation[cur.row][cur.col]*myBuho-1], 
 				beforeCur:beforeCell.copy(), 
 				thisCur:cur.copy(),
 				dist:hexCell_dist(beforeCell,cur),
-				dir:dir-(int(dir/3)*2-1)*3,
 				p:0
 			});
 		}
