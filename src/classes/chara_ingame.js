@@ -108,7 +108,6 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 					last.newCoord=res;
 				})(this);
 				otherAlly[0].p++;
-				costDown--;
 			}
 			if(otherAlly[0].p>=otherAlly[0].dist)
 			{
