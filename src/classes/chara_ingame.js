@@ -38,7 +38,10 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			otherAlly.push({
 				who:where.pLocation[cur.row][cur.col]*myBuho-1, 
 				beforeCur:beforeCell.copy(), 
-				thisCur:cur.copy()
+				thisCur:cur.copy(),
+				dist:hexCell_dist(beforeCell,cur),
+				dir:dir-(int(dir/3)*2-1)*3,
+				p:0
 			});
 		}
 		if([0,5].indexOf(trace[i].kind)!=-1) return false;
@@ -73,7 +76,26 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			type:"move",
 			result:[{who:this, pCoord:cur, newCoord:trace[i].index.copy()}]
 		});
-//		if()
+		if(otherAlly.length>0)
+		{
+			if(trace[i].index.same(otherAlly[0].beforeCur))
+			{
+				otherAlly[0].p=0;
+			}
+			if(otherAlly[0].p!=-1&&otherAlly[0].p<otherAlly[0].dist)
+			{
+				where.motionQueue[where.motionQueue.length-1].result.push({
+					who:otherAlly[0].who,
+					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p], 
+					newCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1]
+				})
+				otherAlly[0].p++;
+			}
+			else if(otherAlly[0].p>=otherAlly[0].dist)
+			{
+				otherAlly.shift();
+			}
+		}
 		if(where.pLocation[trace[i].index.row][trace[i].index.col]*myBuho<0)
 		{
 			this.attack(where, trace[i].index.copy());
