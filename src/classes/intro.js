@@ -25,7 +25,7 @@ INTRO.prototype.execute=function()
 	{
 		this.press=true;
 	}
-	INTRO.prototype.draw();
+	this.draw();
 	this.tween+=this.tween/4+1;
 }
 INTRO.prototype.draw=function()
