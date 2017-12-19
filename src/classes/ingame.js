@@ -209,7 +209,7 @@ INGAME.prototype.input=function()
 					}
 					break;
 				case _MOVEABLE:
-				case _FILLAR:selectContinue=thisChara.move(this, clickSignal.index); break;
+				case _FILLER:selectContinue=thisChara.move(this, clickSignal.index); break;
 			}
 			if(!selectContinue||clickSignal.signal==_NOMOVE||clickSignal==null) this.currentP=-1;
 		}
