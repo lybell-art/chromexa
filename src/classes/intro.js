@@ -38,7 +38,7 @@ INTRO.prototype.draw=function()
 	if(windowRatio>=16/9) logoSize=width/2;
 	else if(windowRatio<=9/16) logoSize=width*0.85;
 	else logoSize=map(windowRatio,16/9,9/16,0.5,0.85)*width;
-	UI.logo(width/2,height*9/32,width/2);
+	UI.logo(width/2,height*9/32,logoSize);
 	this.banner(base,H);
 	if(this.tween>0) fill(236,240,241,255);
 	else fill(255);
