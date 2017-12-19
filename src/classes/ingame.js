@@ -4,7 +4,7 @@
  * 
  * @author steliviere
  * @date 2017.12.16
- * @version 0.15
+ * @version 0.8
  *
  */
 function INGAME()
@@ -500,6 +500,16 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		this.currentP=-1;
 		this.otherPlayerDialog=-1;
 		this.other_dialogButton.set(this,this.otherPlayerDialog);
+		if(this.field.cells[this.P1area.hub.row][this.P1area.hub.col].who==2)
+		{
+			sceneNo=16;
+			return false;
+		}
+		else if(this.field.cells[this.P2area.hub.row][this.P2area.hub.col].who==1)
+		{
+			sceneNo=15;
+			return true;
+		}
 		if(this.whosTurn==1)
 		{
 			this.whosTurn=2;
