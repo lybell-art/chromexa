@@ -463,7 +463,10 @@ INGAME.prototype.motionEnd=function(thisMotion)
 		{
 			case "move":	//캐릭터의 위치와 배열상의 위치를 변경시킨다.
 				who_.coord=datum_[i].newCoord.copy();
-				this.pLocation[datum_[i].pCoord.row][datum_[i].pCoord.col]=0;
+				if(this.pLocation[datum_[i].pCoord.row][datum_[i].pCoord.col]==(who_.arrNo+1)*(who_.who==1?1:-1))
+				{
+					this.pLocation[datum_[i].pCoord.row][datum_[i].pCoord.col]=0;
+				}
 				this.pLocation[datum_[i].newCoord.row][datum_[i].newCoord.col]=(who_.arrNo+1)*(who_.who==1?1:-1);
 				break;
 			case "attack":	//최종적으로 칠해질 맵의 배열을 정한다.
