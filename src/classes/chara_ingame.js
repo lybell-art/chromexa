@@ -269,8 +269,8 @@ function PLAYER(row, col, boxNo, arrNo)
 	this.arrNo=arrNo;
 	this.myChara=charaProto[boxNo];
 	this.indexNo=boxNo;
-	this.maxCP=charaProto[boxNo].maxCP;
-	this.CP=charaProto[boxNo].maxCP;
+	this.maxCP=charaProto[boxNo].CPbase;
+	this.CP=charaProto[boxNo].CPbase;
 //	this.myChara=myCharacter[boxNo];
 //	this.indexNo=this.myChara.indexNo;
 //	this.maxCP=this.myChara.maxCP;
