@@ -28,7 +28,7 @@ SELECTION.prototype.stageSelect_single=function()
 		{
 			coord=new COORD(i,j);
 			stageButton.push(new HEXA_BUTTON(coord.x(),coord.y(),36));
-			hexagon(coord.x(),coord.Y(),36);
+			hexagon(coord.x(),coord.y(),36);
 		}
 	}
 	if(inputBroadcast.isMousePress)
