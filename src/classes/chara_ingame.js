@@ -51,6 +51,10 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		if([0,5].indexOf(trace[i].kind)!=-1) return false;
 		if(this.CP!=undefined)
 		{
+			if((trace[i].kind==3||trace[i].kind==4)&&trace[i].who==this.who)
+			{
+				this.CP=this.maxCP;
+			}
 			if(this.CP==0&&where.pLocation[cur.row][cur.col]*myBuho<0)
 			{
 				if(isRotated) this.death();
