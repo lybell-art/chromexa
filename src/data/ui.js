@@ -314,7 +314,7 @@ const UI={
 		beginShape();
 		vertex(x-5,y+1);
 		vertex(x-1.5,y+5.5);
-		vertex(x5,y-3.5);
+		vertex(x+5,y-3.5);
 		endShape();
 	},
 	ODL_swap:function(x,y)
