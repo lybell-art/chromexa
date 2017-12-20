@@ -49,14 +49,28 @@ LOADING.prototype.inputMap=function(table, box)
 	{
 		box.kind[i]=[];
 		box.who[i]=[];
+		box.player[i]=[];
 		box.enemy[i]=[];
 		for(var j=0;j<box.column;j++)
 		{
 			s=split(table.getString(i,j),"|");
 			box.kind[i][j]=int(s[0]);
 			box.who[i][j]=int(s[1]);
-			if(s[2]=="null") box.enemy[i][j]=null;
-			else box.enemy[i][j]=int(s[2]);
+			if(s[2]=="null")
+			{
+				box.player[i][j]=null;
+				box.enemy[i][j]=null;
+			}
+			else if(s[2]>1000)
+			{
+				box.player[i][j]=null;
+				box.enemy[i][j]=int(s[2]);
+			}
+			else
+			{
+				box.player[i][j]=int(s[2]);
+				box.enemy[i][j]=null;
+			}
 		}
 	}
 	this.count++;
