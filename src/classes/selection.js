@@ -11,6 +11,10 @@ SELECTION.prototype.mainSelect=function()
 	hexagon(width/2-300,height/2,150);
 	fill(_BLUE);
 	hexagon(width/2+300,height/2,150);
+	fill(255);
+	textAlign(CENTER);
+	text("single play",width/2-300,height/2);
+	text("multi play",width/2+300,height/2);
 	if(inputBroadcast.isMousePress)
 	{
 		if(single.mouseOn()) sceneNo=2;
@@ -27,6 +31,7 @@ SELECTION.prototype.stageSelect_single=function()
 	var stageButton=[];
 	var coord;
 	background(255);
+	textAlign(CENTER);
 	for(var i=0;i<2;i++)
 	{
 		for(var j=0;j<12;j++)
