@@ -12,6 +12,7 @@ function MAP_DATA()
 	this.column=0;
 	this.kind=[];
 	this.who=[];
+	this.player=[];
 	this.enemy=[];
 }
 MAP_DATA.prototype.copy=function()
@@ -23,11 +24,13 @@ MAP_DATA.prototype.copy=function()
 	{
 		newObj.kind[i]=[];
 		newObj.who[i]=[];
+		newObj.player[i]=[];
 		newObj.enemy[i]=[];
 		for(var j=0;j<this.column;j++)
 		{
 			newObj.kind[i][j]=this.kind[i][j];
 			newObj.who[i][j]=this.who[i][j];
+			newObj.player[i][j]=this.player[i][j];
 			newObj.enemy[i][j]=this.enemy[i][j];
 		}
 	}
