@@ -33,7 +33,10 @@ SELECTION.prototype.stageSelect_single=function()
 		{
 			coord=new COORD(i,j);
 			stageButton.push(new HEXA_BUTTON(coord.x(),coord.y(),36));
-			hexagon(coord.x(),coord.y(),36);
+			fill(_BLUE);
+			hexagon(100+coord.x(),height*2/5+coord.y(),36);
+			fill(255);
+			text(i*12+j,100+coord.x(),height*2/5+coord.y());
 		}
 	}
 	if(inputBroadcast.isMousePress)
