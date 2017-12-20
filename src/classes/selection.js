@@ -21,6 +21,7 @@ SELECTION.prototype.stageSelect_single=function()
 {
 	var stageButton=[];
 	var coord;
+	background(255);
 	for(var i=0;i<2;i++)
 	{
 		for(var j=0;j<12;j++)
@@ -34,11 +35,12 @@ SELECTION.prototype.stageSelect_single=function()
 	{
 		for(var i=0;i<24;i++)
 		{
-			if(stageButton[i].mouseOn)
+			if(stageButton[i].mouseOn())
 			{
 				sceneNo=10;
 				stream.world=1;
 				stream.stage=i+1;
+				break;
 			}
 		}
 	}
