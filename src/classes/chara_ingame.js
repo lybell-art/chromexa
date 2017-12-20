@@ -40,6 +40,7 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 		if(where.pLocation[cur.row][cur.col]*myBuho>0)
 		{
 			if(isRotated) return false;
+			if(this.CP==undefined) return false;
 			otherAlly.push({
 				who:myAlly[where.pLocation[cur.row][cur.col]*myBuho-1], 
 				beforeCur:beforeCell.copy(), 
