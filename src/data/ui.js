@@ -308,11 +308,33 @@ const UI={
 		noStroke();
 		fill(_RED);
 		hexagon(x,y,12);
+		stroke(255);
+		strokeWeight(1);
+		noFill();
+		beginShape();
+		vertex(x-5,y+1);
+		vertex(x-1.5,y+5.5);
+		vertex(x5,y-3.5);
+		endShape();
 	},
 	ODL_swap:function(x,y)
 	{
 		noStroke();
 		fill(_BLUE);
 		hexagon(x,y,12);
+		stroke(255);
+		strokeWeight(1);
+		noFill();
+		for(var i=-1;i<2;i+=2)
+		{
+			beginShape();
+			vertex(x+i*6,y-i*4.688);
+			vertex(x+i*5.438,y-i*2.536);
+			vertex(x+i*3,y-i*3);
+			endShape();
+		}
+		arc(x,y,12,12,radians(25),radians(155));
+		arc(x,y,12,12,radians(205),radians(335));
+
 	}
 }
