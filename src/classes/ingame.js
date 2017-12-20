@@ -76,8 +76,8 @@ INGAME.prototype.setup=function()
 			}
 		}
 	}
-	this.p1=this.playerCreate();
-	if(this.world==_MULTIPLAY) this.p2=this.playerCreate();
+	this.p1=this.playerCreate(mapData,1);
+	if(this.world==_MULTIPLAY) this.p2=this.playerCreate(mapData,2);
 	else
 	{
 		this.p2=this.enemyCreate(mapData);
@@ -101,7 +101,7 @@ INGAME.prototype.setup=function()
 	screenControl.setBound(0,bannerH,width,height-bannerH);
 	sceneNo=11;
 }
-INGAME.prototype.playerCreate=function()
+INGAME.prototype.playerCreate=function(data, who)
 {
 	/**
 	 *
@@ -111,10 +111,21 @@ INGAME.prototype.playerCreate=function()
 	 *
 	 */
 	var res=[];
-	for(var i=0;i<5;i++)
+	var count=0;
+	for(var i=0;i<data.row;i++)
 	{
-		res.push(new PLAYER(i,i,0,i));
-		this.pLocation[i][i]=i+1;
+		for(var j=0;j<data.column;j++)
+		{
+			if(data.player[i][j]!=null)
+			{
+				if(int(data.player[i][j]/500)==who-1)
+				{
+					res.push(new PLAYER(i,j,data.player[i][j]-int(data.player[i][j]/500)*500,count));
+					this.pLocation[i][j]=(who*2-3)*(count+1);
+					count++;
+				}
+			}
+		}
 	}
 	return res;
 }
@@ -528,7 +539,7 @@ INGAME.prototype.turnEndSetting=function()
 		{
 			if(this.p2[i].isLive) livingChara++;
 		}
-		this.moveCost+=livingChara;
+		this.moveCost+=livingChara*3;
 		sceneNo=13;
 		return true;
 	}
@@ -540,7 +551,7 @@ INGAME.prototype.turnEndSetting=function()
 		{
 			if(this.p1[i].isLive) livingChara++;
 		}
-		this.moveCost+=livingChara;
+		this.moveCost+=livingChara*3;
 		sceneNo=11;
 		this.turns++;
 		return true;
