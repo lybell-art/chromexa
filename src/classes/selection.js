@@ -37,7 +37,7 @@ SELECTION.prototype.stageSelect_single=function()
 		for(var j=0;j<12;j++)
 		{
 			coord=new COORD(i,j);
-			stageButton.push(new HEXA_BUTTON(coord.x(),coord.y(),36));
+			stageButton.push(new HEXA_BUTTON(100+coord.x(),height*2/5+coord.y(),36));
 			fill(_BLUE);
 			hexagon(100+coord.x(),height*2/5+coord.y(),36);
 			fill(255);
