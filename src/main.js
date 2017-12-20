@@ -27,7 +27,7 @@ function setup()
 	//class definition
 	loading=new LOADING();
 	intro=new INTRO();
-	selection=new SELENTION();
+	selection=new SELECTION();
 //	manageChara=new MANAGE_CHARA();
 //	sandBox=new SANDBOX();
 	ingame=new INGAME();
