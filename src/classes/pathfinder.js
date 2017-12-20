@@ -42,7 +42,7 @@ PATHFINDER.prototype.childCur_detect=function(where, current, dir)
 	for(var j=1;j<4;j++)
 	{
 		childCur=hexCell_trans(current.pos,dir,j);
-		if(childCur.row<0||childCur.row>=where.field.Rows||childCur.col<0||childCur.col>where.field.Columns)
+		if(childCur.row<0||childCur.row>=where.field.Rows||childCur.col<0||childCur.col>=where.field.Columns)
 		{
 			return null;
 		}
