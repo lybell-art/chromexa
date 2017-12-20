@@ -8,11 +8,12 @@ LOADING.prototype.loadData=function()
 	var i,j;
 	var table, url;
 	var callback;
-	for(i=1;i<2;i++)
+	for(i=0;i<2;i++)
 	{
 		resourceBox.map[i]=[];
 		for(j=0;j<=6;j++)
 		{
+			if(i==0&&j!=1) continue;
 			resourceBox.map[i][j]=new MAP_DATA();
 			url="resource/map/"+i+"-"+j+".csv";
 			callback=this.inputMapClosure(this,i,j);
