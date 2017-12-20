@@ -287,7 +287,7 @@ INGAME.prototype.interface=function()
 	{
 		if(chara.isLive) UI.CPmeter(chara.x,chara.y,chara.CP,chara.maxCP);
 	}
-	if(this.whold==_MULTIPLAY)
+	if(this.world==_MULTIPLAY)
 	{
 		for(chara of this.p2)
 		{
@@ -646,11 +646,79 @@ INGAME.prototype.victory=function()
 {
 	background(255);
 	textAlign(CENTER);
-	text("victory!",width/2,height/2);
+	text("victory!",width/2,height*2/5);
+	noStroke();
+	fill(_RED);
+	hexagon(width/2-150,height*2/3,50);
+	textAlign(CENTER);
+	text("menu",width/2-150,height*2/3+30);
+	fill(_BLUE);
+	hexagon(width/2+150,height*2/3,50);
+	textAlign(CENTER);
+	text("next",width/2+150,height*2/3+30);
+	var menuButton=new HEXA_BUTTON(width/2-150,height*2/3,50);
+	var nextButton=new HEXA_BUTTON(width/2+150,height*2/3,50);
+	if(inputBroadcast.isMousePress)
+	{
+		if(menuButton.mouseOn())
+		{
+			sceneNo=2;
+		}
+		else if(nextButton.mouseOn())
+		{
+			sceneNo=10;
+			if(this.stage!=6)
+			{
+				stream.world=this.world;
+				stream.stage=this.stage+1;
+			}
+			else
+			{
+				stream.world=this.world;
+				stream.stage=this.stage;
+			}
+			/*
+			if(this.stage==24)
+			{
+				stream.world=this.world+1;
+				stream.stage=1;
+			}
+			else
+			{
+				stream.world=this.world;
+				stream.stage=this.stage+1;
+			}
+			*/
+		}
+	}
 }
 INGAME.prototype.gameover=function()
 {
 	background(255);
 	textAlign(CENTER);
 	text("game over...",width/2,height/2);
+	noStroke();
+	fill(_RED);
+	hexagon(width/2-150,height*2/3,50);
+	textAlign(CENTER);
+	text("menu",width/2-150,height*2/3+30);
+	fill(_BLUE);
+	hexagon(width/2+150,height*2/3,50);
+	textAlign(CENTER);
+	text("retry",width/2+150,height*2/3+30);
+	var menuButton=new HEXA_BUTTON(width/2-150,height*2/3,50);
+	var nextButton=new HEXA_BUTTON(width/2+150,height*2/3,50);
+	if(inputBroadcast.isMousePress)
+	{
+		if(menuButton.mouseOn())
+		{
+			sceneNo=2;
+		}
+		else if(retryButton.mouseOn())
+		{
+			sceneNo=10;
+			stream.world=this.world;
+			stream.stage=this.stage;
+		}
+	}
 }
