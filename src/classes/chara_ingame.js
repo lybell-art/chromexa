@@ -101,15 +101,15 @@ CHARACTER_INGAME.prototype.move=function(where, target)
 			{
 				where.motionQueue[where.motionQueue.length-1].result.push({
 					who:otherAlly[0].who,
-					pCoord:trace[i+otherAlly[0].dist-otherAlly[0].p-1].index.copy(), 
+					pCoord:trace[i+otherAlly[0].dist-2*otherAlly[0].p-1].index.copy(), 
 					newCoord:null
 				});
 				(function(who){
 					var motionQueuelast=where.motionQueue[where.motionQueue.length-1];
 					var last=motionQueuelast.result[motionQueuelast.result.length-1];
 					var res;
-					if(i+otherAlly[0].dist-otherAlly[0].p-2<0) res=who.coord.copy();
-					else res=trace[i+otherAlly[0].dist-otherAlly[0].p-2].index.copy();
+					if(i+otherAlly[0].dist-2*otherAlly[0].p-2<0) res=who.coord.copy();
+					else res=trace[i+otherAlly[0].dist-2*otherAlly[0].p-2].index.copy();
 					last.newCoord=res;
 				})(this);
 				otherAlly[0].p++;
