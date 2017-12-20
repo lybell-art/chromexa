@@ -14,7 +14,12 @@ SELECTION.prototype.mainSelect=function()
 	if(inputBroadcast.isMousePress)
 	{
 		if(single.mouseOn()) sceneNo=2;
-		if(multi.mouseOn()) sceneNo=3;
+		if(multi.mouseOn())
+		{
+			sceneNo=10;
+			stream.world=0;
+			stream.stage=1;
+		}
 	}
 }
 SELECTION.prototype.stageSelect_single=function()
