@@ -1,5 +1,6 @@
 function SELENTION()
 {
+	this.a="bla_bla";
 }
 SELECTION.prototype.mainSelect=function()
 {
