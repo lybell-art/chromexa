@@ -23,10 +23,11 @@ function setup()
 	inputBroadcast=new BROADCAST();
 	screenControl=new SCREEN_CONTROL(width,height);
 	resourceBox=new RESOURCE_BOX();
+	stream=new STREAM();
 	//class definition
 	loading=new LOADING();
 	intro=new INTRO();
-//	selection=new SELENTION();
+	selection=new SELENTION();
 //	manageChara=new MANAGE_CHARA();
 //	sandBox=new SANDBOX();
 	ingame=new INGAME();
@@ -48,10 +49,10 @@ function sceneExecute()
 	{
 		case -1:loading.execute(); break;
 		case 0:intro.execute(); break;
-//		case 1:selection.mainSelect(); break;
-//		case 2:selection.stageSelect_single(); break;
+		case 1:selection.mainSelect(); break;
+		case 2:selection.stageSelect_single(); break;
 //		case 3:selection.modeSelect_multi(); break;
-//		case 4:selection.stageSelect_multi(); break;
+		case 3:selection.stageSelect_multi(); break;	//case 4
 		case 10:ingame.setup(); break;
 		case 11:ingame.playerTurn(); break;
 		case 12:ingame.motion(); break;
