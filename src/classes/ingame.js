@@ -651,11 +651,12 @@ INGAME.prototype.victory=function()
 	fill(_RED);
 	hexagon(width/2-150,height*2/3,50);
 	textAlign(CENTER);
-	text("menu",width/2-150,height*2/3+30);
+	fill(255);
+	text("menu",width/2-150,height*2/3+25);
 	fill(_BLUE);
 	hexagon(width/2+150,height*2/3,50);
-	textAlign(CENTER);
-	text("next",width/2+150,height*2/3+30);
+	fill(255);
+	text("next",width/2+150,height*2/3+25);
 	var menuButton=new HEXA_BUTTON(width/2-150,height*2/3,50);
 	var nextButton=new HEXA_BUTTON(width/2+150,height*2/3,50);
 	if(inputBroadcast.isMousePress)
@@ -701,11 +702,12 @@ INGAME.prototype.gameover=function()
 	fill(_RED);
 	hexagon(width/2-150,height*2/3,50);
 	textAlign(CENTER);
-	text("menu",width/2-150,height*2/3+30);
+	fill(255);
+	text("menu",width/2-150,height*2/3+25);
 	fill(_BLUE);
 	hexagon(width/2+150,height*2/3,50);
-	textAlign(CENTER);
-	text("retry",width/2+150,height*2/3+30);
+	fill(255);
+	text("retry",width/2+150,height*2/3+25);
 	var menuButton=new HEXA_BUTTON(width/2-150,height*2/3,50);
 	var nextButton=new HEXA_BUTTON(width/2+150,height*2/3,50);
 	if(inputBroadcast.isMousePress)
