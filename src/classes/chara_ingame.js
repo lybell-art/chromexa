@@ -267,10 +267,14 @@ function PLAYER(row, col, boxNo, arrNo)
 {
 	CHARACTER_INGAME.call(this);
 	this.arrNo=arrNo;
-	this.myChara=myCharacter[boxNo];
-	this.indexNo=this.myChara.indexNo;
-	this.maxCP=this.myChara.maxCP;
-	this.CP=this.myChara.maxCP;
+	this.myChara=charaProto[boxNo];
+	this.indexNo=boxNo;
+	this.maxCP=charaProto[boxNo].maxCP;
+	this.CP=charaProto[boxNo].maxCP;
+//	this.myChara=myCharacter[boxNo];
+//	this.indexNo=this.myChara.indexNo;
+//	this.maxCP=this.myChara.maxCP;
+//	this.CP=this.myChara.maxCP;
 	this.coord=new COORD(row,col);
 	this.x=this.coord.x();
 	this.y=this.coord.y();
