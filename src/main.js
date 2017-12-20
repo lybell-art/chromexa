@@ -86,16 +86,16 @@ function mouseDragged()
 {
 	var deltaX=mouseX-inputBroadcast.dmouseX;
 	var deltaY=mouseY-inputBroadcast.dmouseY;
-	if(sceneNo%10==1 || sceneNo==31) screenControl.move(deltaX,deltaY);
+	if(int(sceneNo/10)==1 || sceneNo==31) screenControl.move(deltaX,deltaY);
 }
 function mouseWheel(event)
 {
 	var newZoom=screenControl.zoom-0.001*event.delta;
-	if(sceneNo%10==1 || sceneNo==31) screenControl.scale(newZoom,mouseX,mouseY);
+	if(int(sceneNo/10)==1 || sceneNo==31) screenControl.scale(newZoom,mouseX,mouseY);
 }
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 	var bannerH=min(width,height)/map(width/height,16/9,9/16,8,5)*5/3;
 	screenControl.setBound(0,bannerH,width,height-bannerH);
-	if(sceneNo%10==1 || sceneNo==31) screenControl.limit();
+	if(int(sceneNo/10)==1 || sceneNo==31) screenControl.limit();
 }
