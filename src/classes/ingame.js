@@ -189,6 +189,7 @@ INGAME.prototype.input=function()
 		}
 		this.otherPlayerDialog=-1;
 		this.other_dialogButton.set(this,this.otherPlayerDialog);
+		return false;
 	}
 	clickSignal=this.field.clickCheck();
 	if(clickSignal!==null)
