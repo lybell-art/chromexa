@@ -263,7 +263,7 @@ CHARACTER_INGAME.prototype.death=function()
 	}
 }
 
-function PLAYER(row, col, boxNo, arrNo)
+function PLAYER(row, col, boxNo, arrNo, who)
 {
 	CHARACTER_INGAME.call(this);
 	this.arrNo=arrNo;
@@ -278,7 +278,7 @@ function PLAYER(row, col, boxNo, arrNo)
 	this.coord=new COORD(row,col);
 	this.x=this.coord.x();
 	this.y=this.coord.y();
-	this.who=(this.arrNo>0?1:2);
+	this.who=who;
 	this.isStunned=false;
 	this.sprite=charaProto[this.indexNo].sprite;
 	this.attackMap=charaProto[this.indexNo].attackMap.slice();
