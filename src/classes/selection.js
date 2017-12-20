@@ -1,4 +1,4 @@
-function SELENTION()
+function SELECTION()
 {
 	this.a="bla_bla";
 }
