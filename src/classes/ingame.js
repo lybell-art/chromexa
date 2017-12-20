@@ -669,7 +669,7 @@ INGAME.prototype.victory=function()
 		else if(nextButton.mouseOn())
 		{
 			sceneNo=10;
-			if(this.stage!=6||this.world==_MULTIPLAY)
+			if(this.stage!=6&&this.world!=_MULTIPLAY)
 			{
 				stream.world=this.world;
 				stream.stage=this.stage+1;
