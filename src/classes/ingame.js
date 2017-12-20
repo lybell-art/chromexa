@@ -646,11 +646,11 @@ INGAME.prototype.victory=function()
 {
 	background(255);
 	textAlign(CENTER);
-	text("victory!",width/2,height*2/5);
+	if(this.world!=_MULTIPLAY) text("victory!",width/2,height*2/5);
+	else text("player 1 win!",width/2,height*2/5);
 	noStroke();
 	fill(_RED);
 	hexagon(width/2-150,height*2/3,50);
-	textAlign(CENTER);
 	fill(255);
 	text("menu",width/2-150,height*2/3+25);
 	fill(_BLUE);
@@ -668,7 +668,7 @@ INGAME.prototype.victory=function()
 		else if(nextButton.mouseOn())
 		{
 			sceneNo=10;
-			if(this.stage!=6)
+			if(this.stage!=6||this.world==_MULTIPLAY)
 			{
 				stream.world=this.world;
 				stream.stage=this.stage+1;
@@ -697,11 +697,11 @@ INGAME.prototype.gameover=function()
 {
 	background(255);
 	textAlign(CENTER);
-	text("game over...",width/2,height/2);
+	if(this.world!=_MULTIPLAY) text("game over...",width/2,height*2/5);
+	else text("player 2 win!",width/2,height*2/5);
 	noStroke();
 	fill(_RED);
 	hexagon(width/2-150,height*2/3,50);
-	textAlign(CENTER);
 	fill(255);
 	text("menu",width/2-150,height*2/3+25);
 	fill(_BLUE);
@@ -709,7 +709,7 @@ INGAME.prototype.gameover=function()
 	fill(255);
 	text("retry",width/2+150,height*2/3+25);
 	var menuButton=new HEXA_BUTTON(width/2-150,height*2/3,50);
-	var nextButton=new HEXA_BUTTON(width/2+150,height*2/3,50);
+	var retryButton=new HEXA_BUTTON(width/2+150,height*2/3,50);
 	if(inputBroadcast.isMousePress)
 	{
 		if(menuButton.mouseOn())
