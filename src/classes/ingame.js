@@ -48,11 +48,11 @@ INGAME.prototype.setup=function()
 	/**
 	 * 맵을 불러오고 각종 변수를 초기화한다.
 	 */
-//	this.world=stream.StoG1;
-//	this.stage=stream.StoG2;
+	this.world=stream.world;
+	this.stage=stream.stage;
 	//map load
-	this.world=1;
-	this.stage=0;
+//	this.world=1;
+//	this.stage=0;
 	var mapData=resourceBox.map[this.world][this.stage].copy();
 	this.field=new FIELD();
 	this.field.makeField(mapData);
