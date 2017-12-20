@@ -41,7 +41,7 @@ SELECTION.prototype.stageSelect_single=function()
 			fill(_BLUE);
 			hexagon(100+coord.x(),height*2/5+coord.y(),36);
 			fill(255);
-			text(i*12+j,100+coord.x(),height*2/5+coord.y());
+			text(i*12+j+1,100+coord.x(),height*2/5+coord.y());
 		}
 	}
 	if(inputBroadcast.isMousePress)
