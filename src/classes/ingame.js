@@ -121,7 +121,7 @@ INGAME.prototype.playerCreate=function(data, who)
 				if(int(data.player[i][j]/500)==who-1)
 				{
 					res.push(new PLAYER(i,j,data.player[i][j]-int(data.player[i][j]/500)*500,count));
-					this.pLocation[i][j]=(who*2-3)*(count+1);
+					this.pLocation[i][j]=(3-who*2)*(count+1);
 					count++;
 				}
 			}
