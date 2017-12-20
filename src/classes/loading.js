@@ -61,7 +61,7 @@ LOADING.prototype.inputMap=function(table, box)
 				box.player[i][j]=null;
 				box.enemy[i][j]=null;
 			}
-			else if(s[2]>1000)
+			else if(int(s[2])>1000)
 			{
 				box.player[i][j]=null;
 				box.enemy[i][j]=int(s[2]);
