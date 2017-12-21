@@ -31,6 +31,7 @@ SELECTION.prototype.stageSelect_single=function()
 {
 	var stageButton=[];
 	var coord;
+	var w=45*(1.5*12+0.5);
 	background(255);
 	textAlign(CENTER);
 	textSize(25);
@@ -39,12 +40,12 @@ SELECTION.prototype.stageSelect_single=function()
 		for(var j=0;j<12;j++)
 		{
 			coord=new COORD(i,j);
-			stageButton.push(new HEXA_BUTTON(100+coord.x(),height*2/5+coord.y(),36));
+			stageButton.push(new HEXA_BUTTON(width/2-w/2+coord.x(),height*2/5+coord.y(),36));
 			if(i*12+j<6) fill(_BLUE);
 			else fill(_DARK_WHITE);
-			hexagon(100+coord.x(),height*2/5+coord.y(),36);
+			hexagon(width/2-w/2coord.x(),height*2/5+coord.y(),36);
 			fill(255);
-			text(i*12+j+1,100+coord.x(),height*2/5+coord.y());
+			text(i*12+j+1,width/2-w/2coord.x(),height*2/5+coord.y());
 		}
 	}
 	if(inputBroadcast.isMousePress)
