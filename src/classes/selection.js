@@ -48,7 +48,7 @@ SELECTION.prototype.stageSelect_single=function()
 	}
 	if(inputBroadcast.isMousePress)
 	{
-		for(var i=0;i<24;i++)
+		for(var i=0;i<6;i++)
 		{
 			if(stageButton[i].mouseOn())
 			{
