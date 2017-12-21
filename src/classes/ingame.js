@@ -535,6 +535,7 @@ INGAME.prototype.turnEndSetting=function()
 	if(this.whosTurn==1)
 	{
 		this.whosTurn=2;
+		this.fillerReset();
 		this.moveCost=2+this.P2area.filler.length*2;
 		for(i=0;i<this.p2.length;i++)
 		{
@@ -547,6 +548,7 @@ INGAME.prototype.turnEndSetting=function()
 	else
 	{
 		this.whosTurn=1;
+		this.fillerReset();
 		this.moveCost=2+this.P1area.filler.length*2;
 		for(i=0;i<this.p1.length;i++)
 		{
@@ -566,11 +568,11 @@ INGAME.prototype.fillerReset=function()
 	{
 		if(this.field.cells[thisFiller.row][thisFiller.col].who==1)
 		{
-			this.P1area.filler.push(new COORD(i,j));
+			this.P1area.filler.push(new COORD(thisFiller.row,thisFiller.col));
 		}
 		else if(this.field.cells[thisFiller.row][thisFiller.col].who==2)
 		{
-			this.P2area.filler.push(new COORD(i,j));
+			this.P2area.filler.push(new COORD(thisFiller.row,thisFiller.col));
 		}
 	}
 }
