@@ -31,7 +31,7 @@ function INGAME()
 	this.field=null;
 	this.pLocation=[];
 	this.P1area={hub:null, filler:[]}, this.P2area={hub:null, filler:[]};
-	this.Nuarea={filler:[]};
+	this.Allarea={filler:[]};
 	this.p1=null, this.p2=null;
 	this.whosTurn=1;
 	this.turns=0;
@@ -72,7 +72,7 @@ INGAME.prototype.setup=function()
 			{
 				if(this.field.cells[i][j].who==1) this.P1area.filler.push(new COORD(i,j));
 				else if(this.field.cells[i][j].who==2)  this.P2area.filler.push(new COORD(i,j));
-				else this.Nuarea.filler.push(new COORD(i,j));
+				this.Allarea.filler.push(new COORD(i,j));
 			}
 		}
 	}
@@ -90,7 +90,7 @@ INGAME.prototype.setup=function()
 	this.motionQueue=[];
 	this.whosTurn=1;
 	this.turns=1;
-	this.moveCost=4+this.P1area.filler.length*2+this.p1.length*3;
+	this.moveCost=2+this.P1area.filler.length*2+this.p1.length*3;
 	this.currentP=-1;
 	this.enemyMoved=false;
 	this.otherPlayerDialog=-1;
@@ -535,7 +535,7 @@ INGAME.prototype.turnEndSetting=function()
 	if(this.whosTurn==1)
 	{
 		this.whosTurn=2;
-		this.moveCost=4+this.P2area.filler.length*2;
+		this.moveCost=2+this.P2area.filler.length*2;
 		for(i=0;i<this.p2.length;i++)
 		{
 			if(this.p2[i].isLive) livingChara++;
@@ -547,7 +547,7 @@ INGAME.prototype.turnEndSetting=function()
 	else
 	{
 		this.whosTurn=1;
-		this.moveCost=4+this.P1area.filler.length*2;
+		this.moveCost=2+this.P1area.filler.length*2;
 		for(i=0;i<this.p1.length;i++)
 		{
 			if(this.p1[i].isLive) livingChara++;
@@ -556,6 +556,22 @@ INGAME.prototype.turnEndSetting=function()
 		sceneNo=11;
 		this.turns++;
 		return true;
+	}
+}
+INGAME.prototype.fillerReset=function()
+{
+	this.P1area.filler=[];
+	this.P2area.filler=[];
+	for(var thisFiller of this.Allarea.filler)
+	{
+		if(this.field.cells[thisFiller.row][thisFiller.col].who==1)
+		{
+			this.P1area.filler.push(new COORD(i,j));
+		}
+		else if(this.field.cells[thisFiller.row][thisFiller.col].who==2)
+		{
+			this.P2area.filler.push(new COORD(i,j));
+		}
 	}
 }
 INGAME.prototype.syncMotion=function(bar)
