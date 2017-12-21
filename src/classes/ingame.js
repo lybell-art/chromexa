@@ -66,7 +66,7 @@ INGAME.prototype.setup=function()
 			if(this.field.cells[i][j].kind==3)
 			{
 				if(this.field.cells[i][j].who==1) this.P1area.hub=new COORD(i,j);
-				else  this.P2area.hub=new COORD(i,j);
+				else this.P2area.hub=new COORD(i,j);
 			}
 			else if(this.field.cells[i][j].kind==4)
 			{
@@ -90,7 +90,7 @@ INGAME.prototype.setup=function()
 	this.motionQueue=[];
 	this.whosTurn=1;
 	this.turns=1;
-	this.moveCost=2+this.P1area.filler.length*2+this.p1.length*3;
+	this.moveCost=3+this.P1area.filler.length*2+this.p1.length*3;
 	this.currentP=-1;
 	this.enemyMoved=false;
 	this.otherPlayerDialog=-1;
@@ -538,7 +538,7 @@ INGAME.prototype.turnEndSetting=function()
 	{
 		this.whosTurn=2;
 		this.fillerReset();
-		this.moveCost=2+this.P2area.filler.length*2;
+		this.moveCost=3+this.P2area.filler.length*2;
 		for(i=0;i<this.p2.length;i++)
 		{
 			if(this.p2[i].isLive) livingChara++;
@@ -551,7 +551,7 @@ INGAME.prototype.turnEndSetting=function()
 	{
 		this.whosTurn=1;
 		this.fillerReset();
-		this.moveCost=2+this.P1area.filler.length*2;
+		this.moveCost=3+this.P1area.filler.length*2;
 		for(i=0;i<this.p1.length;i++)
 		{
 			if(this.p1[i].isLive) livingChara++;
