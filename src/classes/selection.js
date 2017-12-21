@@ -13,6 +13,7 @@ SELECTION.prototype.mainSelect=function()
 	hexagon(width/2+300,height/2,150);
 	fill(255);
 	textAlign(CENTER);
+	textSize(36);
 	text("single play",width/2-300,height/2);
 	text("multi play",width/2+300,height/2);
 	if(inputBroadcast.isMousePress)
@@ -32,6 +33,7 @@ SELECTION.prototype.stageSelect_single=function()
 	var coord;
 	background(255);
 	textAlign(CENTER);
+	textSize(25);
 	for(var i=0;i<2;i++)
 	{
 		for(var j=0;j<12;j++)
