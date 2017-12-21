@@ -99,6 +99,8 @@ INGAME.prototype.setup=function()
 	screenControl.set(this.field.w,this.field.h);
 	var bannerH=min(width,height)/map(width/height,16/9,9/16,8,5)*5/3;
 	screenControl.setBound(0,bannerH,width,height-bannerH);
+	var bannerH=min(width,height)/map(width/height,16/9,9/16,8,5)*5/3;
+	screenControl.setBound(0,bannerH,width,height-bannerH);
 	sceneNo=11;
 }
 INGAME.prototype.playerCreate=function(data, who)
