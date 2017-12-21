@@ -671,7 +671,7 @@ INGAME.prototype.victory=function()
 	if(this.world!=_MULTIPLAY) text("victory!",width/2,height*2/5);
 	else text("player 1 win!",width/2,height*2/5);
 	noStroke();
-	textSize(36);
+	textSize(32);
 	fill(_RED);
 	hexagon(width/2-150,height*2/3,50);
 	fill(255);
@@ -725,7 +725,7 @@ INGAME.prototype.gameover=function()
 	if(this.world!=_MULTIPLAY) text("game over...",width/2,height*2/5);
 	else text("player 2 win!",width/2,height*2/5);
 	noStroke();
-	textSize(36);
+	textSize(32);
 	fill(_RED);
 	hexagon(width/2-150,height*2/3,50);
 	fill(255);
