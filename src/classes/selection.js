@@ -43,9 +43,9 @@ SELECTION.prototype.stageSelect_single=function()
 			stageButton.push(new HEXA_BUTTON(width/2-w/2+coord.x(),height*2/5+coord.y(),36));
 			if(i*12+j<6) fill(_BLUE);
 			else fill(_DARK_WHITE);
-			hexagon(width/2-w/2coord.x(),height*2/5+coord.y(),36);
+			hexagon(width/2-w/2+coord.x(),height*2/5+coord.y(),36);
 			fill(255);
-			text(i*12+j+1,width/2-w/2coord.x(),height*2/5+coord.y());
+			text(i*12+j+1,width/2-w/2+coord.x(),height*2/5+coord.y());
 		}
 	}
 	if(inputBroadcast.isMousePress)
