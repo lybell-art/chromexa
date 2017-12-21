@@ -682,7 +682,7 @@ INGAME.prototype.victory=function()
 	{
 		if(menuButton.mouseOn())
 		{
-			sceneNo=2;
+			sceneNo=1;
 		}
 		else if(nextButton.mouseOn())
 		{
@@ -734,7 +734,7 @@ INGAME.prototype.gameover=function()
 	{
 		if(menuButton.mouseOn())
 		{
-			sceneNo=2;
+			sceneNo=1;
 		}
 		else if(retryButton.mouseOn())
 		{
