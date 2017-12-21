@@ -719,9 +719,11 @@ INGAME.prototype.gameover=function()
 	background(255);
 	fill(_BLACK);
 	textAlign(CENTER);
+	textSize(65);
 	if(this.world!=_MULTIPLAY) text("game over...",width/2,height*2/5);
 	else text("player 2 win!",width/2,height*2/5);
 	noStroke();
+	textSize(36);
 	fill(_RED);
 	hexagon(width/2-150,height*2/3,50);
 	fill(255);
